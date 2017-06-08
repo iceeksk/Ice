@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Shower Presentation Engine</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=792, user-scalable=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+		<link rel="stylesheet" href="highlight/styles/github.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+	<body class="list">
+		<header class="caption">
+			<h1>Події. Таймери</h1>
+			<p>Анна Шавурська</p>
+			<div>
+				<h2>План</h2>
+			<ol style="-webkit-column-count: 3; color: white;" class="plan"></ol>
+		</div>
+	</header>
+	<section class="slide cover" id="Cover">
+		<header>
+			<h2>Події. Таймери</h2>
+			<p>Анна Шавурська, QAP INT</p>
+		</header>
+		<img src="pictures/event.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+		-->
+		<style>
+			#Cover{
+				background: url('pictures/blur.gif');
+				background-size: 200% 200%;
+			}
+			#Cover img {
+				position: absolute;
+				bottom: 0;
+				top: auto;
+				width: 130%;
+			}
+			.cover header{
+				background: rgba(0, 0, 0, 0.5);
+				width: 100%;
+				height: 30%;
+				padding-top: 20px;
+				-webkit-box-sizing: border-box;
+			}
+			.cover h2 {
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+			}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+			}
+			#Cover p a {
+				color:#FFF;
+			}
+			.slide.cover video,
+			.slide.cover img,
+			.slide.cover object,
+			.slide.cover canvas,
+			.slide.cover iframe {
+				width: 100%;
+			}
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+			.slide{
+				overflow: hidden;
+			}
+			.slide pre code{
+				font-size: 24px;
+			}
+			.columns{
+				display: flex;
+				justify-content: space-between;
+			}
+			.slide .wrong, .slide .correct{
+				padding: 0 20px;
+				display: inline-block;
+				margin-bottom: 30px;
+			}
+			.wrong{
+				background: rgba(255, 0, 0, 0.6);
+			}
+			.correct{
+				background: rgba(8, 160, 8, 0.6);
+			}
+		</style>
+	</section>
+	<section class="slide"><div>
+		<h2>Ціль подій - взаємодія</h2>
+		<img src="pictures/inter.png" alt="" width="420">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Взаємодія між</h2>
+		<ul>
+			<li>DOM та JavaScript (модулями програми)</li>
+			<li>Модулями програми між собою</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Подія - це дія або виконання деяких умов, що є виявлені програмою.</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>На подію можна підписатись використовуючи слухача (listener/handler), що виконується, коли виникає подія.</h2>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Простий приклад</h2>
+		<pre class="js">
+			<code>var button = document.getElementById('myElement');</code>
+			<code>button.onclick = function() {</code>
+			<code>	console.log(‘Hello world’);</code>
+			<code>};</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Обробник події - Event listener (Event Handler)</h2>
+		<p>- Це функція, яка викликається тоді, коли виникає подія.</p>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>1. Event handler property</h2>
+		<p>Ім'я обробника: <mark>on + назва події</mark></p>
+		<p><span class="wrong">Недолік:</span> лише одна функція-обробник.</p>
+		<p class="correct">Переваги:</p>
+		<ul>
+		 	<li>простий</li>
+		 	<!-- <li>крос-браузерний</li> -->
+		 </ul> 
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>2. addEventListener()</h2>
+		<pre class="js">
+			<code>target.addEventListener(</code>
+			<code>	type, // string - event name without on</code>
+			<code>	listener, // function</code>
+			<code>	useCapture // boolean</code>
+			<code>);</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Перевага – багато обробників</h2>
+		<pre class="js">
+			<code>var btn=document.getElementById('myBtn');</code>
+			<code>btn.addEventListener('click', function(){</code>
+			<code>	alert(this.id);	</code>
+			<code>}, false);</code>
+			<code>btn.addEventListener('click', function(){</code>
+			<code>	alert('Hello world!');	</code>
+			<code>}, false);</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Видалення обробника події</h2>
+		<pre class="js">
+			<code class="javascript">btn.onclick = null;</code>
+			<code>target.removeEventListener(type, listener, useCapture);</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Приклад</h2>
+		<pre class="js">
+			<code>var div = document.getElementById('div');</code>
+			<code>var listener = function (event) {</code>
+			<code>	/* do something here */</code>
+			<code>};</code>
+			<code>div.addEventListener('click', listener, false);</code>
+			<code>div.removeEventListener('click', listener, false);</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Контекст виконання обробника</h2>
+		<p>Функція-обробник виконується в контексті <mark>елемента</mark>, до якого прив'язаний обробник (this вказує на цей елемент).</p>
+	</div></section>		
+	<section class="slide"><div>
+		<h2><a href="http://www.w3schools.com/jsref/dom_obj_event.asp">Типи подій</a></h2>
+		<ul>
+			<li>Mouse Events</li>
+			<li>Keyboard Events</li>
+			<li>Frame/Object Events</li>
+			<li>Form Events</li>
+			<li>Drag Events</li>
+			<li>Clipboard Events</li>
+			<li>Media Events</li>
+			<li>Animation Events/Transition Events</li>
+			<li>Misc Events</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Mouse Events</h2>
+		<ul style="-webkit-column-count: 2;">
+			<li>onclick</li>
+			<li>oncontextmenu</li>
+			<li>ondblclick</li>
+			<li>onmousedown</li>
+			<li>onmouseenter</li>
+			<li>onmouseleave</li>
+			<li>onmousemove</li>
+			<li>onmouseover</li>
+			<li>onmouseout</li>
+			<li>onmouseup</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Touch events</h2>
+		<ul>
+			<li>touchstart</li>
+			<li>touchend</li>
+			<li>touchcancel</li>
+			<li>touchleave</li>
+			<li>touchmove</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Поширення події - Event flow</h2>
+		<ul>
+			<li>Event Capturing</li>
+			<li>At target</li>
+			<li>Event Bubbling</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Event bubling</h2>
+		<img src="pictures/bubling.png" alt="" width="420">
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Event Capturing</h2>
+		<img src="pictures/capturing.png" alt="" width="420">
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Event flow</h2>
+		<img src="pictures/flow.png" alt="" width="460">
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Event Object</h2>
+		<ul>
+			<li>
+				The Event interface represents any event of the DOM. 
+				It contains common properties and methods to any event..
+			</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Приклад</h2>
+		<pre class="js">
+			<code>var div = document.getElementById('div');</code>
+			<code>var listener = function (event) {</code>
+			<code>	/* do something with event */</code>
+			<code>};</code>
+			<code>div.addEventListener('click', listener, false);</code>
+			<code>div.removeEventListener('click', listener, false);</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Event Object Properties (Read-only)</h2>
+		<pre class="js">
+			<code>event.bubbles</code>
+			<!-- <code>event.cancelBubble </code> -->
+			<code>event.cancelable </code>
+			<code>event.currentTarget   </code>
+			<code>event.defaultPrevented </code>
+			<code>event.eventPhase</code>
+			<code>event.target </code>
+			<code>event.timeStamp</code>
+			<code>event.type </code>
+			<code>event.isTrusted </code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Event Methods</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>event.stopPropagation();</h2>
+		<ul>
+			<li>Зупиняє поширення події до наступних елементів.</li>
+			<li>Перериває потік події на бідь-якій фазі.</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>event.PreventDefault()</h2>
+		<p>Відміна стандартних дій браузера.</p>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/API/event.preventDefault
+">Тут детальніше...</a>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Створення подій</h2>
+		<pre class="js">
+			<code>var event = new Event('build');</code>
+			<code>elem.addEventListener('build', function (e) { ... }, false);</code>
+			<code>elem.dispatchEvent(event);</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Таймери</h2>
+		<img src="pictures/timer.jpg" alt="" width="420">
+	</div></section>	
+	<section class="slide"><div>
+		<h2>setTimeout()</h2>
+		<pre class="js">
+			<code>var timeoutID = window.setTimeout(</code>
+			<code>	func, </code>
+			<code>	delay,</code>
+			<code>	[param1, param2, ...]</code>
+			<code>);</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>setInterval()</h2>
+		<pre class="js">
+			<code>var intervalID  = window.setInterval(</code>
+			<code>	func, </code>
+			<code>	delay,</code>
+			<code>	[param1, param2, ...]</code>
+			<code>);</code>
+		</pre>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>This в таймерах</h2>
+		<ul>
+			<li>Вказує на window </li>
+			<li>“Strict mode” - undefined</li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Як це все працює?</h2>
+	</div></section>	
+	<section class="slide shout shrink"><div>
+		<h2>JavaScript - однопоточний, але асинхронний</h2>
+	</div></section>	
+	<section class="slide cover"><div>
+		<header>
+			<h2>Основний Потік</h2>
+		</header>
+		<img src="pictures/water.jpg" alt="" width="420">
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Основний потік - Event Loop</h2>
+		<ul>
+			<li>Модуль відображеня працює з одним потоком: в ньому виконується майже все, крім мережевих операцій. В Firefox і Safari це основний потік браузера, в Chrome – основний процес вкладки. </li>
+			<li>Основний потік браузера представляє собою цикл подій - нескінченний цикл, котрий підтримує робочі процеси.</li>
+		</ul>
+	</div></section>		
+	<section class="slide"><div>
+		<h2>JavaScript is running on a timeline</h2>
+		<ul>
+			<li>Any code included using a &lt;script&gt; element</li>
+			<li>Waits for more code to execute</li>
+			<li>When the process isn’t busy, the next code to be triggered is executed immediately</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JavaScript is running on a timeline</h2>
+		<img src="pictures/timeline1.png" height="182" width="741"/>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Черга</h2>
+		<p>of code that should be executed the next time the process is idle</p>
+		<img src="pictures/queue.jpg" alt="" width="420">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Timers and Queue</h2>
+		<p>Timers work with this queue by inserting code when a particular amount of time has passed.</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Дякую</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Почитати</h2>
+		<ul>
+			<li>
+				<a href="http://www.html5rocks.com/ru/tutorials/internals/howbrowserswork/ 
+">How browsers work</a>
+			</li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events">Touch events</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">Event</a></li>
+			<li>PJSWD: EVENTS - p.431, ADVANCED TIMERS - p.746</li>
+			<li><a href="http://javascript.info/tutorial/events-and-timing-depth#javascript-is-single-threaded">Events and timing in-depth</a></li>
+		</ul>
+	</div></section>	
+	<section class="slide"><div>
+		<h2>Завдання</h2>
+		<ul>
+			<li>Зверстати 3 вкладених блока. </li>
+			<li>Підписатись на клік кожного з блоків та вивести повідомлення про те, на якому блоці спрацювала подія. Зробити те саме, але для фази capturing.</li>
+			<li>Зробити так, щоб жодні кліки не доходили до всіх блоків.</li>
+			<li>При кліку на один з блоків створювати та посилати власну подію, в яку передавати інформацію про час події. Підписатись на неї та вивести передану інформацію.</li>
+			<li>З інтервалом 2 сек виводити на екран кількість виклику функції.</li>
+			<li>З інтервалом, що дорівнює наступному числу з ряду Фібоначі, виводити на екран це число.</li>
+		</ul>
+	</div></section>	
+	
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+	-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<script src="contents.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

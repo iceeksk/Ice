@@ -1,0 +1,288 @@
+WebWorkers - ServiceWorkers +
+Inheritance +
+Currying and chaining + -
+ES6: New Language Types
+ES6: Classes
+ES6: Destructuring assignment
+ES6: template strings
+ES6: super
+ES6: modules
+ES6: generators and iterators
+Memory leaks in JS
+Context of calling (.call(), .apply(), *.bind()) +
+Event handling (bubbling and capturing) +
+Architectural Patterns: MVC
+Architectural Patterns: MVVM
+SOLID principles + почитать
+
+Promise
+
+
+
+
+
+Web Workers
+-Web Workers предоставляют простое средство для запуска скриптов в фоновом потоке. Поток Worker'а может выполнять задачи без вмешательства в пользовательский интерфейс. К тому же, они могут осуществлять ввод/вывод, используя XMLHttpRequest (хотя атрибуты responseXML и channel всегда будут равны null). Существующий Worker может отсылать сообщения в JavaScript код, который его создал, отправляя сообщения в обработчик событий, указанный этим кодом (и наоборот). 
+-Worker - это объект, созданный при помощи конструктора (например, Worker()), который запускает JavaScript файл по имени — этот файл содержит код, который будет выполнен в потоке Worker'а; объекты Workers запускаются в другом глобальном контексте, который отличается от текущего window. Таким образом, использование переменной window для получения текущего глобального контекста (вместо self) внутри Worker вернет ошибку.
+-Эти объекты позволяют запускать долговременные скрипты для выполнения задач, требующих большого объема вычислений, не прибегая к блокировке интерфейса пользователя или других скриптов, управляющих взаимодействием пользователя с системой. Они помогают избавиться от надоевшего диалогового окна "Скрипт не отвечает", к которому все уже успели привыкнуть.
+-Магия worker-ов происходит через postMessage() метод и обработчик событий onmessage. Когда вы хотите отправить сообщение в worker, вы доставляете сообщение к нему вот так
+var myWorker = new Worker("worker.js");
+-Выделенные Workers Как уже упоминалось выше, выделенный Worker доступен только для скрипта, который его вызвал.
+first.onchange = function() {
+  myWorker.postMessage([first.value,second.value]);
+  console.log('Message posted to worker');
+}
+
+second.onchange = function() {
+  myWorker.postMessage([first.value,second.value]);
+  console.log('Message posted to worker');
+}
+//// получение в воркере и отправка
+onmessage = function(e) {
+  console.log('Message received from main script');
+  var workerResult = 'Result: ' + (e.data[0] * e.data[1]);
+  console.log('Posting message back to main script');
+  postMessage(workerResult);
+}
+/// получить в скрипте от воркера
+myWorker.onmessage = function(e) {
+  result.textContent = e.data;
+  console.log('Message received from worker');
+}
+-Завершить worker
+myWorker.terminate();
+-В потоке worker-а, worker-ы могут зыкрыть себя вызвав их метод close:
+close();
+-Разделяемые worker-ы
+var myWorker = new SharedWorker("worker.js");
+
+
+
+ServiceWorkers
+ServiceWorker — это новая технология, позволяющая запускать javascript-код в браузере в фоновом режиме — аналог сервисов (служб) в операционных системах. ServiceWorker запускается с web-ресурса и продолжает работать в браузере независимо от приложения, которое его инициализировало.
+Одной из важнейших проблем, от которой страдали пользователи веб-приложений - это работа в условиях потери связи.
+Цель — оградить пользователя от проблем соединения на его устройстве.
+*при первом посещении web-страницы, получить с сервера “статические” ресурсы в виде html-, css-, js-файлов, спрайтов и пр.;
+*закэшировать ресурсы на стороне клиента средствами браузера;
+*в дальнейшем при запросе этих же файлов выдавать их из кэша в том случае, если отсутствует соединение с сервером;
+*обновлять изменённые ресурсы в кэше.
+
+
+
+
+Inheritance
+Объекты в JavaScript можно организовать в цепочки так, чтобы свойство, не найденное в одном объекте, автоматически искалось бы в другом. Связующим звеном выступает специальное свойство __proto__.
+Прототип __proto__ новых объектов, создаваемых через new Person, можно задавать при помощи свойства Person.prototype.
+// конструктор
+function Animal(name) {
+  this.name = name;
+  this.speed = 0;
+}
+// методы в прототипе
+Animal.prototype.run = function(speed) {
+  this.speed += speed;
+  alert( this.name + ' бежит, скорость ' + this.speed );
+};
+
+
+Полный код наследования
+
+Для наглядности – вот итоговый код с двумя классами Animal и Rabbit:
+
+// 1. Конструктор Animal
+function Animal(name) {
+  this.name = name;
+  this.speed = 0;
+}
+
+// 1.1. Методы -- в прототип
+
+Animal.prototype.stop = function() {
+  this.speed = 0;
+  alert( this.name + ' стоит' );
+}
+
+Animal.prototype.run = function(speed) {
+  this.speed += speed;
+  alert( this.name + ' бежит, скорость ' + this.speed );
+};
+
+// 2. Конструктор Rabbit
+function Rabbit(name) {
+  this.name = name;
+  this.speed = 0;
+}
+
+// 2.1. Наследование
+Rabbit.prototype = Object.create(Animal.prototype);
+Rabbit.prototype.constructor = Rabbit;
+
+// 2.2. Методы Rabbit
+Rabbit.prototype.jump = function() {
+  this.speed++;
+  alert( this.name + ' прыгает, скорость ' + this.speed );
+}
+
+
+
+
+
+this call apply bind Карринг 
+
+Значение this называется контекстом вызова и будет определено в момент вызова функции.
+
+function printArgs() {
+  // вызов arr.slice() скопирует все элементы из this в новый массив
+  var args = [].slice.call(arguments);
+  alert( args.join(', ') ); // args - полноценный массив из аргументов
+}
+
+printArgs('Привет', 'мой', 'мир'); // Привет, мой, мир
+
+
+var person1 = {
+	name: "alex",
+  age: 10
+}
+function person(name,age){
+	console.log(this.name + " " + this.age);
+}
+person.apply(person1, ['name', 'age']);
+person.call(person1, 'name', 'age');
+
+
+bind не похож на call/apply
+Методы bind и call/apply близки по синтаксису, но есть важнейшее отличие.
+
+Методы call/apply вызывают функцию с заданным контекстом и аргументами.
+
+А bind не вызывает функцию. Он только возвращает «обёртку», которую мы можем вызвать позже, и которая передаст вызов в исходную функцию, с привязанным контекстом.
+var user = {
+  firstName: "Вася",
+  sayHi: function() {
+    alert( this.firstName );
+  }
+};
+
+setTimeout(user.sayHi.bind(user), 1000); // аналог через встроенный метод
+
+Карринг (currying) или каррирование – термин функционального программирования, который означает создание новой функции путём фиксирования аргументов существующей.
+function mul(a, b) {
+  return a * b;
+};
+При помощи bind создадим функцию double, удваивающую значения. Это будет вариант функции mul с фиксированным первым аргументом:
+
+// double умножает только на два
+var double = mul.bind(null, 2); // контекст фиксируем null, он не используется
+
+alert( double(3) ); // = mul(2, 3) = 6
+alert( double(4) ); // = mul(2, 4) = 8
+
+При вызове double будет передавать свои аргументы исходной функции mul после тех, которые указаны в bind, то есть в данном случае после зафиксированного первого аргумента 2.
+
+Говорят, что double является «частичной функцией» (partial function) от mul.
+
+Другая частичная функция triple утраивает значения:
+ 
+var triple = mul.bind(null, 3); // контекст фиксируем null, он не используется
+
+alert( triple(3) ); // = mul(3, 3) = 9
+alert( triple(4) ); // = mul(3, 4) = 12
+alert( triple(5) ); // = mul(3, 5) = 15
+При помощи bind мы можем получить из функции её «частный вариант» как самостоятельную функцию и дальше передать в setTimeout или сделать с ней что-то ещё.
+
+
+
+Замыкания, функции изнутри
+Лексическое окружение
+Замыкание – это функция вместе со всеми внешними переменными, которые ей доступны.
+Все переменные внутри функции – это свойства специального внутреннего объекта LexicalEnvironment, который создаётся при её запуске.
+Мы будем называть этот объект «лексическое окружение» или просто «объект переменных».
+При запуске функция создает объект LexicalEnvironment, записывает туда аргументы, функции и переменные. Процесс инициализации выполняется в том же порядке, что и для глобального объекта, который, вообще говоря, является частным случаем лексического окружения.
+В отличие от window, объект LexicalEnvironment является внутренним, он скрыт от прямого доступа.
+Интерпретатор, при доступе к переменной, сначала пытается найти переменную в текущем LexicalEnvironment, а затем, если её нет – ищет во внешнем объекте переменных. В данном случае им является window.
+При создании функция получает скрытое свойство [[Scope]], которое ссылается на лексическое окружение, в котором она была создана.
+Если обобщить:
+Каждая функция при создании получает ссылку [[Scope]] на объект с переменными, в контексте которого была создана.
+При запуске функции создаётся новый объект с переменными LexicalEnvironment. Он получает ссылку на внешний объект переменных из [[Scope]].
+При поиске переменных он осуществляется сначала в текущем объекте переменных, а потом – по этой ссылке.
+
+function makeCounter() {
+  var currentCount = 1;
+
+  return function() { // (**)
+    return currentCount++;
+  };
+}
+
+var counter = makeCounter(); // (*)
+
+// каждый вызов увеличивает счётчик и возвращает результат
+alert( counter() ); // 1
+alert( counter() ); // 2
+alert( counter() ); // 3
+
+
+
+
+
+Всплытие и перехват bubling and capturing
+Алгоритм:
+
+При наступлении события – элемент, на котором оно произошло, помечается как «целевой» (event.target).
+Далее событие сначала двигается вниз от корня документа к event.target, по пути вызывая обработчики, поставленные через addEventListener(...., true).capturing
+Далее событие двигается от event.target вверх к корню документа, по пути вызывая обработчики, поставленные через on* и addEventListener(...., false).bubling
+Каждый обработчик имеет доступ к свойствам события:
+
+event.target – самый глубокий элемент, на котором произошло событие.
+event.currentTarget (=this) – элемент, на котором в данный момент сработал обработчик (до которого «доплыло» событие).
+event.eventPhase – на какой фазе он сработал (погружение =1, всплытие = 3).
+Любой обработчик может остановить событие вызовом event.stopPropagation(), но делать это не рекомендуется, так как в дальнейшем это событие может понадобиться, иногда для самых неожиданных вещей.
+
+var elem = document.querySelectorAll('div');
+elem.addEventListener("click", highlightThis, false);
+function highlightThis() {}
+
+
+
+
+
+
+SOLID principles
+http://info.javarush.ru/translation/2013/08/06/%D0%9F%D1%8F%D1%82%D1%8C-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D1%85-%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF%D0%BE%D0%B2-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B0-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2-S-O-L-I-D-%D0%B2-Java.html
+
+
+
+
+утечки памяти
+https://habrahabr.ru/post/309318/
+https://habrahabr.ru/post/146784/
+
+
+
+push/pop, shift/unshift, splice – для добавления и удаления элементов.
+join/split – для преобразования строки в массив и обратно.
+slice – копирует участок массива.
+sort – для сортировки массива. Если не передать функцию сравнения – сортирует элементы как строки.
+reverse – меняет порядок элементов на обратный.
+concat – объединяет массивы.
+indexOf/lastIndexOf – возвращают позицию элемента в массиве (не поддерживается в IE8-).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

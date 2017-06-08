@@ -1,0 +1,7 @@
+node_modules
+build
+components
+.idea
+.zip
+spa
+index.html

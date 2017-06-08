@@ -1,0 +1,23 @@
+Function.prototype.method = function (name, func) {
+    this.prototype[name] = func;
+    return this;
+};
+
+Array.method('суммаћасива', function () {
+	return this.reduce(function(sum, current) {
+ 		 return sum + current;
+		}, 0);
+});
+
+Array.method('добћасива', function () {
+		return this.reduce(function(sum, current) {
+ 		 return sum * current;
+		});
+});
+
+
+var arr = [1,2,3,4,5,100];
+
+console.log( arr.добћасива() );
+
+console.log( arr.суммаћасива() );

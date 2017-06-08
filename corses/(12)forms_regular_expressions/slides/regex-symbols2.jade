@@ -1,0 +1,27 @@
+section.slide#regexSymbols2
+	div
+		h2 Спецсимволы
+
+		div
+			strong *
+			| &nbsp; Обозначает повторение 0 или более раз
+
+		div
+			code /bo*/
+			| &nbsp; найдет 'boooo' в "A ghost booooed" и 'b' в "A bird warbled", но ничего не найдет в "A goat grunted"
+
+		div
+			strong +
+			| &nbsp; Обозначает повторение 1 или более раз
+
+		div
+			code /a+/
+			| &nbsp; найдет 'a' в "candy" и все 'a' в "caaaaaaandy"
+
+		div
+			strong ?
+			| &nbsp; Элемент может как присутствовать, так и отсутствовать
+
+		div
+			code /e?le?/
+			| &nbsp; найдет 'el' в "angel" и 'le' в "angle"

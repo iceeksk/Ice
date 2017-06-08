@@ -1,0 +1,36 @@
+//////////////////////Для объединения нескольких объектов в один
+
+var vasya = {
+  age: 21,
+  name: 'Вася',
+  surname: 'Петров'
+};
+var user = {
+  isAdmin: false,
+  isEmailConfirmed: true
+};
+var student = {
+  university: 'My university'
+};
+
+// добавить к vasya свойства из user и student
+copy(vasya, user, student);
+console.log( vasya ); 
+
+// Для создания копии объекта user:
+// скопирует все свойства в пустой объект
+
+var userClone = copy({}, user);
+
+function copy() {
+  var dst = arguments[0];
+  for (var i = 1; i < arguments.length; i++) {
+    var arg = arguments[i];
+    for (var key in arg) {
+      dst[key] = arg[key];
+    }
+  }
+  return dst;
+}
+
+console.log( userClone ); 

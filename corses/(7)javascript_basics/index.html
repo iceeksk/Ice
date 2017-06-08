@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ribbon theme for Shower</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="components/shower-ribbon/styles/screen.css">
+	<style>
+		.holder{
+			display: -webkit-box;
+			-webkit-box-pack: center;
+		}
+		.just-holder{
+			display: -webkit-box;
+			-webkit-box-pack: justify;
+		}
+		.good{
+			color: green;
+		}
+		.bad{
+			color: red;
+		}
+
+		.operators h2{
+			text-align: center;
+			font-family: 'PT Mono',monospace;
+		}
+		.slide pre.no-numbers :before{
+			content: "";
+		}
+		.larger{
+			font-size: 140%;
+		}
+		.slide.larger pre code:before{
+			margin-left: -70px;
+		}
+		.slide.larger p,
+		.slide.larger pre,
+		.slide.larger ul{
+			margin-bottom: 20px;
+		}
+		.less-h2 h2{
+			margin-bottom: 20px;
+		}
+		.slide.less-code code{
+			line-height: 1.8;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>JavaScript</h1>
+	</header>
+	<article class="slide cover" id="frontpage"><div>
+		<h2>JavaScript</h2>
+		<p>
+			Подключение скриптов.<br>
+			Переменные и типы данных.<br>
+			Операторы, операторы ветвления, циклы
+		</p>
+		<p class="footnote">
+			Свирский Артем, 2015
+		</p>
+		<style>
+			#frontpage{
+				background: url("images/js-logo.png") no-repeat;
+				background-position: 100% 0;
+				background-size: contain;
+				background-color: #f0db4f;
+				color: #323330;
+			}
+			#frontpage h2{
+				font-size: 70px;
+				font-family: monospace;
+				color: #323330;
+				margin-bottom: 55px;
+			}
+			#frontpage p{
+				line-height: 42px;
+				margin-left: 15px;
+			}
+			#frontpage .footnote{
+				position: absolute;
+				bottom: 38px;
+				font-size: 21px;
+				text-indent: 25px;
+				margin-bottom: 0;
+			}
+		</style>
+	</div></article>
+	<article class="slide" id="JavaScript"><div>
+	<p><strong>JavaScript</strong> - динамический язык программирования.</p>
+
+	<ul>
+		<p class="indented"><strong>HTML</strong> - структура</p>
+		<p class="indented"><strong>CSS</strong> - вид</p>
+		<p class="indented"><strong>JavaScript</strong> - поведение</p>
+	</ul>
+
+	<style>
+		#JavaScript .centered{
+			text-align: center;
+			font-weight: bold;
+		}
+		#JavaScript .indented{
+			/*margin-left: 10px;*/
+			margin-bottom: 10px;
+		}
+	</style>
+</div></article>
+	<article class="slide cover w h"><div>
+		<img src="images/client-server.png" alt="">
+	</div></article>
+	<article class="slide" lang="ru" id="history"><div>
+	<h2>История</h2>
+
+	<dl>
+		<dt>1995</dt>
+		<dd>
+			Netscape, JavaScript
+		</dd>
+		<dt>1996</dt>
+		<dd>
+			Microsoft, JScript
+		</dd>
+		<dt>1997</dt>
+		<dd>
+			ECMAScript - стандарт языка
+		</dd>
+	</dl>
+
+	<style>
+		#history dt{
+			text-indent: -2em;
+			font-weight: bold;
+		}
+		#history dt::before{
+			content: '\2014\00A0\00A0';
+			display: inline-block;
+			width: 2em;
+			color: #BBB;
+			font-weight: normal;
+			text-align: right;
+		}
+		#history dd{
+			margin-left: 30px;
+		}
+	</style>
+</div></article>
+	<article class="slide" id="JSEqualsECMA"><div>
+		<h2>JavaScript === ECMAScript ?</h2>
+		<mark class="next">JavaScript = <span class="es">ECMAScript</span> + <span class="dom">DOM</span> + <span class="bom">BOM</span>;</mark>
+		<style>
+			#JSEqualsECMA mark{
+				display: block;
+				text-align: center;
+				margin-top: 150px;
+				font-size: 44px;
+			}
+		</style>
+	</div></article>
+	<article class="slide" id="scripts" lang="ru"><div>
+		<h2>Подключение скриптов</h2>
+
+		<p>Подключение с помощью тега <code>&lt;script&gt;</code></p>
+
+		<ul>
+			<li>Встроенный скрипт <mark>(embedded)</mark> </li>
+			<li>Внешний скрипт <mark>(external)</mark> </li>
+		</ul>
+
+	</div></article>
+	<article class="slide" id="embedded"><div>
+		<h2>Встроенный</h2>
+
+		<code>index.html</code>
+
+		<pre>
+			<code>	<mark>&lt;script></mark></code>
+			<code>		alert('Hello, world!');</code>
+			<code>	<mark>&lt;/script></mark></code>
+		</pre>
+
+		<style>
+			#embedded p{
+				/*margin-bottom: 50px;*/
+			}
+			#embedded pre{
+				margin-top: 50px;
+			}
+		</style>
+	</div></article>
+	<article class="slide" id="external"><div>
+		<h2>Внешний</h2>
+
+		<code>index.html</code>
+
+		<pre>
+			<code>	&lt;script <mark>src="script.js"</mark>>&lt;/script></code>
+		</pre>
+
+		<code>script.js</code>
+
+		<pre>
+			<code>	alert('Hello, world!');</code>
+			<!-- <code>	</code> -->
+		</pre>
+
+		<style>
+			#external p{
+				/*margin-bottom: 50px;*/
+			}
+			#external pre{
+				margin-top: 50px;
+			}
+		</style>
+	</div></article>
+	<article class="slide tag-placement" lang="ru"><div>
+		<h2>Размещение тега script</h2>
+
+		<p>Интуиция подсказывает, что нужно размещать в теге <code>head</code></p>
+
+		<pre>
+			<code>&lt;head></code>
+			<code>	&lt;link rel="stylesheet" href="styles.css"></code>
+			<code>	<mark>&lt;script src="script.js">&lt;/script></mark></code>
+			<code>&lt;/head></code>
+			<code>&lt;body></code>
+			<code>	<mark>&lt;!-- Rendering content --></mark></code>
+			<code>&lt;/body></code>
+		</pre>
+
+		<style>
+			.slide.tag-placement p{
+				margin-bottom: 20px;
+			}
+		</style>
+
+	</div></article>
+	<article class="slide tag-placement" lang="ru"><div>
+		<h2>Размещение тега script</h2>
+
+		<p>Хорошая практика - подключать <code>script</code> в конце тега <code>body</code></p>
+
+		<pre>
+			<code>&lt;head></code>
+			<code>	&lt;link rel="stylesheet" href="styles.css"></code>
+			<code>&lt;/head></code>
+			<code>&lt;body></code>
+			<code>	<mark>&lt;!-- Rendering content --></mark></code>
+			<code>	<mark>&lt;script src="script.js">&lt;/script></mark></code>
+			<code>&lt;/body></code>
+		</pre>
+	</div></article>
+	<article class="slide" lang="ru" id="codeStructure"><div>
+		<h2>Структура кода</h2>
+
+		<p>JavaScript код - набор команд, которые должен выполнить браузер.</p>
+		<p>Такие команды называются инструкциями <mark>(statements)</mark>.</p>
+
+		<div class="holder">
+			<pre>
+				<code>statement;</code>
+				<code>statement;</code>
+				<code>statement;</code>
+			</pre>
+		</div>
+
+		<style>
+			#codeStructure p{
+				font-size: 23px;
+			}
+		</style>
+	</div></article>
+	<article class="slide" lang="ru"><div>
+		<h2>Переменные</h2>
+
+		<p>Переменная - именованная ячейка памяти.</p>
+		<p>Объявляется с помощью ключевого слова <code>var</code> и <mark>идентификатора</mark>.</p>
+
+		<div class="holder larger">
+			<pre>
+				<code><mark >var</mark> myVar;</code>
+			</pre>
+		</div>
+	</div></article>
+	<article class="slide" lang="ru" id="identifiers"><div>
+	<h2>Идентификаторы</h2>
+
+	<ul>
+		<li>Длина идентификатора – один и больше символов</li>
+		<li>Символы: <mark>буква</mark>, <mark>цифра</mark>, подчеркивание (<mark>_</mark>) или доллар (<mark>$</mark>)</li>
+		<li>Цифра не может быть первой</li>
+		<li>По соглашению пишутся в стиле <mark>camelCase</mark></li>
+		<li><mark>Ключевые</mark> и <mark>зарезервированные</mark> слова нельзя использовать в качестве идентификаторов</li>
+	</ul>
+
+</div></article> 
+ 	<article class="slide" lang="ru" id="keywords"><div>
+	<h2>Ключевые слова</h2>
+
+	<div class="columned">
+		break<br>
+		do<br>
+		instanceof<br>
+		typeof<br>
+		case<br>
+		else<br>
+		new<br>
+		<mark>var</mark><br>
+		catch<br>
+		finally<br>
+		return<br>
+		void<br>
+		continue<br>
+		for<br>
+		switch<br>
+		while<br>
+		debugger<br>
+		function<br>
+		this<br>
+		with<br>
+		default<br>
+		if<br>
+		throw<br>
+		delete<br>
+		in<br>
+		try<br>
+	</div>
+
+	<style>
+		#keywords .columned{
+			-webkit-column-count: 4;
+		}
+	</style>
+
+</div></article>
+<article class="slide" lang="ru" id="reserved"><div>
+	<h2>Зарезервированные слова</h2>
+
+	<div class="columned">
+		implements<br>
+		package<br>
+		public<br>
+		interface<br>
+		private<br>
+		static<br>
+		let<br>
+		protected<br>
+		yield
+	</div>
+
+	<style>
+		#reserved .columned{
+			-webkit-column-count: 3;
+		}
+	</style>
+
+</div></article> 
+	<article class="slide larger" lang="ru"><div>
+		<h2>Присваивание</h2>
+
+		<!-- <div class="holder"> -->
+
+			<pre>
+				<code>var myVar; <mark class="comment">// объявление</mark></code>
+				<code>myVar = <mark>'my var'</mark>; <mark class="comment">// присваивание</mark></code>
+			</pre>
+		<!-- </div> -->
+
+		<style>
+			#initialization h2{
+				margin-bottom: 10px;
+				/*-webkit-box-align: center;*/
+			}
+			#initialization pre{
+				/*margin: 0 50px;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Инициализация</h2>
+
+		<!-- <div class="holder"> -->
+			<pre>
+				<code>var myVar = <mark>'my var'</mark>;</mark></code>
+			</pre>
+		<!-- </div> -->
+
+		<style>
+			#initialization h2{
+				margin-bottom: 10px;
+				/*-webkit-box-align: center;*/
+			}
+			#initialization pre{
+				/*margin: 0 50px;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide larger" lang="ru" id="initialization"><div>
+		<h2>Инициализация лучше</h2>
+
+		<!-- <div class="holder"> -->
+
+			<h3 class="bad">Плохо</h3>
+
+			<pre>
+				<code>var myVar; <mark class="comment">// объявление</mark></code>
+				<code>myVar = <mark>'my var'</mark>; <mark class="comment">// присваивание</mark></code>
+			</pre>
+
+			<h3 class="good">Хорошо</h3>
+
+			<pre>
+				<code>var myVar = <mark>'my var'</mark>;</mark> <mark class="comment">// инициализация</mark></code>
+			</pre>
+		<!-- </div> -->
+
+		<style>
+			#initialization h2{
+				margin-bottom: 10px;
+				/*-webkit-box-align: center;*/
+			}
+			#initialization pre{
+				/*margin: 0 50px;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Объявление нескольких переменных</h2>
+
+		<!-- <div class="holder"> -->
+			<pre>
+				<code><mark>var</mark> name = 'Артем';</code>
+				<code><mark>var</mark> age = 25;</code>
+			</pre>
+		<!-- </div> -->
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Единственная инструкция var</h2>
+
+		<!-- <div class="holder"> -->
+			<pre>
+				<code><mark>var</mark> name = 'Артем'<mark>,</mark></code>
+				<code>	 age = 25;</code>
+			</pre>
+		<!-- </div> -->
+
+	</div></article>
+	<article class="slide larger" lang="ru" id="singleVar"><div>
+		<h2>Единственная инструкция var - лучше</h2>
+
+		<!-- <div class="holder"> -->
+			<h3 class="bad">Плохо</h3>
+			<pre>
+				<code><mark>var</mark> name = 'Артем';</code>
+				<code><mark>var</mark> age = 25;</code>
+			</pre>
+
+			<h3 class="good">Хорошо</h3>
+
+			<pre>
+				<code><mark>var</mark> name = 'Артем'<mark>,</mark></code>
+				<code>	 age = 25;</code>
+			</pre>
+		<!-- </div> -->
+
+		<style>
+			#singleVar h2{
+				margin-bottom: 10px;
+			}
+			#singleVar .holder{
+				/*-webkit-box-align: center;*/
+			}
+			#singleVar pre{
+				/*margin: 0 50px;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide" lang="ru" id="scope"><div>
+		<h2>Область видимости</h2>
+
+		<p>Область видимости переменной - функция в которой она объявлена.</p>
+
+		<pre>
+			<code>function foo(){</code>
+			<code>	var bar = 1;</code>
+			<code>	<mark class="comment">// do smth with bar</mark></code>
+			<code>}</code>
+			<code>foo();</code>
+			<code>	</code>
+			<code>console.log(bar); <mark class="important">Uncaught ReferenceError: bar is not defined </mark></code>
+		</pre>
+
+		<style>
+			#scope p{
+				margin-bottom: 20px;
+			}
+			#scope .important{
+				font-size: 22px;
+			}
+		</style>
+	</div></article>
+	<article class="slide larger" lang="ru" id="noBlockScope"><div>
+		<h2>Нету блочной области видимости</h2>
+
+		<pre>
+			<code>{</code>
+			<code>	var foo = 'bar';</code>
+			<code>}</code>
+			<code> </code>
+			<code>console.log(foo); <mark class="comment">// bar</mark> </code>
+		</pre>
+
+		<style>
+			#scope p{
+				margin-bottom: 20px;
+			}
+			#scope .important{
+				font-size: 22px;
+			}
+		</style>
+	</div></article>
+	<article class="slide larger" lang="ru" id="dataTypes"><div>
+		<h2>Типы данных</h2>
+
+		<div class="holder">
+			<div class="column">
+				<h3>5 примитивных типов</h3>
+
+				<ul>
+					<li>Number</li>
+					<li>String</li>
+					<li>Boolean</li>
+					<li>undefined</li>
+					<li>null</li>
+				</ul>
+			</div>
+
+			<div class="column">
+				<h3>1 комплексный</h3>
+
+				<ul>
+					<li>Object</li>
+				</ul>
+
+			</div>
+		</div>
+
+		<style>
+			#dataTypes h3{
+				font-weight: bold;
+			}
+			#dataTypes .holder{
+				-webkit-box-pack: start;
+			}
+			#dataTypes .column{
+				margin-right: 150px;
+				/*margin: 0 100px;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide" lang="ru"><div>
+		<h2>undefined</h2>
+		<ul>
+			<li>Значение переменных по умолчанию</li>
+		</ul>
+
+		<pre>
+			<code>var myVar; <mark class="comment">// undefined</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide"><div>
+		<h2>null</h2>
+
+		Значение переменных которые ничего не содержат.
+
+		<h3 class="bad">Плохо</h3>
+
+		<pre>
+			<code>var activeItem = {};</code>
+			<code>activeItem = <mark>undefined</mark>;</code>
+		</pre>
+
+		<h3 class="good">Хорошо</h3>
+		<pre>
+			<code>var activeItem = {};</code>
+			<code>activeItem = <mark>null</mark>;</code>
+		</pre>
+
+	</div></article>
+	<article class="slide" lang="ru" id="number"><div>
+		<h2>Числа</h2>
+
+		<ul>
+			<li>Один тип для целых и дробных чисел</li>
+			<li>Хранятся в 64-битном формате IEEE-754</li>
+		</ul>
+
+		<!-- <div class="holder"> -->
+			<pre>
+				<code>1 <mark class="comment">// 1</mark></code>
+				<code>1.12 <mark class="comment">// 1.12</mark></code>
+				<code>0xff <mark class="comment">// 255</mark></code>
+				<code>1e3 <mark class="comment">// 1000</mark></code>
+				<code>1e-3 <mark class="comment">// 0.001</mark></code>
+			</pre>
+		<!-- </div> -->
+
+		<style>
+			#number code:before{
+				/*content: none;*/
+			}
+		</style>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Потеря точности</h2>
+
+		<pre>
+			<code>0.1 + 0.2 <mark class="comment">// 0.30000000000000004</mark></code>
+			<code>9999999999999999 <mark class="comment">// 10000000000000000</mark></code>
+		</pre>
+
+
+		<p>
+			<a href="http://floating-point-gui.de/">http://floating-point-gui.de/</a>
+		</p>
+
+	</div></article>
+	<article class="slide larger" lang="ru" id="nan"><div>
+		<h2>NaN</h2>
+
+		<p>Специальное значение: Not a Number</p>
+<!-- 		<ul>
+	<li>Результат ошибочных арифметических операций</li>
+	<li>Любая операция с NaN возвращает NaN</li>
+	<li>NaN не равно ничему, включая себя</li>
+</ul>
+ -->
+		<pre>
+			<code>"a" * 3 <mark class="comment">// NaN</mark></code>
+			<code>NaN * 3 <mark class="comment">// NaN</mark></code>
+			<code>NaN == NaN <mark class="comment">// false</mark></code>
+			<code>isNaN(NaN) <mark class="comment">// true</mark></code>
+		</pre>
+
+		<style>
+			#nan ul,
+			#nan pre{
+				margin-bottom: 10px;
+			}
+		</style>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Функция Number</h2>
+
+		<p>Конвертирует значение в число</p>
+<!-- 		<ul>
+	<li>Возвращает NaN, если значение не может быть сконвертировано</li>
+	<li>То же делает унарный оператор <code>+</code></li>
+</ul>
+ -->
+		<pre>
+			<code>Number("10") <mark class="comment">// 10</mark></code>
+			<code>Number("10.11") <mark class="comment">// 10.11</mark></code>
+			<code>Number("10a") <mark class="comment">// NaN</mark></code>
+			<code>+"10" <mark class="comment">// 10</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Функция parseInt</h2>
+
+<!-- 		<ul>
+	<li>Первой должна быть цифра</li>
+	<li>Останавливаются на первом нецифровом символе</li>
+	<li>Лучше всегда указывать основание системы счисления</li>
+</ul>
+ -->
+		<pre>
+			<code>parseInt("10px", 10) <mark class="comment">// 10</mark></code>
+			<code>parseInt("px10", 10) <mark class="comment">// NaN</mark></code>
+			<code>parseInt("010") <mark class="comment">// в некоторых браузерах 8</mark></code>
+			<code>parseInt("010", 10) <mark class="comment">// во всех 10</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Строки</h2>
+		<ul>
+			<li>Последовательность 16-битных символов</li>
+			<li>Нету <code>char</code></li>
+		</ul>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Двойные или одинарные кавычки</h2>
+		<pre>
+			<code>var myStr = <mark>"</mark>string1<mark>"</mark>,</code>
+			<code>	myStr2 = <mark>'</mark>string2<mark>'</mark>;</code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Длина строки</h2>
+
+		<pre>
+			<code>var myString = "my string";</code>
+			<code>myString<mark>.length</mark>; <mark class="comment">// 9</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Строки как массивы</h2>
+
+		<pre>
+			<code>var myString = "my string";</code>
+			<code>myString<mark>[0]</mark>; <mark class="comment">// "m"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Метод Substring</h2>
+
+		<pre>
+			<code>var myString = "my string";</code>
+			<code>myString<mark>.substring(3, 6)</mark>; <mark class="comment">// "str"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Строки неизменяемы</h2>
+
+		<pre>
+			<code>var myString = "my string",</code>
+			<code>    subStr = myString<mark>.substring(3, 6)</mark>;</code>
+			<code> </code>
+			<code> myString; <mark class="comment">// "my string"</mark></code>
+			<code> subStr; <mark class="comment">// "str"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Строки неизменяемы</h2>
+
+		<pre>
+			<code>var myString = "my string";</code>
+			<code><mark>myString[6] = "o";</mark></code>
+			<code>myString; <mark class="comment">// "my string"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Метод IndexOf</h2>
+
+		<pre>
+			<code>var myString = "my string";</code>
+			<code>myString<mark>.indexOf('my');</mark><mark class="comment"> // 0</mark></code>
+			<code>myString<mark>.indexOf('your');</mark><mark class="comment"> // -1</mark></code>
+		</pre>
+	</div></article>
+<!-- 	<article class="slide" lang="ru" id="stringMethods"><div>
+	<h2>Методы</h2>
+
+	<div class="columned">
+		charAt<br>
+		indexOf<br>
+		lastIndexOf<br>
+		match<br>
+		replace<br>
+		search<br>
+		splice<br>
+		split<br>
+		substring<br>
+		toLowerCase<br>
+		toUpperCase
+	</div>
+
+	<style>
+		#stringMethods .columned{
+			-webkit-column-count: 4;
+		}
+	</style>
+</div></article> -->
+	<article class="slide larger" lang="ru" id="stringFunction"><div>
+		<h2>Функция String</h2>
+
+		<p>
+			Конвертирует значение в строку.
+		</p>
+
+		<pre>
+			<code><mark>String(10)</mark> <mark class="comment">// "10"</mark></code>
+			<code>10 + "" <mark class="comment">// "10"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru" id="booleans"><div>
+		<h2>Логический тип</h2>
+
+		<ul>
+			<li>true</li>
+			<li>false</li>
+		</ul>
+	</div></article>
+	<article class="slide larger" lang="ru" id="booleanFunction"><div>
+		<h2>Функция Boolean</h2>
+
+		<p>Конвертирует значение в логическое.</p>
+
+		<pre>
+			<code><mark>Boolean(value)</mark></code>
+		</pre>
+
+		<p>Или</p>
+
+		<pre>
+			<code><mark>!!value</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide" lang="ru"><div>
+		<h2>Ложные значения</h2>
+
+		<ul>
+			<li><code>false</code></li>
+			<li><code>null</code></li>
+			<li><code>undefined</code></li>
+			<li><code>""</code></li>
+			<li><code>0</code></li>
+			<li><code>NaN</code></li>
+		</ul>
+
+		<p>Все остальные значения истинные.</p>
+	</div></article>
+	<article class="slide larger" lang="ru" id="dynamicTyping"><div>
+		<h2>Динамическая типизация</h2>
+
+		<p>Тип переменной определяется в момент присваивания значения</p>
+
+			<pre>
+				<code>var myVar <mark>= 1</mark>;</code>
+				<code>myVar <mark>= "foo"</mark>;</code>
+				<code>myVar <mark>= true</mark>;</code>
+			</pre>
+	</div></article>
+	<article class="slide" lang="ru" id="typeof"><div>
+		<h2>Оператор typeof</h2>
+
+		<p>Определяет тип переменной</p>
+
+		<pre>
+			<code><mark>typeof</mark> 1; <mark class="comment">// "number"</mark></code>
+			<code><mark>typeof</mark> "some string"; <mark class="comment">// "string"</mark></code>
+			<code><mark>typeof</mark> true; <mark class="comment">// "boolean"</mark></code>
+			<code><mark>typeof</mark> undefined; <mark class="comment">// "undefined"</mark></code>
+			<code><mark>typeof</mark> function(){}; <mark class="comment">// "function"</mark></code>
+		</pre>
+
+		<p>Для всего остального <code>typeof</code> возвращает <code>"object"</code>, в том числе и для <code>null</code>.</p>
+
+		<style>
+			#typeof p,
+			#typeof pre,
+			#typeof h2{
+				margin-bottom: 15px;
+			}
+		</style>
+	</div></article>
+
+	<article class="slide larger" lang="ru"><div>
+		<h2>Литералы</h2>
+
+		<pre>
+			<code>var num = <mark>1</mark>,</code>
+			<code>	str = <mark>"string"</mark>,</code>
+			<code>	bool = <mark>true</mark>;</code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Конструкторы встроенных типов</h2>
+
+		<pre>
+			<code>var num = <mark>new Number(1)</mark>,</code>
+			<code>	str = <mark>new String("string")</mark>,</code>
+			<code>	bool = <mark>new Boolean(true)</mark>;</code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Отличие</h2>
+
+		<pre>
+			<code>var primitiveString = <mark>"bar"</mark>,</code>
+			<code>	objectString = <mark>new String("bar")</mark>;</code>
+			<code> </code>
+			<code><mark>typeof</mark> primitiveString; <mark class="comment">// "string"</mark></code>
+			<code><mark>typeof</mark> objectString; <mark class="comment">// "object"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Многие думают, что в JS - все объекты</h2>
+
+		<pre>
+			<code>var primitiveString = <mark>"bar"</mark>;</code>
+			<code>primitiveString.length; <mark class="comment">// 3</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide larger" lang="ru" id="operators"><div>
+		<h2>Операторы</h2>
+
+		<ul>
+			<li>Унарные <code>+"1"</code></li>
+			<li>Бинарные <code>1 + 2</code></li>
+			<li>Тернарный <code>?:</code></li>
+		</ul>
+	</div></article>
+	<article class="slide" lang="ru"><div>
+		<h2>Группы операторов</h2>
+
+		<dl>
+			<dt>Арифметические</dt>
+			<dd>
+				<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code>
+			</dd>
+			<dt>Сравнения</dt>
+			<dd>
+				<code>&lt;</code>
+				<code>&gt;</code>
+				<code>&lt;=</code>
+				<code>&gt;=</code>
+				<code>==</code>
+				<code>!=</code>
+				<code>===</code>
+				<code>!==</code>
+			</dd>
+			<dt>Логические</dt>
+			<dd>
+				<code>!</code>
+				<code>&amp;&amp;</code>
+				<code>||</code>
+			</dd>
+			<dt>Присваивания</dt>
+			<dd>
+				<code>=</code>
+				<code>*=</code>
+				<code>/=</code>
+				<code>%=</code>
+				<code>+=</code>
+				<code>-=</code>
+			</dd>
+		</dl>
+
+		<style>
+			dt{
+				text-indent: -2em;
+				/*font-weight: bold;*/
+			}
+			dt::before{
+				content: '\2014\00A0\00A0';
+				display: inline-block;
+				width: 2em;
+				color: #BBB;
+				font-weight: normal;
+				text-align: right;
+			}
+			dd{
+				margin-left: 30px;
+			}
+		</style>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Арифметические операторы</h2>
+
+		<pre>
+			<code>1 + 1 <mark class="comment">// 2</mark></code>
+			<code>1 - 1 <mark class="comment">// 0</mark></code>
+			<code>2 * 2 <mark class="comment">// 4</mark></code>
+			<code>2 / 2 <mark class="comment">// 1</mark></code>
+			<code>10 % 3 <mark class="comment">// 1 (3 + <mark>1</mark>/3)</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Конкатенация</h2>
+
+		<pre>
+			<code>"my" + " string"; <mark class="comment">// "my string"</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger"><div>
+		<h2>Операторы сравнения</h2>
+
+		<pre>
+			<code>1 &gt; 0 <mark class="comment">// true</mark></code>
+			<code>100 &lt; 100 <mark class="comment">// false</mark></code>
+			<code>100 &lt;= 100 <mark class="comment">// true</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Сравнение с приведением типов</h2>
+
+		<pre>
+			<code>'1' == 1 <mark class="comment">// true</mark></code>
+			<code>true == 1 <mark class="comment">// true</mark></code>
+			<code>true != 'true' <mark class="comment">// false</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Сравнение без приведения типов</h2>
+
+		<pre>
+			<code>'1' === 1 <mark class="comment">// false</mark></code>
+			<code>true === 1 <mark class="comment">// false</mark></code>
+			<code>true === 'true' <mark class="comment">// false</mark></code>
+			<code>1 === 1 <mark class="comment">// true</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide operators" lang="ru"><div>
+		<h2>&amp;&amp;</h2>
+
+		<pre>
+			<code><span class="bad">false</span> &amp;&amp; <span class="bad">false</span> - <span class="bad">false</span> </code>
+			<code><span class="bad">false</span> &amp;&amp; <span class="good">true</span> - <span class="bad">false</span> </code>
+			<code><span class="good">true</span> &amp;&amp; <span class="bad">false</span> - <span class="bad">false</span> </code>
+			<code><span class="good">true</span> &amp;&amp; <span class="good">true</span> - <span class="good">true</span> </code>
+		</pre>
+
+		<style>
+			.operators h2{
+				text-align: center;
+			}
+		</style>
+	</div></article>
+	<article class="slide operators larger" lang="ru"><div>
+		<h2>&amp;&amp;</h2>
+
+		<pre>
+			<code>value &amp;&amp; console.log(value);</code>
+		</pre>
+
+
+		<style>
+			.operators h2{
+				text-align: center;
+			}
+		</style>
+	</div></article>
+	<article class="slide operators" lang="ru"><div>
+		<h2>||</h2>
+
+		<pre>
+			<code><span class="bad">false</span> || <span class="bad">false</span> - <span class="bad">false</span></code>
+			<code><span class="bad">false</span> || <span class="good">true</span> - <span class="good">true</span></code>
+			<code><span class="good">true</span> || <span class="bad">false</span> - <span class="good">true</span></code>
+			<code><span class="good">true</span> || <span class="good">true</span> - <span class="good">true</span></code>
+		</pre>
+
+		<style>
+			.operators h2{
+				text-align: center;
+			}
+		</style>
+	</div></article>
+	<article class="slide operators" lang="ru"><div>
+		<h2>||</h2>
+
+		<pre>
+			<code>function foo(bar){</code>
+			<code>	bar = bar || "default";</code>
+			<code>}</code>
+		</pre>
+
+		<style>
+			.operators h2{
+				text-align: center;
+			}
+		</style>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Операторы ветвления</h2>
+
+		<ul>
+			<li><code>if else</code></li>
+			<li><code>?:</code></li>
+			<li><code>switch case</code></li>
+		</ul>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>if else</h2>
+
+		<pre>
+			<code>if(погода хорошая){</code>
+			<code>	console.log("Пойду погуляю");</code>
+			<code>}else{</code>
+			<code>	console.log("Посижу дома");</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>if else</h2>
+
+		<pre>
+			<code>if(выражение)</code>
+			<code>	инструкция1; <mark class="comment">// statement1</mark></code>
+			<code>else</code>
+			<code>	инструкция2; <mark class="comment">// statement2</mark></code>
+		</pre>
+
+	</div></article>
+	<article class="slide" lang="ru"><div>
+		<h2>Составная инструкция (block statement)</h2>
+
+		<p>Позволяет объеденять несколько инструкций в одну.</p>
+
+		<div class="holder">
+			<pre>
+				<code><mark class="important">{</mark></code>
+				<code>	statement;</code>
+				<code>	statement;</code>
+				<code>	statement;</code>
+				<code><mark class="important">}</mark></code>
+			</pre>
+		</div>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Лучше всегда указывать фигурные скобки</h2>
+
+		<pre>
+			<code>if(выражение){</code>
+			<code>	инструкция1; <mark class="comment">// statement1</mark></code>
+			<code>	инструкция2; <mark class="comment">// statement2</mark></code>
+			<code>}else{</code>
+			<code>	инструкция3; <mark class="comment">// statement3</mark></code>
+			<code>}</code>
+		</pre>
+
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Тернарный оператор</h2>
+
+		<pre>
+			<code>условие <mark>?</mark> выражение1 <mark>:</mark> выражение2</code>
+		</pre>
+
+		<pre>
+			<code>var msg = isTrue <mark>?</mark> "Истина" <mark>:</mark> "Ложь";</code>
+			<code>console.log(msg);</code>
+		</pre>
+
+	</div></article>
+	<article class="slide less-h2 less-code" lang="ru"><div>
+		<h2>Вложенный if else</h2>
+
+		<h3 class="bad">Плохо</h3>
+		<pre>
+			<code>if(value === 0){</code>
+			<code>	console.log("Ноль");</code>
+			<code>}else{</code>
+			<code>	if(value === 1){</code>
+			<code>		console.log("Один");</code>
+			<code>	}else{</code>
+			<code>		console.log("Другое");</code>
+			<code>	}</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide less-h2 less-code" lang="ru"><div>
+		<h2>Вложенный if else</h2>
+
+		<h3 class="good">Лучше</h3>
+		<pre>
+			<code>if(value === 0){</code>
+			<code>	console.log("Ноль");</code>
+			<code>}else if(value === 1){</code>
+			<code>	console.log("Один");</code>
+			<code>}else{</code>
+			<code>	console.log("Другое");</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide less-h2 less-code" lang="ru" id="switch"><div>
+		<h2>switch case</h2>
+
+		<pre>
+			<code>switch(value){</code>
+			<code>	case 0:</code>
+			<code>		console.log("Ноль");</code>
+			<code>		<mark>break</mark>;</code>
+			<code>	case 1:</code>
+			<code>		console.log("Один");</code>
+			<code>		<mark>break</mark>;</code>
+			<code>	default:</code>
+			<code>		console.log("Другое");</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Циклы</h2>
+
+		<ul>
+			<li>
+				С предусловием
+				<ul>
+					<li><code>while</code></li>
+					<li><code>for</code></li>
+				</ul>
+			</li>
+			<li>
+				С постусловием
+				<ul>
+					<li><code>do while</code></li>
+				</ul>
+			</li>
+		</ul>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>while</h2>
+
+		<pre>
+			<code>while(выражение)</code>
+			<code>	инструкция; <mark class="comment">// statement</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Пример</h2>
+
+		<pre>
+			<code>var i = 0;</code>
+			<code>while(i &lt; 3){</code>
+			<code>	console.log(i++);</code>
+			<code>}</code>
+			<code><mark class="comment">// 0, 1, 2</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>do while</h2>
+
+		<pre>
+			<code>var i = 3;</code>
+			<code>do{</code>
+			<code>	console.log(i);</code>
+			<code>	i++;</code>
+			<code>}while(i &lt; 3)</code>
+			<code><mark class="comment">// 3</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>for</h2>
+
+		<pre>
+			<code>for(инициализация; проверка; инкремент)</code>
+			<code>	инструкция; <mark class="comment">// statement</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger" lang="ru"><div>
+		<h2>Пример</h2>
+
+		<pre>
+			<code>for(i = 0; i &lt; 3; i++){</code>
+			<code>	console.log(i);</code>
+			<code>}</code>
+			<code><mark class="comment">// 0, 1, 2</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger less-code less-h2" lang="ru"><div>
+		<h2>break</h2>
+
+		<pre>
+			<code>for(i = 0; i &lt; 3; i++){</code>
+			<code>	if(i === 1){</code>
+			<code>		<mark>break</mark>;</code>
+			<code>	}</code>
+			<code>	console.log(i);</code>
+			<code>}</code>
+			<code><mark class="comment">// 0</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide larger less-code less-h2" lang="ru"><div>
+		<h2>continue</h2>
+
+		<pre>
+			<code>for(i = 0; i &lt; 3; i++){</code>
+			<code>	if(i === 1){</code>
+			<code>		<mark>continue</mark>;</code>
+			<code>	}</code>
+			<code>	console.log(i);</code>
+			<code>}</code>
+			<code><mark class="comment">// 0, 2</mark></code>
+		</pre>
+	</div></article>
+	<article class="slide shout" lang="ru"><div>
+		<h2>Спасибо</h2>
+	</div></article>
+	<!-- <p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p> -->
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="components/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>

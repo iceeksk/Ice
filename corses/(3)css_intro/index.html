@@ -1,0 +1,635 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen.css">
+	<link rel="stylesheet" href="bower_components/highlight.js/src/styles/github.css">
+	<script src="bower_components/highlight.js/build/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad()</script>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Підключення стилів. Cтруктура. Селектори. Специфічність. Псевдо- класи та элементи </h1>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>CSS (Cascading Style Sheets)</h2>
+		<p>Каскадні таблиці стилей</p>
+		<img src="pictures/css-logo.jpg" alt="" width="500">
+		<p class="note">*Не плутати з Counter Strike Source</p>
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+		.first-letter, 
+		.first-line{
+			font-size: 15px;
+		}
+		.first-letter::first-letter, 
+		.first-line::first-line{
+			font-size: 45px;
+			color: red;
+		}
+		.column{
+			-webkit-box-flex: 1;
+		}
+
+		.column-wrapper{
+			display: -webkit-box;
+		}
+
+		#Cover img{
+			position: static;
+		}
+		#Cover{
+			background-color: white;
+		}
+		.slide p{
+			margin-bottom: 0px;
+		}
+		.slide pre{
+			margin-bottom: 10px;
+			font-size: 25px;
+		}
+			/*#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}*/
+		</style>
+	</div></section>
+	<section class="slide">
+		<div>
+			<h2>Світ без CSS... Яким він був?</h2>
+			<div class="next">
+				<p>Дехто каже, що світ був таким.</p>
+				<img src="pictures/first_gateway_page.jpg" width="450"/>
+			</div>
+		</div>
+	</section>
+	<section class="slide"><div>
+		<h2>HTML без CSS</h2>
+		<figure>
+			<blockquote>
+				<p>HTML without CSS is like a piece of candy without a pretty wrapper</p>
+			</blockquote>
+		</figure>
+	</div></section>
+	<section class="slide">
+		<div>
+			<h2>А що тепер?</h2>
+			<img src="pictures/beauty_of_css_design.png" width="650"/>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>W3C и CSS</h2>
+			<ol>
+				<li>CSS 1 (1996, 1999) - параметри шрифтів, кольори, ...</li>
+				<li>CSS 2 (12 травня 1998), CSS 2.1 (07 червня 2011) - блочна верстка, селектори, ...</li>
+				<li>CSS 3 знаходиться в стадії доопрацювання - трансформації, анімації, ...</li>
+				<li>CSS 4 розробляється з 29 вересня 2011 року.</li>
+			</ol>
+		</div>
+	</section>
+	<section class="slide"><div>
+		<h2>Що ж таке CSS?</h2>
+		<p>Каскадні таблиці стилів.</p>
+		<p>
+			<pre><code>body{
+	font-family: Arial;
+	background: #000;
+}
+#header{
+	text-align: left;
+	width: 210px;
+}</code></pre>
+		</p>
+		
+	</div></section>
+	<section class="slide">
+		<div>
+			<h2>Переваги CSS</h2>
+			<ol>
+				<li>Відділяє контент (структуру) від оформлення(представлення)</li>
+				<li>Розширює способи оформлення элементів</li>
+				<li>Дає єдине стильове оформление безлічі документів</li>
+				<li>Прискорює завантаження сайта</li>
+				<li>Дозволяє створювати різне оформлення для різних пристроїв</li>
+			</ol>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Підключення стилей</h2>
+			<p>Підключити стилі на сторінку можна додавши код в тег &lt;head&gt; HTML сторінки</p>
+			<br>
+			<p>Існує 3 способа підключення стилів на сторінку</p>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Зовнішні (зв'язані) таблиці стилей</h2>
+			<p>Використовуються для стилізації великої кількості сторінок</p>
+			<pre><code>&lt;link rel="stylesheet" media="all" href="css/styles.css"/&gt;</code></pre>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Внутрішні (глобальні) таблиці стилів (фу-фу-фу)</h2>
+			<p>Використовуються для стилізації однієї сторінки, <b>до використання не рекомендуєтся</b></p>
+			<pre><code>&lt;style&gt;
+h1{
+	color:red;
+}
+&lt;/style&gt;</code></pre>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Вбудовані стилі (безпосередній опис стилів в элементі)</h2>
+			<p>Використовуються рідко, в тих випадках коли по іншому ніяк (динаміка яку невзмозі забезпечити додавання класу)</p>
+			<pre><code>&lt;p style="color: red"&gt;Some text&lt;/p&gt;</code></pre>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Імпорти</h2>
+			<p>Можливість імпортувати безліч css файлів використовуючи @import</p>
+			<pre><code>
+@import: url('reset.css');
+@import: 'reset.css' screen, print;
+</pre></code>
+		</div>
+	</section>
+	<section class="slide"><div>
+		<h2>Структура CSS правила</h2>
+		<p>CSS правило складається з селектора та опису</p>
+		<pre><code>selector [, selectors]{
+	property: value [!important];
+}</code></pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Види CSS селекторів</h2>
+		<ol>
+			<li>Селектори тегів</li>
+			<pre><code>body{
+	margin: 0 auto;
+}</code></pre>
+			<li>Селектори по ідентифікатору (#)</li>
+			<pre><code>#page{
+	background: #e1e1d5;
+}</code></pre>
+		</ol>
+	</div></section>
+	<section class="slide">
+		<div>
+			<h2>Види CSS селекторів</h2>
+			<ol start="4">
+				<li>Селектори по класу (.)</li>
+			<pre><code>.entry-title{
+	color: #999966;
+}</code></pre>
+				<li>Глобальні селектори (*)</li>
+				<pre><code>*{
+	color: red;
+}</code></pre>
+			</ol>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Види CSS селекторів</h2>
+			<ol>
+				<li>Селектори вкладеності</li>
+				<pre><code>div p{
+	text-align: center;
+}</code></pre>
+				<li>Селектори по атрибуту ([])</li>
+				<pre><code>a[href], a[target=_blank], [title~=flower], [lang|=en],
+a[href^="https"], a[href$=".pdf"], a[href*="w3schools"]{
+	color: green}</code></pre>
+			</ol>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Види CSS селекторів</h2>
+			<ol start="9">
+				<li>Селектори по прямим потомкам</li>
+				<pre><code>div > p{
+	color: red;
+}</code></pre>
+				<li>Селектори по рівню (siblings)</li>
+				<pre><code>div ~ p{
+	text-align: center;
+}</code></pre>
+
+			</ol>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Види CSS селекторів</h2>
+			<ol>
+				<li>Слідуючий по рівню </li>
+				<pre><code>div + p{
+	color: green;
+}</code></pre>
+				<li>Селектори псевдокласів по DOM станам</li>
+				<pre><code>li:first-child, li:nth-child(a*n+b),<br>li:nth-of-type,a:visited{
+	color: blue; }</code></pre>
+			</ol>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Види CSS селекторів</h2>
+			<ol>		
+				<li>Селектори псевдоелементів (css3)</li>
+
+				<pre><code>p::first-letter, p::first-line, li::before{
+	padding: 20px;
+}</code></pre>
+		</div>
+	</section>
+
+	<section class="slide shout"><div>
+		<h2  style="font-size: 70px">Детальніше про псевдокласи та псевдоелементи</h2>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2 >Псевдокласи</h2>
+		<div class="column-wrapper" style="font-size: 20px; line-height: 1.7em">
+			<ul class="column">
+				<li>:active​</li>
+				<li>:checked​</li>
+				<li>:default​</li>
+				<li>:dir()​</li>
+				<li>:disabled​</li>
+				<li>:empty​</li>
+				<li>:enabled​</li>
+				<li>:first​</li>
+				<li>:first-child​</li>
+				<li>:first-of-type​</li>
+				<li>:fullscreen​</li>
+				<li>:focus​</li>
+			</ul>
+			<ul class="column" style="margin: 0 4em">
+				<li>:hover​</li>
+				<li>:in-range​</li>
+				<li>:invalid​</li>
+				<li>:lang()​</li>
+				<li>:last-child​</li>
+				<li>:last-of-type​</li>
+				<li>:left​</li>
+				<li>:link​</li>
+				<li>:not()​</li>
+				<li>:nth-child()​</li>
+				<li>:nth-last-child()​</li>
+				<li>:nth-last-of-type()​</li>
+			</ul>
+			<ul class="column">
+				<li>:nth-of-type()​</li>
+				<li>:only-child​</li>
+				<li>:only-of-type​</li>
+				<li>:optional​</li>
+				<li>:out-of-range​</li>
+				<li>:required​</li>
+				<li>:right​</li>
+				<li>:root​</li>
+				<li>:scope​</li>
+				<li>:target​</li>
+				<li>:valid​</li>
+				<li>:visited​</li>
+			</ul>
+		</div>
+	</div></section>
+
+	<section class="slide">
+		<div>
+			<h2>Псевдокласи посилань</h2>
+			<ul>
+				<li>:link – невідвідані посилання​</li>
+				<li>:visited – відвідані посилання</li>
+			</ul>
+			<p class="note">Працюють тільки з тими посиланнями які мають 'href' атрибут.
+			</p>
+			<p class="note">:link - може бути надмірним.</p>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Псевдокласи дій користувача</h2>
+			<ul style="margin-bottom: 0.1em">
+				<li>:hover – застосовується коли користувач наводить курсор на елемент</li>
+				<li>:active – застосовується коли користувач утримує кнопку миші на елементі</li>
+				<li>:focus – застосовується коли на елементі встановлено фокус (по кліку чи за допомогою клавіши 'tab')​</li>
+			</ul>
+			<p class="note">По замовчуванню фокус можуть приймати інтерактивні елементи (a, button, input, textarea, select … )​.
+			</p>
+			<p class="note">Атрибут tabindex дає можливість приймати  фокус будь-яким елементам.​</p>
+		</div>
+	</section>
+
+<!-- 	<section class="slide">
+		<div>
+			<h2>Правило LVHA / LoVe HAte​</h2>
+			<p style="margin-top: 3em; font-size: 50px"><b>:link -> :visited -> :hover -> :active​</b></p>
+		</div>
+	</section> -->
+
+	<section class="slide">
+		<div>
+			<h2>Псевдокласи станів елементів ​</h2>
+			<ul>	
+				<li>:disabled</li>
+				<li>:enabled</li>
+				<li>:checked</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Структурні псевдокласи​</h2>
+			<ul>
+				<li>:first-child​</li>
+				<li>:last-child​</li>
+				<li>:first-of-type​</li>
+				<li>:last-of-type​</li>
+				<li>:nth-child()​</li>
+				<li>:nth-last-child()​</li>
+				<li>:nth-of-type()​</li>
+				<li>:nth-last-of-type()​</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>:nth-child(), nth-last-child()​, :nth-of-type(), nth-last-of-type()​</h2>
+			<p>Значення:</p>
+			<ul>
+				<li>odd - непарні елементи</li>
+				<li>even - парні елементи </li>
+				<li>число - номер дочірнього елементу з 1</li>
+				<li>вираз - an+b, де 'a' та 'b' - цілі числа</li>
+			</ul>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Псевдоелементи</h2>
+			<ul>	
+				<li>::before​</li>
+				<li>::after​</li>
+				<li>::first-letter​</li>
+				<li>::first-line​</li>
+			</ul>
+		</div>
+	</section>
+	
+	<section class="slide">
+		<div>
+			<h2>Псевдоелементи ::before​ та ::after​</h2>
+			<ul>	
+				<li>Можливість динамічно генерувати вміст</li>
+				<li>Не працює без властивості 'content'</li>
+				<li>У кожного елемента не більше одного ::before​ та ::after​</li>
+				<li>Можливість додатково стилізувати елемент</li>
+			</ul>
+			<img src="pictures/pseudo.png" alt="i" style="width: 100%">
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Псевдоелементи ::first-letter, ::first-line</h2>
+			<p class="first-letter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare nunc. Phasellus varius bibendum sagittis. Phasellus feugiat risus eros, at ultrices ipsum ullamcorper ac. Etiam tempor, ligula a pulvinar condimentum, dui felis convallis lorem, vitae luctus metus quam in orci. Vestibulum tristique magna purus, vitae blandit dui consequat in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam tincidunt molestie lacinia.</p>
+			<p class="first-line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ornare nunc. Phasellus varius bibendum sagittis. Phasellus feugiat risus eros, at ultrices ipsum ullamcorper ac. Etiam tempor, ligula a pulvinar condimentum, dui felis convallis lorem, vitae luctus metus quam in orci. Vestibulum tristique magna purus, vitae blandit dui consequat in. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam tincidunt molestie lacinia.</p>
+		</div>
+	</section>
+	
+	<section class="slide">
+		<div>
+			<!-- <h2>Одна двокрапка чи дві?</h2> -->
+			<img src="pictures/ie.png" style="width: 100%" alt="i">
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Специфічність</h2>
+			<p>Коли багато правил застосовуются до елементу, специфічність визначає яке правило буде мати приорітет над іншим</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Таблиця специфічності</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Селектор</th>
+						<th>Специфічність(a-b-c-d)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>li</td>
+						<td>0-0-0-1</td>
+					</tr>
+					<tr>
+						<td>.active</td>
+						<td>0-0-1-0</td>
+					</tr>
+					<tr>
+						<td>[type=text]</td>
+						<td>0-0-1-0</td>
+					</tr>
+					<tr>
+						<td>#wrapper</td>
+						<td>0-1-0-0</td>
+					</tr>
+					<tr>
+						<td>style=""</td>
+						<td>1-0-0-0</td>
+					</tr>
+					<tr>
+						<td>*, ~, +, ></td>
+						<td>0-0-0-0</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Структура CSS</h2>
+		<div class="next">
+			<p><b>Що нам в цьому допоможе:</b></p>
+			<div class="column-wrapper">
+				<ul class="column">
+					<li>Адекватні назви фалів зі стилями</li>
+					<li>link</li>
+					<li>export</li>
+					<li>Адекватні назви класів та айдішніків</li>
+					<li>Специфічність</li>
+				</ul>
+				<ul class="column" style="margin-left: 3em">
+					<li>Логічність послідовності селекторів</li>
+					<li>Наслідування стилів</li>
+					<li>Відсутність дублювання</li>
+					<li>Коментарі</li>
+					<li>Здоровий розсуд :)</li>
+				</ul>
+			</div>
+		</div>
+	</div></section>
+
+	<section class="slide">
+		<div>
+			<h2>Сила каскадності!!!</h2>
+			<p>Використання на одній сторінці різних таблиць стилів. Інтерпретація стилів по порядку, по деяким правилам каскадності (зв'язані, внутрішні, вбудовані) з врахуванням специфічності</p>
+		</div>
+	</section>
+	<section class="slide">
+		<div>
+			<h2>Економія часу з наслідуваням</h2>
+			<p>Наслідування означає, що якщо не вказано інше правило, то конкретний стиль будет унаслідований іншими елементами сторінки HTML.</p>
+			<pre><code>&lt;body style="font-family: Arial"&gt;
+	&lt;p&gt;This text will be Arial as well&lt;/p&gt;
+&lt;/body&gt;</code></pre>
+			<p class="note">*Замість стилізації кожного параграфа окремо, можна визначити колір шрифта для тега body</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Стилі які наслідуються</h2>
+			<div class="column-wrapper">
+				<div class="column">
+					<p><b>Для текста:</b></p>
+					<ul>
+						<li>font-family</li>
+						<li>font-size</li>
+						<li>font-style</li>
+						<li>font-weight</li>
+						<li>font-variant</li>
+						<li>font</li>
+						<li>color</li>
+					</ul>
+				</div>
+				<div class="column">
+					<br>
+					<ul>
+						<li>letter-spacing</li>
+						<li>word-spacing</li>
+						<li>white-space</li>
+						<li>line-height</li>
+						<li>text-align</li>
+						<li>text-indent</li>
+						<li>text-transforn</li>
+					</ul>
+				</div>	
+			</div>
+			
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Стилі які наслідуються</h2>
+			<div class="column-wrapper">
+				<div class="column">
+					<p><b>Для списків:</b></p>
+					<ul>
+						<li>list-style-image</li>
+						<li>list-style-position</li>
+						<li>list-style-type</li>
+						<li>list-style</li>
+					</ul>
+				</div>
+				<div class="column">
+					<p><b>Інші:</b></p>
+					<ul>
+						<li>border-collapse</li>
+						<li>border-spacing</li>
+						<li>caption-side</li>
+						<li>cursor</li>
+						<li>direction</li>
+						<li>empty-cells</li>
+						<li>orphans</li>
+					</ul>
+				</div>
+				<div class="column">
+					<br>
+					<ul>
+						<li>quotes</li>
+						<li>visibility</li>
+						<li>widows</li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Коментарі в CSS</h2>
+		<ul>
+			<li>Пояснюють сенс кода</li>
+			<li>Допомогають іншим читати та розуміти код</li>
+			<li>Служать нагадуванням для вас</li>
+			<li>Підписати хак</li>
+			<li>Починаються з /* та закінчуються */ </li>
+		</ul>
+		<pre><code>p{
+	color: #ff0000;  /* main presentation color */
+}</code></pre>
+	</div></section>
+
+	<section class="slide">
+		<div>
+			<h2>Є що почитати?</h2>
+			<ul>
+				<li>http://www.w3.org/Style/CSS/</li>
+				<li>http://jigsaw.w3.org/css-validator/</li>
+				<li>http://css-tricks.com/a-call-for-nth-everything/</li>
+				<li>http://code.tutsplus.com/tutorials/30-css-best-practices-for-beginners--net-6741</li>
+			</ul>
+		</div>
+	</section>
+	<section class="slide shout"><div>
+		<h2>Дякую</h2>
+	</div></section>
+	<!-- <section class="slide"><div>
+		<h2>Не забуваємо про домашнє завдання</h2>
+		<p class="next">гарних вихідних</p>		
+	</div></section> -->
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

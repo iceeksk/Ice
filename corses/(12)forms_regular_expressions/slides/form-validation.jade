@@ -1,0 +1,13 @@
+section.slide#formValidation
+	div
+		h2
+			| Валидация форм:&nbsp;
+			strong required
+			| ,&nbsp;
+			strong pattern
+
+		pre
+			code &lt;input type="text" name="name" required/&gt;
+			code &lt;input type="email" name="email" required/&gt;
+			code &lt;input type="url" name="url" required/&gt;
+			code &lt;input type="text" name="price" pattern="\d+(\.\d{2})?"/&gt;

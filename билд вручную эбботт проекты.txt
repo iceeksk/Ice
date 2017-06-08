@@ -1,0 +1,18 @@
+ билд вручную эбботт проекты(старые):
+
+1) gulp --clm spa --zip
+
+2) http://dev.presenta-builder.qapint.com/
+
+ЛОГИН И ПАРОЛЬ
+pb.admin@viseven.com
+secretpass4pb!
+ 
+выбираем архив (важно переименовать), тип билда под иос,
+ Store Host -> https://store.qapint.com,
+
+ Store Token -> rR0eWmnlLp0kKWuHPOHH1w
+3) жмём "Run build", идём пить кофе 
+
+новые
+co-build spa --zip

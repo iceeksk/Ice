@@ -1,0 +1,19 @@
+section.slide#regexSymbols4
+	div
+		h2 Спецсимволы
+
+		div
+			strong [xyz] [abcd] [a-d]
+			| &nbsp; Задает набор символов. Находит любой из перечисленных символов
+
+		div
+			code /[a-d]/g
+			| &nbsp; найдет 'b' в "brisket", а также 'a' и 'c' в "ache".
+
+		div
+			strong [^xyz] [^abc] [^a-c]
+			| &nbsp; Любой символ, кроме указанных в наборе
+
+		div
+			code /[^a-c]/
+			| &nbsp; найдет 'r' в "brisket" и 'h' в "chop."

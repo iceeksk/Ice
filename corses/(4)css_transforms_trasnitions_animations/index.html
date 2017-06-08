@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ribbon theme for Shower</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="bower_components/shower-ribbon/styles/screen.css">
+</head>
+<body class="list">
+<header class="caption">
+	<h1>Transitions, Animations, Transformations</h1>
+</header>
+
+<section class="slide shout">
+	<div>
+		<h2>Плавные переходы и анимации</h2>
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Плавные переходы. Определение</h2>
+		<figure>
+			<blockquote>
+				<p>CSS Transitions allows property changes in CSS values to occur smoothly over a specified
+					duration.</p>
+			</blockquote>
+
+			<figcaption><a href="http://www.w3.org/TR/css3-transitions/">W3C</a></figcaption>
+		</figure>
+
+		<p>CSS-переходы позволяют <strong>постепенно (плавно)</strong> изменять значения свойств на определенном
+			временном отрезке.</p>
+	</div>
+</section>
+
+<section class="slide" id="howItWorks">
+	<div>
+		<style>
+			#howItWorks .box{
+				display: -webkit-box;
+				-webkit-box-pack: justify;
+			}
+
+			#howItWorks .block{
+				width: 100px;
+				height: 100px;
+				background-color: #ff8888;
+				border: 5px solid #ff2222;
+			}
+
+			#howItWorks .block:hover{
+				width: 200px;
+			}
+		</style>
+		<h2>Как это работает</h2>
+
+		<div class="box">
+			<div>
+				<pre>
+					<code> </code>
+					<code>&lt;div&gt;&lt;/div&gt;</code>
+					<code> </code>
+				</pre>
+
+				<div class="block"></div>
+			</div>
+			<div>
+				<pre>
+					<code>div{</code>
+					<code> width: 100px;</code>
+					<code>}</code>
+					<code>div:hover{</code>
+					<code> width: 200px;</code>
+					<code>}</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="slide" id="howItWorks2">
+	<div>
+		<style>
+			#howItWorks2 .box{
+				display: -webkit-box;
+				-webkit-box-pack: justify;
+			}
+
+			#howItWorks2 .block{
+				width: 100px;
+				height: 100px;
+				background-color: #ff8888;
+				border: 5px solid #ff2222;
+				-webkit-transition: 0.5s;
+			}
+
+			#howItWorks2 .block:hover{
+				width: 200px;
+			}
+		</style>
+		<h2>Как это работает с переходами</h2>
+
+		<div class="box">
+			<div>
+				<pre>
+					<code> </code>
+					<code>&lt;div&gt;&lt;/div&gt;</code>
+					<code> </code>
+				</pre>
+
+				<div class="block"></div>
+			</div>
+			<div>
+				<pre>
+					<code>div{</code>
+					<code> width: 100px;</code>
+					<code><mark>transition: 0.5s;</mark></code>
+					<code>}</code>
+					<code>div:hover{</code>
+					<code> width: 200px;</code>
+					<code>}</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Свойство <em>transition</em></h2>
+
+		<pre>
+			<code>transition-property: all;<mark class="comment">// width, opacity, color...</mark></code>
+			<code>transition-duration: 2.3s;<mark class="comment">// 0, 134ms, 0.3s...</mark></code>
+			<code>transition-timing-function: ease;<mark class="comment">// linear, ease-in...</mark></code>
+			<code>transition-delay: 500ms;<mark class="comment">// 3s, 230ms...</mark></code>
+			<code> </code>
+			<code>transition: width 2.3s linear 500ms;</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide" id="timingFunction">
+	<div>
+		<style>
+			#timingFunction img{
+				display: block;
+				margin: 0 150px;
+			}
+		</style>
+
+		<h2><a href="http://cubic-bezier.com/" target="_blank">Функция перехода (timing function)</a></h2>
+
+		<img src="pictures/timing-function.png" alt="">
+	</div>
+</section>
+
+<section class="slide" id="timingFunctionExample">
+	<div>
+		<style>
+			#timingFunctionExample .function{
+				display: -webkit-box;
+				height: 40px;
+				margin-bottom: 10px;
+				background-color: #eee;
+			}
+
+			#timingFunctionExample .name{
+				width: 160px;
+				height: 100%;
+				background-color: #fff;
+			}
+
+			#timingFunctionExample .block{
+				width: 40px;
+				height: 40px;
+				background-color: #8888ff;
+				-webkit-transition: 2s;
+				-webkit-transform: translate3d(0, 0, 0);
+			}
+
+			#timingFunctionExample .function:hover .block{
+				-webkit-transform: translate3d(584px, 0, 0);
+			}
+
+			#timingFunctionExample .function:nth-child(1) .block{
+				-webkit-transition-timing-function: ease;
+			}
+
+			#timingFunctionExample .function:nth-child(2) .block{
+				-webkit-transition-timing-function: linear;
+			}
+
+			#timingFunctionExample .function:nth-child(3) .block{
+				-webkit-transition-timing-function: ease-in;
+			}
+
+			#timingFunctionExample .function:nth-child(4) .block{
+				-webkit-transition-timing-function: ease-out;
+			}
+
+			#timingFunctionExample .function:nth-child(5) .block{
+				-webkit-transition-timing-function: ease-in-out;
+			}
+
+			#timingFunctionExample .function:nth-child(6) .block{
+				-webkit-transition-timing-function: step-start;
+			}
+
+			#timingFunctionExample .function:nth-child(7) .block{
+				-webkit-transition-timing-function: step-end;
+			}
+
+			#timingFunctionExample .function:nth-child(8) .block{
+				-webkit-transition-timing-function: steps(5);
+			}
+		</style>
+
+		<h2>Примеры</h2>
+
+		<div class="wrapper">
+			<div class="function"><p class="name">ease:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">linear:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">ease-in:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">ease-out:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">ease-in-out:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">step-start:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">step-end:</p>
+
+				<div class="block"></div>
+			</div>
+			<div class="function"><p class="name">steps(5):</p>
+
+				<div class="block"></div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Анимации. Определение</h2>
+		<figure>
+			<blockquote>
+				<p>This CSS module describes a way for authors to animate the values of CSS properties over time, using
+					keyframes.</p>
+			</blockquote>
+
+			<figcaption><a href="http://www.w3.org/TR/css3-animations/">W3C</a></figcaption>
+		</figure>
+
+		<p>Манипулируйте значениями свойств, используя <strong>кейфреймы</strong>. Описывайте поведение анимаций,
+			управляя их продолжительностью, кол-вом повторений и конечным состоянием.</p>
+	</div>
+</section>
+
+<section class="slide" id="howItWorks_animation">
+	<div>
+		<style>
+			#howItWorks_animation .box{
+				display: -webkit-box;
+				-webkit-box-pack: justify;
+			}
+
+			#howItWorks_animation .block{
+				width: 100px;
+				height: 100px;
+				background-color: #ff8888;
+				border: 5px solid #ff2222;
+			}
+
+			#howItWorks_animation .block:hover{
+				width: 200px;
+			}
+		</style>
+		<h2>Как это работает</h2>
+
+		<div class="box">
+			<div>
+				<pre>
+					<code> </code>
+					<code>&lt;div&gt;&lt;/div&gt;</code>
+					<code> </code>
+				</pre>
+
+				<div class="block"></div>
+			</div>
+			<div>
+				<pre>
+					<code>div{</code>
+					<code> width: 100px;</code>
+					<code>}</code>
+					<code>div:hover{</code>
+					<code> width: 200px;</code>
+					<code>}</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="slide" id="howItWorks2_animation">
+	<div>
+		<style>
+			#howItWorks2_animation .box{
+				display: -webkit-box;
+				-webkit-box-pack: justify;
+			}
+
+			#howItWorks2_animation .block{
+				width: 100px;
+				height: 100px;
+				background-color: #ff8888;
+				border: 5px solid #ff2222;
+			}
+
+			#howItWorks2_animation .block:hover{
+				-webkit-animation: boo 1s;
+			}
+
+			@-webkit-keyframes boo{
+				from{
+					-webkit-transform: translateX(0px) rotate(0deg);
+				}
+				50%{
+					-webkit-transform: translateX(100px) rotate(90deg);
+				}
+				to{
+					-webkit-transform: translateX(0px) rotate(180deg);
+				}
+			}
+		</style>
+		<h2>Как это работает с анимацией</h2>
+
+		<div class="box">
+			<div>
+				<pre>
+					<code> </code>
+					<code>&lt;div&gt;&lt;/div&gt;</code>
+					<code> </code>
+				</pre>
+
+				<div class="block"></div>
+			</div>
+			<div>
+				<pre>
+					<code>div{</code>
+					<code> ...</code>
+					<code>}</code>
+					<code>div:hover{</code>
+					<code><mark>animation: boo 1s;</mark></code>
+					<code>}</code>
+				</pre>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="slide" id="keyframe">
+	<div>
+		<style>
+			#keyframe code{
+				line-height: 37px;
+			}
+		</style>
+
+		<h2>Кейфреймы</h2>
+
+		<pre>
+			<code>@keyframes boo{</code>
+			<code> from{</code>
+			<code>  transform: translateX(0px) rotate(0deg);</code>
+			<code> }</code>
+			<code> 50%{</code>
+			<code>  transform: translateX(100px) rotate(90deg);</code>
+			<code> }</code>
+			<code> to{</code>
+			<code>  transform: translateX(0px) rotate(180deg);</code>
+			<code> }</code>
+			<code>}</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide" id="animationProps">
+	<div>
+		<style>
+			#animationProps code{
+				line-height: 40px;
+			}
+		</style>
+
+		<h2>Свойство <em>animation</em></h2>
+
+		<pre>
+			<code>animation-name: boo;</code>
+			<code>animation-duration: 0.5s;</code>
+			<code>animation-timing-function: linear;</code>
+			<code>animation-iteration-count: 5;</code>
+			<code>animation-direction: normal | reverse | alternate;</code>
+			<code>animation-play-state: running | paused;</code>
+			<code>animation-delay: 0.3s;</code>
+			<code>animation-fill-mode: forwards | backwards | both;</code>
+			<code> </code>
+			<code>animation: boo 2s linear 0.5s infinite;</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide shout">
+	<div>
+		<h2>Трансформации</h2>
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Определение</h2>
+		<figure>
+			<blockquote>
+				<p>CSS transforms allows elements styled with CSS to be transformed in two-dimensional or
+					three-dimensional space.</p>
+			</blockquote>
+
+			<figcaption><a href="http://www.w3.org/TR/css-transforms-1/">W3C</a></figcaption>
+		</figure>
+
+		<p>Трансформации позволяют преобразовывать элементы в <strong>двухмерном</strong> и <strong>трехмерном</strong>
+			пространствах.</p>
+	</div>
+</section>
+
+<section class="slide" id="codeExample">
+	<div>
+		<h2>Свойство <em>transform</em></h2>
+
+		<div class="next"></div>
+
+		<pre>
+			<code>element{</code>
+			<code> width: 30px;</code>
+			<code> height: 30px;</code>
+			<code> ...</code>
+			<code><mark>transform: translateY(10px) rotate(20deg);</mark></code>
+			<code>}</code>
+		</pre>
+
+		<style>
+			#codeExample .hidden{
+				display: none;
+			}
+
+			#codeExample .active + pre .hidden{
+				display: block;
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide shout">
+	<div>
+		<h2>2D</h2>
+	</div>
+</section>
+
+<section class="slide" id="e2d">
+	<div>
+		<h2>Двухмерные трансформации</h2>
+
+		<div class="wrapper">
+			<figure>
+				<figcaption>translate(10px, 10px)</figcaption>
+				<div class="block translate"></div>
+			</figure>
+
+			<figure>
+				<figcaption>rotate(140deg)</figcaption>
+				<div class="block rotate"></div>
+			</figure>
+
+			<figure>
+				<figcaption>scale(1.2, 1.5)</figcaption>
+				<div class="block scale"></div>
+			</figure>
+
+			<figure>
+				<figcaption>skew(30deg, 56deg)</figcaption>
+				<div class="block skew"></div>
+			</figure>
+		</div>
+
+		<style>
+			#e2d figure{
+				float: left;
+				margin: 0px 70px 30px;
+				width: 245px;
+				height: 190px;
+			}
+
+			#e2d figcaption{
+				margin-bottom: 15px;
+				text-align: center;
+			}
+
+			#e2d .block{
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+			}
+
+			#e2d.active .translate{
+				-webkit-animation: translate 3s ease-in-out infinite;
+			}
+
+			#e2d.active .rotate{
+				-webkit-animation: rotate 4s linear infinite;
+			}
+
+			#e2d.active .scale{
+				-webkit-animation: scale 1.5s linear infinite;
+			}
+
+			#e2d.active .skew{
+				-webkit-animation: skew 3s linear infinite;
+			}
+
+			@-webkit-keyframes translate{
+				from{
+					-webkit-transform: translate(-64px, 0px);
+				}
+				40%{
+					-webkit-transform: translate(64px, 0px);
+				}
+				50%{
+					-webkit-transform: translate(64px, 20px);
+				}
+				90%{
+					-webkit-transform: translate(-64px, 20px);
+				}
+				to{
+					-webkit-transform: translate(-64px, 0px);
+				}
+			}
+
+			@-webkit-keyframes rotate{
+				to{
+					-webkit-transform: rotate(360deg);
+				}
+			}
+
+			@-webkit-keyframes scale{
+				from{
+					-webkit-transform: scale(1, 1.2);
+				}
+				50%{
+					-webkit-transform: scale(1.4, 0.8);
+				}
+				to{
+					-webkit-transform: scale(1, 1.2);
+				}
+			}
+
+			@-webkit-keyframes skew{
+				from{
+					-webkit-transform: skew(0deg, 0deg);
+				}
+				25%{
+					-webkit-transform: skew(30deg, 0deg);
+				}
+				50%{
+					-webkit-transform: skew(30deg, -30deg);
+				}
+				75%{
+					-webkit-transform: skew(0deg, -30deg);
+				}
+				to{
+					-webkit-transform: skew(0deg, 0deg);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide" id="origin">
+	<div>
+		<h2>Точка, относительно которой...</h2>
+
+		<pre>
+			<code>transform-origin: 50% 50%; // дефолт</code>
+			<code>transform-origin: 123px 80%;</code>
+		</pre>
+
+		<div class="wrapper box next">
+			<figure>
+				<div class="block"></div>
+			</figure>
+
+			<figure>
+				<div class="block"></div>
+			</figure>
+		</div>
+
+		<style>
+			#origin .box{
+				display: -webkit-box;
+				width: 600px;
+				margin: 0 auto;
+				-webkit-box-pack: justify;
+			}
+
+			#origin figure{
+				position: relative;
+				width: 150px;
+				height: 150px;
+			}
+
+			#origin figure:before{
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+				opacity: 0.5;
+				content: "";
+			}
+
+			#origin figure:after{
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 10px;
+				height: 10px;
+				background-color: red;
+				border-radius: 100%;
+				content: "";
+			}
+
+			#origin figure:first-child:after{
+				left: 50%;
+				top: 50%;
+				margin: -5px 0 0 -5px;
+			}
+
+			#origin figure:last-child:after{
+				left: 123px;
+				top: 80%;
+				margin: -5px 0 0 -5px;
+			}
+
+			#origin .block{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+				opacity: 0.5;
+			}
+
+			#origin figure:last-child .block{
+				-webkit-transform-origin: 123px 80%;
+			}
+
+			#origin.active .block{
+				-webkit-animation: rotate 4s linear infinite;
+			}
+
+			@-webkit-keyframes rotate{
+				to{
+					-webkit-transform: rotate(360deg);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide shout">
+	<div>
+		<h2>3D</h2>
+	</div>
+</section>
+
+<section class="slide" id="e3d">
+	<div>
+		<h2>Трехмерные трансформации</h2>
+
+		<div class="wrapper">
+			<figure>
+				<figcaption>translate3d(10px, 5px, 20px)</figcaption>
+				<div class="block translate"></div>
+			</figure>
+
+			<figure>
+				<figcaption>rotate3d(1, 0, 1, 140deg)</figcaption>
+				<div class="block rotate"></div>
+			</figure>
+
+			<figure>
+				<figcaption>scale3d(1.2, 1.5, 1.1)</figcaption>
+				<div class="d-wrapper">
+					<div class="block scale"></div>
+					<div class="block scale"></div>
+				</div>
+			</figure>
+		</div>
+
+		<style>
+			#e3d figure{
+				float: left;
+				margin: 60px 8px 30px;
+				width: 245px;
+				height: 190px;
+				-webkit-transform-style: preserve-3d;
+				-webkit-perspective: 60;
+			}
+
+			#e3d figure:nth-child(2),
+			#e3d figure:nth-child(3){
+				-webkit-perspective: 1000;
+			}
+
+			#e3d figcaption{
+				margin-bottom: 15px;
+				text-align: center;
+				font-size: 19px;
+			}
+
+			#e3d .block{
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+			}
+
+			#e3d.active .translate{
+				-webkit-animation: translate3d 4s ease-in-out infinite;
+			}
+
+			#e3d.active .rotate{
+				-webkit-animation: rotate3d 4s linear infinite;
+			}
+
+			#e3d .d-wrapper{
+				position: relative;
+				margin: 0 auto;
+				width: 100px;
+				height: 100px;
+				-webkit-transform-style: preserve-3d;
+				-webkit-perspective: 1000;
+			}
+
+			#e3d.active .d-wrapper{
+				-webkit-animation: scale3d 4s linear infinite;
+			}
+
+			#e3d .scale{
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			#e3d .scale:last-of-type{
+				-webkit-transform: rotate3d(0, 1, 0, 90deg) translate3d(100px, 0, 0);
+				-webkit-transform-origin: 100% 50%;
+			}
+
+			@-webkit-keyframes translate3d{
+				from{
+					-webkit-transform: translate3d(-64px, 0px, 0px);
+				}
+				40%{
+					-webkit-transform: translate3d(-64px, 0px, -60px);
+				}
+				50%{
+					-webkit-transform: translate3d(64px, 0px, -60px);
+				}
+				90%{
+					-webkit-transform: translate3d(64px, 0px, 0px);
+				}
+				to{
+					-webkit-transform: translate3d(-64px, 0px, 0px);
+				}
+			}
+
+			@-webkit-keyframes rotate3d{
+				to{
+					-webkit-transform: rotate3d(1, 0, 1, 360deg);
+				}
+			}
+
+			@-webkit-keyframes scale3d{
+				from{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(1, 1, 1);
+				}
+				16.67%{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(2, 1, 1);
+				}
+				33.34%{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(2, 2, 1);
+				}
+				50%{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(2, 2, 2);
+				}
+				66.67%{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(1, 2, 2);
+				}
+				83.34%{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(1, 1, 2);
+				}
+				to{
+					-webkit-transform: translate3d(-22px, 39px, 0) rotate3d(1, 0, 0, -16deg) rotate3d(0, 1, 0, -39deg) scale3d(1, 1, 1);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide" lang="ru">
+	<div>
+		<h2>Дополнительные свойства</h2>
+
+		<ul>
+			<li><em>perspective</em></li>
+			<li><em>transform-style</em></li>
+			<li><em>backface-visibility</em></li>
+		</ul>
+	</div>
+</section>
+
+<section class="slide" id="perspective">
+	<div>
+		<h2>Перспектива</h2>
+
+		<pre>
+			<code>perspective: 1000;</code>
+			<code>perspective: 125px;</code>
+		</pre>
+
+		<div class="wrapper box">
+			<figure>
+				<div class="block"></div>
+			</figure>
+
+			<figure>
+				<div class="block"></div>
+			</figure>
+		</div>
+
+		<style>
+			#perspective .box{
+				display: -webkit-box;
+				width: 600px;
+				margin: 0 auto;
+				-webkit-box-pack: justify;
+			}
+
+			#perspective figure{
+				position: relative;
+				width: 150px;
+				height: 150px;
+				-webkit-perspective: 1000px;
+			}
+
+			#perspective figure:last-child{
+				-webkit-perspective: 125px;
+			}
+
+			#perspective .block{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+			}
+
+			#perspective.active .block{
+				-webkit-animation: perspective-rotate 4s linear infinite;
+			}
+
+			@-webkit-keyframes perspective-rotate{
+				to{
+					-webkit-transform: rotate3d(1, 0, 0, 360deg);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide" id="perspectiveImg">
+	<div>
+		<style>
+			#perspectiveImg img{
+				display: block;
+				height: 620px;
+				margin: -100px auto 0;
+			}
+		</style>
+		<img src="pictures/perspective_distance.png" alt="">
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Как использовать</h2>
+
+		<pre>
+			<code>.wrapper</code>
+			<code> .block</code>
+		</pre>
+
+		<pre>
+			<code>.wrapper{ perspective: 1000px; }</code>
+			<code>.block{</code>
+			<code> transform: rotate3d(0, 1, 0, 40deg);</code>
+			<code>}</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide" id="style">
+	<div>
+		<h2>3D-контекст</h2>
+
+		<pre>
+			<code>transform-style: preserve-3d;</code>
+			<code>transform-style: flat;</code>
+		</pre>
+
+		<div class="wrapper box">
+			<figure>
+				<div class="block"></div>
+			</figure>
+
+			<figure>
+				<div class="block"></div>
+			</figure>
+		</div>
+
+		<style>
+			#style .box{
+				display: -webkit-box;
+				width: 600px;
+				margin: 0 auto;
+				-webkit-box-pack: justify;
+				-webkit-perspective: 1000;
+			}
+
+			#style figure{
+				position: relative;
+				width: 150px;
+				height: 150px;
+				background-color: rgba(0, 0, 0, 0.1);
+				-webkit-transform-style: preserve-3d;
+				-webkit-transform: rotateX(-25deg);
+			}
+
+			#style figure:last-child{
+				-webkit-transform-style: flat;
+			}
+
+			#style .block{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+			}
+
+			#style.active .block{
+				-webkit-animation: style-rotate 4s linear infinite;
+			}
+
+			@-webkit-keyframes style-rotate{
+				to{
+					-webkit-transform: rotate3d(0, 1, 0, 360deg);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Как использовать</h2>
+
+		<pre>
+			<code>.outer-wrapper</code>
+			<code> .inner-wrapper</code>
+			<code> .block</code>
+		</pre>
+
+		<pre>
+			<code>.outer-wrapper{ perspective: 1000px; }</code>
+			<code>.inner-wrapper{ transform-style: flat; }</code>
+			<code>.block{ transform: rotate3d(0, 1, 0, 40deg); }</code>
+		</pre>
+	</div>
+</section>
+
+<section class="slide" id="backface">
+	<div>
+		<h2>Обратная сторона элемента</h2>
+
+		<pre>
+			<code>backface-visibility: visible;</code>
+			<code>backface-visibility: hidden;</code>
+		</pre>
+
+		<div class="wrapper box">
+			<figure>
+				<div class="block"></div>
+			</figure>
+
+			<figure>
+				<div class="block"></div>
+			</figure>
+		</div>
+
+		<style>
+			#backface .box{
+				display: -webkit-box;
+				width: 600px;
+				margin: 0 auto;
+				-webkit-box-pack: justify;
+				-webkit-perspective: 1000;
+			}
+
+			#backface figure{
+				position: relative;
+				width: 150px;
+				height: 150px;
+				background-color: rgba(0, 0, 0, 0.1);
+				-webkit-transform-style: preserve-3d;
+				-webkit-transform: rotateX(-25deg);
+			}
+
+			#backface figure:last-child .block{
+				-webkit-backface-visibility: hidden;
+			}
+
+			#backface .block{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background: url("pictures/nature.jpg");
+				background-size: 100%;
+			}
+
+			#backface.active .block{
+				-webkit-animation: backface-rotate 4s linear infinite;
+			}
+
+			@-webkit-keyframes backface-rotate{
+				to{
+					-webkit-transform: rotate3d(0, 1, 0, 360deg);
+				}
+			}
+		</style>
+	</div>
+</section>
+
+<section class="slide" id="task">
+	<style>
+		#task .clock{
+			width: 300px;
+			height: 300px;
+			border: 5px solid gray;
+			border-radius: 50%;
+			margin: 0 auto;
+			position: relative;
+			display: -webkit-box;
+			-webkit-box-align: center;
+			-webkit-box-pack: center;
+			background: rgba(255, 255, 0, .5);
+		}
+		#task .clock:after{
+			content: '';
+			display: inline-block;
+			background: gray;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+		}
+		#task .arrow{
+			position: absolute;
+		}
+		#task .hour{
+			width: 150px;
+			height: 10px;
+			background: gray;
+			top: 140px;
+			left: 126px;
+		}
+		#task .minute{
+			width: 175px;
+			height: 5px;
+			background: gray;
+			top: 142px;
+			left: 107px;
+		}
+		#task .second{
+			width: 175px;
+			height: 2px;
+			background: gray;
+			top: 144px;
+			left: 107px;
+		}
+		#task.active .hour{
+			-webkit-transform: rotate(-90deg);
+			-webkit-transform-origin: 25px;
+			-webkit-animation: arrow-rotate 60s infinite steps(24);
+		}
+		#task.active .minute{
+			-webkit-transform: rotate(-90deg);
+			-webkit-transform-origin: 44px;
+			-webkit-animation: arrow-rotate 30s infinite steps(60);
+		}
+		#task.active .second{
+			-webkit-transform: rotate(-90deg);
+			-webkit-transform-origin: 44px;
+			-webkit-animation: arrow-rotate 10s infinite linear;
+		}
+		@-webkit-keyframes arrow-rotate{
+			from{
+				-webkit-transform: rotate(-90deg);
+			}
+			to{
+				-webkit-transform: rotate(270deg);
+			}
+		}
+	</style>
+	<div>
+		<h2>Задание</h2>
+		<div class="clock">
+			<div class="arrow hour"></div>
+			<div class="arrow minute"></div>
+			<div class="arrow second"></div>
+		</div>
+	</div>
+</section>
+
+<!--
+	To hide progress bar from entire presentation
+	just remove “progress” element.
+	-->
+<div class="progress">
+	<div></div>
+</div>
+<script src="bower_components/shower-core/shower.min.js"></script>
+<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>

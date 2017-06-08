@@ -1,0 +1,65 @@
+фемостон prescribingSomatycDisease
+вагинорм numberPrescriptionsPerWeek
+
+
+
+
+в htmp rv-on-tap="show" (если нет выбора по кнопке то можна на onenter)
+
+controller
+
+var dynamic = require("dynamicExtended"),
+	app = window.parent.app,
+	monitoring = require('monitoring'),
+	settings = require('settings'),
+	nav = require('nav');
+
+module.exports = function(scope){
+
+	scope.show = function(){
+		var line;
+		line = this.dataset.value;
+
+		if(window.parent.app.speciality.toLowerCase() == "whobgynnecologist"){
+			if(window.parent.params.callNumber == 1){
+				console.log(window.parent);
+				if(line === "0"){
+					insertSlides(["femoston_symptomsDeficiencySexHormones"]);
+					nav.goto({slide: "femoston_symptomsDeficiencySexHormones"});
+				}
+				else if(line === "1"){
+					insertSlides(["femoston_healthPreservation",
+						"femoston_whatRestrictsTheUseArtHypertension"]);
+					nav.goto({slide: "femoston_healthPreservation"});
+				}
+			}
+			if(window.parent.params.callNumber == 2){
+				console.log(window.parent);
+				if(line === "0"){
+					insertSlides(["femoston_containsSexHormones",
+						"femoston_whatRestrictsTheUseArtHypertension",
+						"femoston_symptomsDeficiencySexHormones"]);
+					nav.goto({slide: "femoston_containsSexHormones"});
+				}
+				else if(line === "1"){
+					insertSlides(["femoston_healthPreservation",
+						"femoston_whatRestrictsTheUseArtHypertension"]);
+					nav.goto({slide: "femoston_healthPreservation"});
+				}
+			}
+		}
+		function insertSlides(slides){
+			dynamic.clear();
+			dynamic.insert(slides, app.current.slide.id);
+		}
+
+		monitoring.submit('dynamicKPI', {
+			id: "femoston_" + app.current.slide.id,
+			product: settings.abbottProduct,
+			name: scope.t.h1.replace(/<br\s*[\/]?>/gi, " "),
+			value: scope.t["li_"+line].replace(/<br\s*[\/]?>/gi, " ")
+		})
+
+	}
+
+};

@@ -1,0 +1,19 @@
+var arr = [1,2,4,5,4,7,1,1],
+		newArr = [],
+    prev;
+    
+function sortArr(a, b) {
+  if (a > b) return 1;
+  if (a < b) return -1;
+};
+
+arr.sort(sortArr);
+
+arr.forEach(function(item, i, arr){			       
+      if(item !== prev){
+      		newArr.push(item);          
+      }
+      prev = item;	
+});
+
+console.log(newArr);

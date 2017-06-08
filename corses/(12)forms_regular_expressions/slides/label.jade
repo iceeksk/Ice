@@ -1,0 +1,14 @@
+section.slide#label
+	div
+		h2
+			| Теги формы:&nbsp
+			code &lt;label&gt;
+		p Задает связь между элементом формы и его меткой (текстом-подписью)
+
+		pre
+			code &lt;label for="city"&gt; City &lt;/label&gt;
+			code &lt;input id="city" name="city" type="text" value="New York"/&gt;
+
+		.example
+			label(for='city') City
+			input#city(name='city', type='text', value='New York')

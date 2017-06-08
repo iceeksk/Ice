@@ -1,0 +1,14 @@
+section.slide#inputSubmit
+	div
+		h2
+			code &lt;input&gt;
+			| &nbsp;submit
+		p Кнопка для отправки формы
+
+		pre
+			code &lt;input type="submit" value="Search"/&gt;
+
+		.example
+			form(action='https://www.google.com.ua/search', target='_blank')
+				input(type='text', name='q', placeholder='Your query')
+				input(type='submit', value='Search')

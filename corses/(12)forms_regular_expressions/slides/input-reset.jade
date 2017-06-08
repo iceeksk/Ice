@@ -1,0 +1,15 @@
+section.slide#inputReset
+	div
+		h2
+			code &lt;input&gt;
+			| &nbsp;reset
+		p Кнопка для очистки формы
+
+		pre
+			code &lt;input type="reset" value="Clear"/&gt;
+
+		.example
+			form(action='https://www.google.com.ua/search', target='_blank')
+				input(type='text', name='q', placeholder='Your query')
+				input(type='reset', value='Clear')
+				input(type='submit', value='Search')

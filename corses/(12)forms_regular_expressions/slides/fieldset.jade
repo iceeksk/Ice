@@ -1,0 +1,21 @@
+section.slide#fieldset
+	div
+		h2
+			| Теги формы:&nbsp
+			code &lt;fieldset&gt;
+		p Предназначен для группирования элементов формы
+
+		.split
+			div
+				pre
+					code &lt;fieldset&gt;
+					code	// group of elements
+					code &lt;/fieldset&gt;
+			.right
+				.example
+					form
+						fieldset
+							input(name='name', type='text', placeholder='Name')
+							input(name='surname', type='text', placeholder='Surname')
+						fieldset(disabled)
+							textarea(name='comment', rows='5') Some text

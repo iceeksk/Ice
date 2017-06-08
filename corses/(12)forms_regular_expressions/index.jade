@@ -1,0 +1,87 @@
+doctype html
+html(lang='ru')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=680, user-scalable=no')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		title HTML формы и регулярные выражения
+		link(rel='stylesheet', href='bower_components/shower-bright/styles/screen.css')
+		style.
+			body.list{
+				position: static;
+			}
+			.example{
+				border: 1px solid #d9d9d9;
+				border-radius: 10px;
+				padding: 10px;
+				background: rgba(30, 144, 255, .1);
+			}
+			.slide:after{
+				pointer-events: none;
+			}
+			.split > div{
+				float: left;
+			}
+			.split > .right{
+				float: right;
+			}
+body.list
+		header.caption
+			h1 HTML формы и регулярные выражения
+			p
+				| Ткалич Сергей,&nbsp;
+				a(href='https://qapint.com', target='_blank') QAP Int
+
+		include slides/forms-cover
+		include slides/form
+		include slides/form-attributes
+		include slides/form-attributes2
+		include slides/form-elements
+		include slides/input
+		include slides/input-text
+		include slides/input-password
+		include slides/input-radio
+		include slides/input-checkbox
+		include slides/input-hidden
+		include slides/input-submit
+		include slides/input-reset
+		include slides/input-file
+		include slides/input-image
+		include slides/input-html5
+		include slides/select
+		include slides/textarea
+		include slides/label
+		include slides/fieldset
+		include slides/form-validation
+		include slides/regex-cover
+		include slides/regex
+		include slides/regex-create
+		include slides/regex-simple
+		include slides/regex-complex
+		include slides/regex-symbols
+		include slides/regex-symbols1
+		include slides/regex-symbols2
+		include slides/regex-symbols3
+		include slides/regex-symbols4
+		include slides/regex-symbols5
+		include slides/regex-js-methods
+		include slides/regex-js-methods-examples
+		include slides/practic
+
+		.progress
+			div
+
+		script(src='bower_components/shower-core/shower.min.js')
+
+		script.
+			(function(){
+				"use strict";
+
+				window.addEventListener('load', function(){
+					var inputs = document.querySelectorAll('input, textarea');
+
+					[].forEach.call(inputs, function(input){
+						input.setAttribute('tabindex', -1);
+					});
+				});
+			})();

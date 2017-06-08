@@ -1,0 +1,17 @@
+section.slide#regexCreate
+	div
+		h2 Создание регулярных выражений
+
+		div 1. /pattern/flags
+		div 2. new RegExp("pattern"[, flags])
+
+		div
+			strong pattern&nbsp;
+			| - регулярное выражение для поиска
+		div
+			strong flags&nbsp;
+			| - строка из любой комбинации символов #[mark g], #[mark i], #[mark m]: глобальный поиск, регистр, многострочный поиск
+
+		pre
+			code var reg = /ab+c/i;
+			code var reg = new RegExp("ab+c", "i");

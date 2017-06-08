@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=680, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>HTML формы и регулярные выражения</title>
+    <link rel="stylesheet" href="bower_components/shower-bright/styles/screen.css">
+    <style>
+      body.list{
+      	position: static;
+      }
+      .example{
+      	border: 1px solid #d9d9d9;
+      	border-radius: 10px;
+      	padding: 10px;
+      	background: rgba(30, 144, 255, .1);
+      }
+      .slide:after{
+      	pointer-events: none;
+      }
+      .split > div{
+      	float: left;
+      }
+      .split > .right{
+      	float: right;
+      }
+    </style>
+  </head>
+</html>
+<body class="list">
+  <header class="caption">
+    <h1>HTML формы и регулярные выражения</h1>
+    <p>Ткалич Сергей,&nbsp;<a href="https://qapint.com" target="_blank">QAP Int</a></p>
+  </header>
+  <section id="formsCover" class="slide shout right">
+    <div>
+      <h2>HTML формы</h2>
+    </div>
+  </section>
+  <section id="form" class="slide">
+    <div>
+      <h2>HTML Форма</h2>
+      <p>Позволяет пользователю вводить информацию для последующей ее обработки. Задается с помощью элемента&nbsp;<code>&lt;form&gt;</code></p>
+      <pre><code>&lt;form action="http://example.com/login" method="post"&gt;</code><code>	&lt;input name="login" type="text"/&gt;</code><code>	&lt;input name="password" type="password"/&gt;</code><code>	&lt;input value="Login" type="submit"/&gt;</code><code>&lt;/form&gt;</code></pre>
+    </div>
+  </section>
+  <section id="formAttributes" class="slide">
+    <div>
+      <h2>Атрибуты формы</h2>
+      <div><strong>method&nbsp;</strong>- сообщает серверу о методе запроса. Может быть "GET" и "POST"</div>
+      <div><strong>action&nbsp;</strong>- url для обработки данных фоормы. Может быть абсолютным или относительным</div>
+      <div><strong>enctype&nbsp;</strong>- способ кодирования данных формы. По умолчанию значени аттрибута "application/x-www-form-urlencoded". Для отправки файлов значени должно быть "multipart/form-data"</div>
+    </div>
+  </section>
+  <section id="formAttributes2" class="slide">
+    <div>
+      <h2>Атрибуты формы</h2>
+      <div><strong>name&nbsp;</strong>- имя формы</div>
+      <div><strong>accept&nbsp;</strong>- список MIME-типов для загрузки файлов</div>
+      <div><strong>novalidate&nbsp;</strong>- отменяет встроенную проверку данных</div>
+    </div>
+  </section>
+  <section id="formElements" class="slide">
+    <div>
+      <h2>Элементы формы</h2>
+      <p>Cлужат для взаимодействия пользователя с формой</p>
+      <p><a href="#input"><code>&lt;input&gt;</code></a>&nbsp<a href="#select"><code>&lt;select&gt;</code></a>&nbsp<a href="#textarea"><code>&lt;textarea&gt;</code></a></p>
+    </div>
+  </section>
+  <section id="input" class="slide">
+    <div>
+      <h2>Элемент&nbsp;<code>&lt;input&gt;</code></h2>
+      <p>Самый разнасторонний элемент. Позволяет создавать разные элементы формы</p>
+      <p>Основные аттрибуты:&nbsp;<strong>name</strong>,&nbsp;<strong>value</strong>,&nbsp;<strong>type</strong>,&nbsp;<strong>readonly</strong>,&nbsp;<strong>disabled</strong>,&nbsp;<strong>placeholder</strong></p>
+    </div>
+  </section>
+  <section id="inputText" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;text</h2>
+      <p>Текстовое поле</p>
+      <pre><code>&lt;input type="text" name="name" value="Peter"/&gt;</code><code>&lt;input type="text" name="surname" value="Jackson"/&gt;</code></pre>
+      <div class="example">
+        <input type="text" name="name" placeholder="Name" value="Peter">
+        <input type="text" name="surname" placeholder="Surname" value="Jackson">
+      </div>
+    </div>
+  </section>
+  <section id="inputPassword" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;password</h2>
+      <p>Поле с паролем</p>
+      <pre><code>&lt;input type="password"/&gt;</code></pre>
+      <div class="example">
+        <input type="password" placeholder="Password">
+      </div>
+    </div>
+  </section>
+  <section id="inputRadio" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;radio</h2>
+      <p>Переключатель</p>
+      <pre><code>&lt;input type="radio" name="iso_code" value="uk"/&gt;</code><code>&lt;input type="radio" name="iso_code" value="en"/&gt;</code><code>&lt;input type="radio" name="iso_code" value="de"/&gt;</code></pre>
+      <div class="example">
+        <input id="uk" type="radio" name="iso_code" value="uk">
+        <label for="uk">UK</label>
+        <input id="en" type="radio" name="iso_code" value="en">
+        <label for="en">EN</label>
+        <input id="de" type="radio" name="iso_code" value="de">
+        <label for="de">DE</label>
+      </div>
+    </div>
+  </section>
+  <section id="inputCheckbox" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;checkbox</h2>
+      <p>Флажок</p>
+      <pre><code>&lt;input type="checkbox" name="ppt" value="ppt"/&gt;</code><code>&lt;input type="checkbox" name="pdf" value="pdf"/&gt;</code><code>&lt;input type="checkbox" name="txt" value="txt"/&gt;</code></pre>
+      <div class="example">
+        <input id="ppt" type="checkbox" name="ppt" value="ppt">
+        <label for="ppt">PPT</label>
+        <input id="pdf" type="checkbox" name="pdf" value="pdf">
+        <label for="pdf">PDF</label>
+        <input id="txt" type="checkbox" name="txt" value="txt">
+        <label for="txt">TXT</label>
+      </div>
+    </div>
+  </section>
+  <section id="inputHidden" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;hidden</h2>
+      <p>Скрытое поле</p>
+      <pre><code>&lt;input type="hidden" value="User_Identifier"/&gt;</code></pre>
+    </div>
+  </section>
+  <section id="inputSubmit" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;submit</h2>
+      <p>Кнопка для отправки формы</p>
+      <pre><code>&lt;input type="submit" value="Search"/&gt;</code></pre>
+      <div class="example">
+        <form action="https://www.google.com.ua/search" target="_blank">
+          <input type="text" name="q" placeholder="Your query">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="inputReset" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;reset</h2>
+      <p>Кнопка для очистки формы</p>
+      <pre><code>&lt;input type="reset" value="Clear"/&gt;</code></pre>
+      <div class="example">
+        <form action="https://www.google.com.ua/search" target="_blank">
+          <input type="text" name="q" placeholder="Your query">
+          <input type="reset" value="Clear">
+          <input type="submit" value="Search">
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="inputFile" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;file</h2>
+      <p>Поле для отправки файла. Атрибут enctype формы должен иметь значени multipart/form-data</p>
+      <pre><code>&lt;form enctype="multipart/form-data"/&gt;</code><code>	&lt;input type="file" name="picture"/&gt;</code><code>...</code></pre>
+      <div class="example">
+        <form action="https://www.google.com.ua/search" target="_blank" enctype="multipart/form-data">
+          <input type="file" name="picture">
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="inputImage" class="slide">
+    <div>
+      <h2><code>&lt;input&gt;</code>&nbsp;image</h2>
+      <p>Кнопка с изображением</p>
+      <pre><code>&lt;input type="image" src="path/to/image"/&gt;</code></pre>
+      <div class="example">
+        <input type="image" src="images/html5.png" height="100">
+      </div>
+    </div>
+  </section>
+  <section id="inputHtml5" class="slide">
+    <div>
+      <h2>HTML5 типы input</h2>
+      <div>color, date, datetime, datetime-local, email, month, number, range, search, tel, time, url, week</div><img src="images/types-support.png" height="320">
+    </div>
+  </section>
+  <section id="select" class="slide">
+    <div>
+      <h2>Элемент&nbsp;<code>&lt;select&gt;</code></h2>
+      <p>Раскрывающийся список, список с множественным выбором</p>
+      <div class="split">
+        <div>
+          <pre><code>&lt;select name="students" multiple&gt;</code><code>	&lt;option value="Tom"&gt;Tom&lt;option/&gt;</code><code>	&lt;option value="Michel"&gt;Michel&lt;option/&gt;</code><code>	&lt;option value="Helen" selected&gt;Helen&lt;option/&gt;</code><code>&lt;select/&gt;</code></pre>
+        </div>
+        <div class="right">
+          <div class="example">
+            <div>
+              <select>
+                <option value="Tom">Tom</option>
+                <option value="Michel">Michel</option>
+                <option value="Helen" selected>Helen</option>
+              </select>
+            </div>
+            <div>
+              <select multiple>
+                <option value="Tom">Tom</option>
+                <option value="Michel">Michel</option>
+                <option value="Helen" selected>Helen</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="textarea" class="slide">
+    <div>
+      <h2>Элемент&nbsp;<code>&lt;textarea&gt;</code></h2>
+      <p>Поле для ввода многострочного текста</p>
+      <div class="split">
+        <div>
+          <pre><code>&lt;textarea cols="30" rows="5"&gt;</code><code>	Awesome comment</code><code>	with new line text</code><code>&lt;textarea/&gt;</code></pre>
+        </div>
+        <div class="right">
+          <div class="example">
+            <textarea name="comment" rows="5">Awesome comment with new line text</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="label" class="slide">
+    <div>
+      <h2>Теги формы:&nbsp<code>&lt;label&gt;</code></h2>
+      <p>Задает связь между элементом формы и его меткой (текстом-подписью)</p>
+      <pre><code>&lt;label for="city"&gt; City &lt;/label&gt;</code><code>&lt;input id="city" name="city" type="text" value="New York"/&gt;</code></pre>
+      <div class="example">
+        <label for="city">City</label>
+        <input id="city" name="city" type="text" value="New York">
+      </div>
+    </div>
+  </section>
+  <section id="fieldset" class="slide">
+    <div>
+      <h2>Теги формы:&nbsp<code>&lt;fieldset&gt;</code></h2>
+      <p>Предназначен для группирования элементов формы</p>
+      <div class="split">
+        <div>
+          <pre><code>&lt;fieldset&gt;</code><code>	// group of elements</code><code>&lt;/fieldset&gt;</code></pre>
+        </div>
+        <div class="right">
+          <div class="example">
+            <form>
+              <fieldset>
+                <input name="name" type="text" placeholder="Name">
+                <input name="surname" type="text" placeholder="Surname">
+              </fieldset>
+              <fieldset disabled>
+                <textarea name="comment" rows="5">Some text</textarea>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="formValidation" class="slide">
+    <div>
+      <h2>Валидация форм:&nbsp;<strong>required</strong>,&nbsp;<strong>pattern</strong></h2>
+      <pre><code>&lt;input type="text" name="name" required/&gt;</code><code>&lt;input type="email" name="email" required/&gt;</code><code>&lt;input type="url" name="url" required/&gt;</code><code>&lt;input type="text" name="price" pattern="\d+(\.\d{2})?"/&gt;</code></pre>
+    </div>
+  </section>
+  <section id="regexCover" class="slide shout right">
+    <div>
+      <h2>Регулярные выражения</h2>
+    </div>
+  </section>
+  <section id="regex" class="slide">
+    <div>
+      <h2>Регулярные выражения</h2>
+      <p>Это шаблон (строка), которая состоит из символов и метасимволов (спецсимволов) и который применяется для манипуляции над строками: поиск, замена, валидация</p>
+      <pre><code>var reg = /ab+c/;</code></pre>
+      <div><a href="https://regex101.com/#javascript" target="_blank">https://regex101.com</a></div>
+    </div>
+  </section>
+  <section id="regexCreate" class="slide">
+    <div>
+      <h2>Создание регулярных выражений</h2>
+      <div>1. /pattern/flags</div>
+      <div>2. new RegExp("pattern"[, flags])</div>
+      <div><strong>pattern&nbsp;</strong>- регулярное выражение для поиска</div>
+      <div><strong>flags&nbsp;</strong>- строка из любой комбинации символов 
+        <mark>g</mark>, 
+        <mark>i</mark>, 
+        <mark>m</mark>: глобальный поиск, регистр, многострочный поиск
+      </div>
+      <pre><code>var reg = /ab+c/i;</code><code>var reg = new RegExp("ab+c", "i");</code></pre>
+    </div>
+  </section>
+  <section id="regexSimple" class="slide">
+    <div>
+      <h2>Простые выражения</h2>
+      <div><a href="https://regex101.com/r/jU8hW2/1" target="_blank"><i>"Hello world. Our world".</i></a></div>
+      <pre><code>var reg = /world/g;</code></pre>
+      <p><strong>Порядок символов имеет значение!</strong></p>
+    </div>
+  </section>
+  <section id="regexComplex" class="slide">
+    <div>
+      <h2>Сложные выражения</h2>
+      <p>Можно использовать спецсимволы для более сложных выборок</p>
+      <div><a href="https://regex101.com/r/wL7gK7/3" target="_blank"><i>"Your regex is cool!!!".</i></a></div>
+      <pre><code>var reg = /co+l!*/gim;</code></pre>
+    </div>
+  </section>
+  <section id="regexSymbols" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>\</strong>&nbsp; Обозначает спецсимвол в паре с обычным и наоборот</div>
+      <div><code>/s/</code>&nbsp; Найдет символ "s" в строке</div>
+      <div><code>/\s/</code>&nbsp; Найдет пробел, табуляцию, перевод строки</div>
+    </div>
+  </section>
+  <section id="regexSymbols1" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>^</strong>&nbsp; Обозначает начало входных данных</div>
+      <div><code>/^A/</code>&nbsp; не найдет 'A' в строке "an A", но найдет первое 'A' в "An A."</div>
+      <div><strong>$</strong>&nbsp; Обозначает конец входных данных</div>
+      <div><code>/t$/</code>&nbsp; не найдет 't' в "eater", но найдет - в "eat"</div>
+    </div>
+  </section>
+  <section id="regexSymbols2" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>*</strong>&nbsp; Обозначает повторение 0 или более раз</div>
+      <div><code>/bo*/</code>&nbsp; найдет 'boooo' в "A ghost booooed" и 'b' в "A bird warbled", но ничего не найдет в "A goat grunted"</div>
+      <div><strong>+</strong>&nbsp; Обозначает повторение 1 или более раз</div>
+      <div><code>/a+/</code>&nbsp; найдет 'a' в "candy" и все 'a' в "caaaaaaandy"</div>
+      <div><strong>?</strong>&nbsp; Элемент может как присутствовать, так и отсутствовать</div>
+      <div><code>/e?le?/</code>&nbsp; найдет 'el' в "angel" и 'le' в "angle"</div>
+    </div>
+  </section>
+  <section id="regexSymbols3" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>x|y</strong>&nbsp; Находит x или y</div>
+      <div><code>/green|red/</code>&nbsp; найдет 'green' в "green apple" и 'red' в "red apple."</div>
+      <div><strong>{n} {n,} {n,m}</strong>&nbsp; n и m - положительные целые числа. Находит повторяющийся элемент</div>
+      <div><code>/a{2}/</code>&nbsp; не найдет 'a' в "candy," но найдет оба a в "caandy," и первые два 'a' в "caaandy."</div>
+    </div>
+  </section>
+  <section id="regexSymbols4" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>[xyz] [abcd] [a-d]</strong>&nbsp; Задает набор символов. Находит любой из перечисленных символов</div>
+      <div><code>/[a-d]/g</code>&nbsp; найдет 'b' в "brisket", а также 'a' и 'c' в "ache".</div>
+      <div><strong>[^xyz] [^abc] [^a-c]</strong>&nbsp; Любой символ, кроме указанных в наборе</div>
+      <div><code>/[^a-c]/</code>&nbsp; найдет 'r' в "brisket" и 'h' в "chop."</div>
+    </div>
+  </section>
+  <section id="regexSymbols5" class="slide">
+    <div>
+      <h2>Спецсимволы</h2>
+      <div><strong>\d</strong>&nbsp; Эквивалент [0-9]</div>
+      <div><strong>\D</strong>&nbsp; Эквивалент [^0-9]</div>
+      <div><strong>\S</strong>&nbsp; Найдет любой символ, кроме пробельного</div>
+      <div><strong>\w</strong>&nbsp; Найдет любой словесный (латинский алфавит) символ, включая буквы, цифры и знак подчеркивания</div>
+      <div><strong>\W</strong>&nbsp; Найдет любой не-(лат.)словесный символ</div>
+      <div><a href="http://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="_blank">Более детально</a></div>
+    </div>
+  </section>
+  <section id="regexJsMethods" class="slide">
+    <div>
+      <h2>JavaScript методы</h2>
+      <ul>
+        <li>String.replace(pattern,string)</li>
+        <li>String.match(pattern)</li>
+        <li>String.search(pattern)</li>
+        <li>String.split(pattern)</li>
+        <li>RegExp.test(string)</li>
+        <li>RegExp.exec(string)</li>
+      </ul>
+    </div>
+  </section>
+  <section id="regexJsMethodsExamples" class="slide">
+    <div>
+      <h2>JavaScript методы: примеры</h2>
+      <pre><code>/s(amp)le/i.exec('Sample text') // ['Sample','amp']</code><code>/sample/.test('Sample text') // false</code><code>'Watch out for the rock!'.match(/r?or?/g) // ['o','or','ro']</code><code>'Watch out for the rock!'.search(/for/) // index 10</code><code>'Hello world'.replace(/world/gi,'Regex') // Hello Regex</code><code>'I am confused'.split(/\s/g) // ['I','am','confused']</code></pre>
+    </div>
+  </section>
+  <section id="practic" class="slide shout right">
+    <div>
+      <h2>Практика</h2>
+    </div>
+  </section>
+  <div class="progress">
+    <div></div>
+  </div>
+  <script src="bower_components/shower-core/shower.min.js"></script>
+  <script>
+    (function(){
+    	"use strict";
+    
+    	window.addEventListener('load', function(){
+    		var inputs = document.querySelectorAll('input, textarea');
+    
+    		[].forEach.call(inputs, function(input){
+    			input.setAttribute('tabindex', -1);
+    		});
+    	});
+    })();
+  </script>
+</body>

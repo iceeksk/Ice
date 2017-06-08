@@ -1,0 +1,19 @@
+	left: 50%;
+	top:50%;
+    -webkit-transform: translate3d(-50%,-50%,0)			// при абсолюте выравнивает по центру
+
+    -webkit-box-sizing: border-box;				// не изменяет размер при падингах
+
+http://requirejs.org/
+https://docs.google.com/document/d/1bpQPlM8Z5WbhhcRB6eXwdJsd68jGZbhwyHx8ka4ozx8/edit?pli=1 - заливка на фул и прод
+css triangle generator - генератор бордеров
+
+
+
+console.log(JSON.stringify(kpi, null, 4)); - перевести джейсон в форму что бы вывести обект как декларативно записаный обект
+
+
+var arr = [];
+
+
+Object.getOwnPropertyNames(arr.__proto__) // выведет все методы

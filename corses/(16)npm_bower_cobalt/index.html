@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ribbon theme for Shower</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="components/shower-ribbon/styles/screen.css">
+	<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+	<style>
+		.flex-container{
+			display: flex;
+			justify-content: space-around;
+		}
+		.slide.title::after{
+			content: none;
+		}
+		.slide.less-fs h2{
+			font-size: 70px;
+		}
+		.slide.more-fs{
+			font-size: 170%;
+		}
+		.slide.m-fs{
+			font-size: 150%;
+		}
+		.slide.l-fs{
+			font-size: 120%;
+		}
+		.slide.min-fs{
+			font-size: 115%;
+		}
+		.slide .less-lh code{
+			line-height: 1;
+		}
+		.slide .m-lh code{
+			line-height: 1.5;
+		}
+		pre.no-num code:before{
+			content: none;
+		}
+		.slide.no-margin p{
+			margin: 0;
+		}
+	</style>
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>npm, Bower. Cobalt.</h1>
+	</header>
+	<article class="slide shout" id="frontpage"><div>
+		<h2>npm, Bower. Cobalt.</h2>
+		<p>Артем Свирский, 2015.</p>
+
+		<style>
+			#frontpage p{
+				position: absolute;
+				right: 50px;
+				bottom: -20px;
+			}
+		</style>
+	</div></article>
+	<article class="slide shout" id="npmTitle"><div>
+		<img src="images/npm.svg" alt="">
+		<style>
+			#npmTitle div{
+				display: flex;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+			}
+			#npmTitle img{
+				margin: auto;
+			}
+		</style>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>npm - пакетный менеджер для JavaScript</h2>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>Что такое пакетный менеджер?</h2>
+	</div></article>
+	<article class="slide shout less-fs"><div>
+		<h2>*Показывает на примере jQuery*</h2>
+	</div></article>
+	<article class="slide less-fs shout"><div>
+		<h2>Пакет/package/module/component - готовое решение нашей задачи.</h2>
+	</div></article>
+	<article class="slide less-fs shout"><div>
+		<h2>Пакетный менеджер помогает не только получать готовые решения,<br>но и обмениваться ими.</h2>
+	</div></article>
+	<article class="slide cover w h"><div>
+		<img src="images/our-project.jpg" height="768" width="1366" alt="">
+	</div></article>
+	<article class="slide shout less-fs"><div>
+		<h2>Модуль должен решать одну задачу и решать эту задачу хорошо.</h2>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>Вернемся к npm</h2>
+	</div></article>
+	<article class="slide cover w h"><div>
+		<img src="images/project.jpg" height="768" width="1366" alt="">
+		<a href="http://browsenpm.org/package.json" target="_blank" style="position: absolute; left: 580px; top: 250px;">подробнее</a>
+		<a href="https://docs.npmjs.com/files/package.json" target="_blank" style="position: absolute; left: 560px; top: 300px;">еще подробнее</a>
+	</div></article>
+	<article class="slide cover w h" id="npmComponents"><div>
+		<img src="images/npm.jpg" height="768" width="1366" alt="">
+		<h2 class="site">сайт</h2>
+		<h2 class="registry">registry</h2>
+		<h2 class="client">клиент</h2>
+
+		<style>
+			#npmComponents h2{
+				position: absolute;
+			}
+			#npmComponents .site{
+				left: 158px;
+				top: 420px;
+			}
+			#npmComponents .registry{
+				left: 443px;
+				top: 520px;
+			}
+			#npmComponents .client{
+				left: 757px;
+				top: 420px;
+			}
+		</style>
+	</div></article>
+	<article class="slide more-fs"><div>
+		<h2>Установка</h2>
+		<ul>
+			<li>npm - <mark>node</mark> package manager</li>
+			<li>Идет в комплекте с NodeJS</li>
+		</ul>
+		<p>*Устанавливает NodeJS*</p>
+	</div></article>
+	<article class="slide more-fs"><div>
+		<h2>npm install</h2>
+		<code>npm install jquery</code>
+
+		<pre class="no-num less-lh">
+			<code>our-project</code>
+			<code>|_node_modules</code>
+			<code>	|_jquery</code>
+			<code>		|_src/</code>
+			<code>		|_package.json</code>
+			<code>		|_...</code>
+		</pre>
+	</div></article>
+	<article class="slide more-fs"><div>
+		<h2>Модули можно не коммитить</h2>
+
+		<ul>
+			<li>Добавить node_modules в <mark>.gitignore</mark></li>
+			<li>Создать <mark>package.json</mark></li>
+			<li>Добавить зависимости в package.json</li>
+			<li>Выполнить <code>npm install</code></li>
+		</ul>
+	</div></article>
+	<article class="slide no-margin"><div>
+		<h2>npm init</h2>
+
+		<p>Создаст package.json в текущей директории.</p>
+
+		<h3><mark>package.json</mark></h3>
+
+		<pre class="no-num less-lh">
+			<code>{</code>
+			<code>  "name": "our-project",</code>
+			<code>  "version": "1.0.0",</code>
+			<code>  "description": "",</code>
+			<code>  "main": "index.js",</code>
+			<code>  "author": "",</code>
+			<code>  "license": "ISC"</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide no-margin"><div>
+		<h2>npm install --save</h2>
+
+		<p>Добавит модуль в зависимости</p>
+
+		<code>npm install jquery --save</code>
+
+		<h3><mark>package.json</mark></h3>
+
+		<pre class="no-num less-lh">
+			<code>{</code>
+			<code>  "name": "our-project",</code>
+			<code>  "version": "1.0.0",</code>
+			<code>  "description": "",</code>
+			<code>  "main": "index.js",</code>
+			<code>  "author": "",</code>
+			<code>  "license": "ISC"</code>
+			<code>  "dependencies": {</code>
+			<code>    "jquery": "^2.1.4"</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>SEMVER</h2>
+	</div></article>
+	<article class="slide"><div>
+		<h2>Вспомним package.json</h2>
+		<pre class="no-num m-lh">
+			<code>{</code>
+			<code>  "name": "our-project",</code>
+			<code>  "version": "1.0.0",</code>
+			<code>  "dependencies": {</code>
+			<code>    "jquery": "<mark>^2.1.4</mark>"</code>
+			<code>    "lodash": "<mark>~3.9.3</mark>"</code>
+			<code>    "rivets": "<mark>>=0.8.1</mark>"</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>2.1.4</h2>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>major.minor.patch</h2>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>patch</h2>
+		<p>Фикс бага с обратной совместимостью.</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>minor</h2>
+		<p>Добавление новой функциональности с обратной совместимостью.</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>major</h2>
+		<p>Изменение без обратной совместимости.</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Модуль "some" v1.0.0</h2>
+		<pre class="no-num m-lh">
+			<code>function <mark>add</mark>(a, b){</code>
+			<code>	a + b;</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Модуль "some" v1.0.1</h2>
+		<pre class="no-num m-lh">
+			<code>function <mark>add</mark>(a, b){</code>
+			<code>	<mark>return</mark> a + b;</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Модуль "some" v1.1.0</h2>
+		<pre class="no-num m-lh">
+			<code>function <mark>add</mark>(a, b){</code>
+			<code>	<mark>return</mark> a + b;</code>
+			<code>}</code>
+			<code> </code>
+			<code>function <mark>sub</mark>(a, b){</code>
+			<code>	<mark>return</mark> a - b;</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Модуль "some" v2.0.0</h2>
+		<pre class="no-num m-lh">
+			<code>function <mark>sub</mark>(a, b){</code>
+			<code>	<mark>return</mark> a - b;</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide"><div>
+		<h2>Вспомним package.json</h2>
+		<pre class="no-num m-lh">
+			<code>{</code>
+			<code>  "name": "our-project",</code>
+			<code>  "version": "1.0.0",</code>
+			<code>  "dependencies": {</code>
+			<code>    "jquery": "<mark>^2.1.4</mark>"</code>
+			<code>    "lodash": "<mark>~3.9.3</mark>"</code>
+			<code>    "rivets": "<mark>>=0.8.1</mark>"</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide shout"><div>
+		<h2>Ranges</h2>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Ranges</h2>
+		<p>Range - диапазон</p>
+		<ul>
+			<li><code>~</code> - последний патч</li>
+			<li><code>^</code> - последний минор</li>
+		</ul>
+		<a href="http://semver.npmjs.com/" target="_blank">semver calculator</a>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Зависимости</h2>
+
+		<p>Модули могут зависеть от других модулей.</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>npm install -g</h2>
+
+		<p>Устанавливает модули глобально.</p>
+		<p>Это не значит, что в проекты можно подключать глобальные модули.</p>
+	</div></article>
+	<article class="slide" id="bowerFrontpage"><div>
+		<h2>Bower</h2>
+		<img src="images/bower-logo.png">
+		<style>
+			#bowerFrontpage h2{
+				position: absolute;
+				bottom: 180px;
+				right: 42px;
+				font-size: 170px;
+				color: #de4420;
+			}
+			#bowerFrontpage img{
+				position: absolute;
+				left: 50px;
+				top: 100px;
+				width: 50%;
+			}
+			#bowerFrontpage:after{
+				opacity: 0;
+			}
+		</style>
+	</div></article>
+	<article class="slide"><div>
+		<h2>Установка</h2>
+		<p>
+			<code>npm install -g bower</code>
+		</p>
+	</div></article>
+	<article class="slide min-fs"><div>
+		<h2>"Что такое bower?"</h2>
+		<blockquote>
+			- Что такое bower?<br>
+			- Это пакетный менеджер. Устанавливается с помощью npm.<br>
+			- Что такое npm?<br>
+			- Это пакетный менеджер.<br>
+		</blockquote>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Главное отличие от npm</h2>
+		<p>bower - плоская структура зависимостей</p>
+		<p>npm - древовидная</p>
+	</div></article>
+	<article class="slide" id="npmDistinctions"><div>
+		<h2>Главное отличие от npm</h2>
+
+		<p class="example">A > C</p>
+		<p class="example">B > C</p>
+
+		<div class="column-wrapper">
+			<div class="column">
+				<p><code>npm install</code></p>
+				<pre class="no-num m-lh">
+					<code>node_modules</code>
+					<code>|_A</code>
+					<code>| |_C</code>
+					<code>|_B</code>
+					<code>  |_C</code>
+				</pre>
+			</div>
+			<div class="column">
+				<p><code>bower install</code></p>
+				<pre class="no-num m-lh">
+					<code>bower_components</code>
+					<code>|_A</code>
+					<code>|_B</code>
+					<code>|_C</code>
+				</pre>
+			</div>
+		</div>
+
+		<style>
+			#npmDistinctions .example{
+				margin-left: 265px;
+			}
+			#npmDistinctions p{
+				margin-bottom: 5px;
+			}
+			#npmDistinctions .column-wrapper{
+				display: -webkit-box;
+				/*-webkit-box-pack: center;*/
+			}
+			#npmDistinctions .column{
+				/*margin: 0 100px;*/
+				width: 50%;
+			}
+		</style>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Поэтому</h2>
+		<p>bower - для клиента</p>
+		<p>npm - для сервера</p>
+
+		<a href="http://browserify.org/" target="_blank">но не всегда</a>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>bower install</h2>
+		<code>bower install jquery</code>
+
+		<pre class="no-num m-lh">
+			<code>our-project</code>
+			<code>|_<mark>bower_components</mark></code>
+			<code>	|_jquery</code>
+			<code>		|_src/</code>
+			<code>		|_package.json</code>
+			<code>		|_...</code>
+		</pre>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>.bowerrc</h2>
+		<p>Файл с настройками bower</p>
+		<pre class="no-num">
+			<code>{</code>
+			<code>	"directory": "components"</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide" id="noCommit"><div>
+		<h2>Компоненты тоже можно не коммитить</h2>
+		<p><mark>bower.json</mark></p>
+		<pre class="no-num">
+			<code>"dependencies": {</code>
+			<code>  "name": "version",</code>
+			<code>  "name": "version"</code>
+			<code>}</code>
+		</pre>
+		<p><code>bower install</code></p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Тот же init</h2>
+		<p>
+			<code>$ bower init</code>
+		</p>
+		<p>Cоздает bower.json</p>
+	</div></article>
+	<article class="slide"><div>
+		<h2>Тот же --save</h2>
+		<pre>
+			<code>$ bower install <mark>--save</mark> jquery normalize-css ...</code>
+		</pre>
+		bower.json
+		<pre class="no-num">
+			<code>"dependencies": {</code>
+			<code>  "jquery": "~2.1.1",</code>
+			<code>  "normalize-css": "~3.0.2"</code>
+			<code>}</code>
+		</pre>
+	</div></article>
+	<article class="slide"><div>
+		<h2>bower install endpoints</h2>
+		<p><code>bower install jquery</code></p>
+		<p><code>bower install git@github.com:user/package.git</code></p>
+		<p><code>bower install user/package</code></p>
+	</div></article>
+	<article class="slide" id="resolver"><div>
+		<h2>.bowerrc</h2>
+		<pre class="no-num">
+			<code>{</code>
+			<code>	"shorthand-resolver":
+		"git@git.qapint.com:{{owner}}/{{package}}.git"</code>
+			<code>}</code>
+		</pre>
+		<p><code>bower install cobalt/slider</code></p>
+		<p><code>git@git.qapint.com:cobalt/slider.git</code></p>
+		<style>
+			#resolver p{
+				margin-bottom: 10px;
+			}
+		</style>
+	</div></article>
+	<article class="slide" id="cobaltFp"><div>
+		<h2>Cobalt</h2>
+		<img src="images/cobalt.png" height="310" width="280" alt="">
+		<style>
+				#cobaltFp h2{
+					position: absolute;
+					left: 550px;
+					font-size: 140px;
+					top: 262px;
+					color: rgb(63, 84, 133);
+				}
+				#cobaltFp img{
+					position: absolute;
+					top: 170px;
+					left: 140px;
+				}
+		</style>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Cobalt</h2>
+		<p>Платформа для разработки презентаций</p>
+	</div></article>
+	<article class="slide m-fs" id="coComp"><div>
+		<h2>Составляющие</h2>
+		<ul>
+			<li>Скаффолдинг (Slush)</li>
+			<li>Core</li>
+			<li>CommonJS (Browserify)</li>
+			<li>MVC (Rivets)</li>
+			<li>Cobalt модули</li>
+			<li>Builds (Gulp)</li>
+		</ul>
+		<style>
+			#coComp{
+				line-height: 1.5;
+			}
+		</style>
+	</div></article>
+	<article class="slide" id="coInstall"><div>
+		<h2>Установка</h2>
+		<p>
+			<code>npm install -g git+ssh://git@git.qapint.com:cobalt/co-cli.git#courses</code>
+		</p>
+		<style>
+			#coInstall{
+				font-size: 17px;
+			}
+		</style>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>Регистрация</h2>
+		<p><a target="_blank" href="https://docs.google.com/spreadsheets/d/1Z-yQqoVXT6VixFeqz38aH9YTM7x4nRhN64Of5BEMaYM/edit#gid=0">я хочу вспомнить свою почту</a></p>
+		<p>Пароль: 1</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>co login</h2>
+		<p>Вводим логин, пароль и можем приступать.</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>co init</h2>
+		<p>Генератор, который создает начальную структуру проекта</p>
+	</div></article>
+	<article class="slide m-fs"><div>
+		<h2>co slide</h2>
+		<p>Генератор, который создает новый слайд)</p>
+	</div></article>
+
+
+	<div class="progress"><div></div></div>
+	<script src="components/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+</body>
+</html>

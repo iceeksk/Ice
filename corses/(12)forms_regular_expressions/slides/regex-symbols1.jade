@@ -1,0 +1,19 @@
+section.slide#regexSymbols1
+	div
+		h2 Спецсимволы
+
+		div
+			strong ^
+			| &nbsp; Обозначает начало входных данных
+
+		div
+			code /^A/
+			| &nbsp; не найдет 'A' в строке "an A", но найдет первое 'A' в "An A."
+
+		div
+			strong $
+			| &nbsp; Обозначает конец входных данных
+
+		div
+			code /t$/
+			| &nbsp; не найдет 't' в "eater", но найдет - в "eat"

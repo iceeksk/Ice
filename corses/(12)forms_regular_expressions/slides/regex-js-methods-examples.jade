@@ -1,0 +1,11 @@
+section.slide#regexJsMethodsExamples
+	div
+		h2 JavaScript методы: примеры
+
+		pre
+			code /s(amp)le/i.exec('Sample text') // ['Sample','amp']
+			code /sample/.test('Sample text') // false
+			code 'Watch out for the rock!'.match(/r?or?/g) // ['o','or','ro']
+			code 'Watch out for the rock!'.search(/for/) // index 10
+			code 'Hello world'.replace(/world/gi,'Regex') // Hello Regex
+			code 'I am confused'.split(/\s/g) // ['I','am','confused']

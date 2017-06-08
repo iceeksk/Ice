@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<title>Модулі</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="styles/pages.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Модулі</h1>
+		<p>Дехтяренко Михайло</p>
+	</header>
+
+	<section class="slide shout">
+		<div>
+			<h2>Модулі в JS</h2>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Що?</h2>
+
+			<pre>
+				<code>&lt;script src="lib/jquery.js"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="lib/knockout.js"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="lib/datepicker.js"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="custom/handlers.js"&gt;&lt;/script&gt;</code>
+				<code>&lt;script src="setup.js"&gt;&lt;/script&gt;</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Чому?</h2>
+
+			<ul>
+				<li>Немає єдиної точки входу</li>
+				<li>Збільшення складності</li>
+				<li>Неявні зв'язки між модулями</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Визначення</h2>
+			
+			<p><strong>Модуль</strong> &mdash; функціонально закінчена частина коду, який виконує певну задачу.</p>
+
+			<p class="next"><strong>Модульне програмування</strong> &mdash; організація системи як сукупності невеликих незалежних блоків.</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Навіщо це потрібно?</h2>
+
+			<ul>
+				<li>Спрощення системи</li>
+				<ul>
+					<li>Рефакторинг</li>
+					<li>Семантика</li>
+					<li>Структурованість</li>
+				</ul>
+				<li>Повторне використання модулів</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Правила</h2>
+
+			<ul>
+				<li>Ніяких глобальних змінних</li>
+				<li>Модуль декларує API</li>
+				<li>Нічого не робити, поки не попросять</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Рішення?</h2>
+
+			<ul>
+				<li>Імітація</li>
+				<li class="next">CommonJS Modules</li>
+				<li class="next">AMD</li>
+				<li class="next">ECMAScript 6 Modules</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Приклади?</h2>
+
+			<ul>
+				<li><strong>CJS Modules</strong>: основа NodeJS, browserify для браузерів</li>
+				<li><strong>AMD</strong>: require.js для браузерів</li>
+				<li><strong>ES6 Modules</strong>: майбутнє JS</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Імітація</h2>
+
+			<pre>
+				<code><mark>myCalc</mark> = (function(){</code>
+				<code>    <mark>return</mark> {</code>
+				<code>        calcSomething: function(number){</code>
+				<code>            return <mark class="important">math</mark>.calcThis(number);</code>
+				<code>        }</code>
+				<code>    };</code>
+				<code>}());</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Імітація</h2>
+
+			<pre>
+				<code>(function(){</code>
+				<code>    var <mark>myCals</mark> = {};</code>
+				<code>&nbsp;</code>
+				<code>    <mark>myCals</mark>.calcSomething = function(number){</code>
+				<code>        return <mark class="important">math</mark>.calcThis(number);</code>
+				<code>    };</code>
+				<code>&nbsp;</code>
+				<code>    <mark>window.myCalc = myCalc;</mark></code>
+				<code>}());</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>CommonJS Modules</h2>
+
+			<ul>
+				<li>module, exports, require</li>
+				<li>Потрібне середовище збірки (browserify)</li>
+				<li>Не потрібна обгортка</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>CommonJS Modules</h2>
+
+			<pre>
+				<code>var <mark>math</mark> = <mark>require</mark>('math');</code>
+				<code>&nbsp;</code>
+				<code><mark>exports</mark>.calcSomething = function(number){</code>
+				<code>    return <mark>math</mark>.calcThis(number);</code>
+				<code>};</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Async Module Definition</h2>
+
+			<ul>
+				<li>define</li>
+				<li>Потрібно скачати та підключити бібліотеку(require.js)</li>
+				<li>Сам по собі надає обгортку для модуля</li>
+				<li>Асинхронне завантаження</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Async Module Definition</h2>
+
+			<pre>
+				<code><mark>define</mark>(['math'], function(<mark>math</mark>){</code>
+				<code>    <mark>return</mark> {</code>
+				<code>        calcSomething: function(number){</code>
+				<code>            return <mark>math</mark>.calcThis(number);</code>
+				<code>        }</code>
+				<code>    };</code>
+				<code>});</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>ECMAScript 6 Modules</h2>
+
+			<ul>
+				<li>module, import, export (ключові слова)</li>
+				<li>Вже підтримуєтсья деякими браузерами</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>ECMAScript 6 Modules</h2>
+
+			<pre>
+				<code><mark>import</mark> 'math' as <mark>math</mark>;</code>
+				<code>&nbsp;</code>
+				<code><mark>export</mark> function calcSomething(number){</code>
+				<code>    return <mark>math</mark>.calcThis(number);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Теорія</h2>
+
+			<ul>
+				<li>Low Coupling &amp; High Cohesion</li>
+				<li>Layered Architecture</li>
+				<li>Law of Demeter</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Low Coupling &amp; High Cohesion</h2>
+
+			<ul>
+				<li>Мала кількість залежностей</li>
+				<li>Слабка залежність від змін</li>
+				<li>Висока міра повторного використання</li>
+			</ul>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<div>
+			<h2>Layered Architecture &amp; Law of Demeter</h2>
+
+			<ul>
+				<li>Модуль володіє обмеженим знаннями про інші модулі</li>
+				<li>Модуль звертаєтсья тільки до модулів свого рівня чи рівня нижче</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide shout">
+		<div>
+			<h2>Запитання</h2>
+		</div>
+	</section>
+
+	<p class="badge"><a href="https://github.com/shower/shower" target="_blank">Powered by Shower</a></p>
+	<div class="progress"><div></div></div>
+
+	<script src="shower/shower.js"></script>
+	<script src="node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js"></script>
+
+	<script>
+		var socket = io.connect('http://192.168.240.114:3000');
+
+		socket.on('response', function(dir){
+			shower['_turn' + dir + 'Slide']();
+		});
+	</script>
+</body>
+</html>

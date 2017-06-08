@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html class="sl-root decks export loaded ua-phantomjs reveal-viewport theme-font-helvetica theme-color-sea-yellow">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>deck: Slides</title>
+	<link href="main.css" rel="stylesheet">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section data-id="400f24ff844858e87bf7e1a5ee877af9">
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 302px; height: auto;"
+	     data-block-id="03e78db604d6ede53e7413ca3e480603">
+		<div class="sl-block-content fragment" data-placeholder-tag="h1" data-placeholder-text="Title Text"
+		     data-fragment-index="1">
+			<h1>Работа с DOM</h1>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 83px; top: 70px; height: auto;"
+	     data-block-id="82a239e8e071e427ecbb42ba5ea4bf88">
+		<div class="sl-block-content fragment" data-placeholder-tag="h2" data-placeholder-text="Subtitle"
+		     data-fragment-index="0">
+			<h2>Денис Ванат</h2>
+
+			<p>dev@qapint.com</p>
+		</div>
+	</div>
+</section>
+<section data-id="4badd3fa52c1d1334a4278116a51f39f">
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 81px; top: 103px; height: auto;"
+	     data-block-id="6ee1150eea841f3dba54df97e73a19ef">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+			<h2>План</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 214px; height: auto;"
+	     data-block-id="000e61b73a923f94d5f87a4054591d33">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text">
+			<ul>
+				<li class="fragment" data-fragment-index="0"><span style="font-size:48px">Вступление</span></li>
+				<li class="fragment" data-fragment-index="1"><span style="font-size:48px">Представление документа</span>
+				</li>
+				<li class="fragment" data-fragment-index="2"><span style="font-size:48px">Обход и поиск элементов</span>
+				</li>
+				<li class="fragment" data-fragment-index="3"><span style="font-size:48px">Изменение DOM</span></li>
+				<li class="fragment" data-fragment-index="4"><span style="font-size:48px">Работа с элементами DOM</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section data-id="63a1b78c03aee0c93fcfef5a3659c53a">
+	<div class="sl-block" data-block-type="text" style="width: 960px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="47f1c2682bdcefd74e71b3a658d2f9b1">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 10;">
+			<h2>Вступление</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 442px; left: 480px; top: 248px; height: auto;"
+	     data-block-id="486267b08015aa8a07493955b97f0d88">
+		<div class="sl-block-content fragment" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 11; text-align: center;" data-fragment-index="0">
+			<p>На вход браузера поступает текст, который преобразовывается в <span>модель структуры документа</span>.
+			</p>
+		</div>
+	</div>
+
+	<div class="sl-block" data-block-type="text" style="width: 342px; left: 538px; top: 438px; height: auto;"
+	     data-block-id="34ba2dc175c153d69624b4a727ccce33">
+		<div class="sl-block-content fragment" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" data-fragment-index="1">
+			<p><span style="color:rgb(255, 255, 255)">DOM не был создан только для языка JavaScript.</span></p>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="code"
+	     style="min-width: 30px; min-height: 30px; width: 432px; height: 406px; left: 24px; top: 228px;"
+	     data-block-id="601a1f1a15741975da151dd7b64c72cf">
+		<div class="sl-block-content fragment" style="z-index: 14; border-width: 1px;" data-fragment-index="0"><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My home page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My home page&lt;/h1&gt;
+    &lt;p&gt;
+        Hi, I'm Denis and 
+        it's my home page
+    &lt;/p&gt;
+    &lt;p&gt;
+        I also wrote this article!
+        Read it
+        &lt;a href="http://some-where.com"&gt;
+            here.
+        &lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		</div>
+	</div>
+</section>
+<section data-id="ad5e8b9ee849b43796add2864c0f31fc">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="841759f7fe82d89a865b470b902277c9">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui"><h2>Представление документа</h2></div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto;"
+	     data-block-id="7841aadd5efa6ccdb4ccb69e93277cb8">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;">
+			<p>Документ графически можно представить как:</p>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" data-block-id="3c258053434c983bf1b93327a7bd7b26"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 414px; left: 33px; top: 210px;">
+		<div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 13;" data-fragment-index="0">
+			<p>вложенность коробок</p>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 414px; left: 513px; top: 210px;"
+	     data-block-id="9c3c5277912239dc2c10afee6cf92f63">
+		<div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 14;" data-fragment-index="1">
+			<p>дерево</p>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 333.375px; height: 385px; left: 74px; top: 271px;"
+	     data-block-id="273bf6579bf63576eed021c70bf668aa">
+		<div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="0"><img
+				data-natural-width="381" data-natural-height="440" style=""
+				data-src="img/box.png"></div>
+	</div>
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 414px; height: 247.123348017621px; left: 513px; top: 340px;"
+	     data-block-id="95d7eeb6ed6a91e099ea5f74896e2bf5">
+		<div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="1"><img style=""
+		                                                                                         data-natural-width="454"
+		                                                                                         data-natural-height="271"
+		                                                                                         data-src="img/tree.png">
+		</div>
+	</div>
+</section>
+<section data-id="90d79eea13f6468daa68e854dac2a3b8">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="ef61ec4856e75d9bf094d1f3d81bf299">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui"><h2>Представление документа</h2></div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto;"
+	     data-block-id="b5ae4e0110c0ef9da016c724b6108b6b">
+		<div class="sl-block-content fragment" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" data-fragment-index="0">
+			<p><span style="text-align:justify">"Тебе ж сказали: дерево там такое…" (с) Федя</span></p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="text"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 411px; left: 515px; top: 280px;"
+	     data-block-id="c5bba105145179798de882e856562047">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+			<ul>
+				<li class="fragment" data-fragment-index="1">Явным корнем является &lt;html&gt;&lt;/html&gt;
+					document.documentElement
+				</li>
+				<li class="fragment" data-fragment-index="2">Ветви представлены nodeElement</li>
+				<li class="fragment" data-fragment-index="3">Листья представлены textNode и комментарии</li>
+				<li class="fragment" data-fragment-index="4">Каждая нода уникальна</li>
+			</ul>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 405.333333333333px; height: 304px; left: 46px; top: 288px;"
+	     data-block-id="e18b0e6400b2be63f8c60c97387d9e88">
+		<div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="0"><img
+				data-natural-width="768" data-natural-height="576"
+				data-src="img/fedya.jpg"></div>
+	</div>
+</section>
+<section data-id="f93eeb7ca3363126a6aef1fff4fbcd31">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="57facd64e317c68b0b0bf873da945b09">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2>Обход и поиск элементов</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 157px; height: auto;"
+	     data-block-id="60d4aa8156d19be213fb0929e5c1a0c0">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;">
+			<p><span style="text-align:justify">Обход</span></p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 397.927272727273px; height: 372px; left: 41px; top: 234px;"
+	     data-block-id="b3c2578e8a38002dc0fe92c1ee7208fa">
+		<div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0"><img
+				data-natural-width="353" data-natural-height="330"
+				data-src="img/bypass.png"></div>
+	</div>
+	<div class="sl-block" data-block-type="text"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 491px; left: 463px; top: 234px;"
+	     data-block-id="39956268960ecd383dbd7a2f8bbea4b8">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 14; text-align: left;">
+			<ul>
+				<li class="fragment" data-fragment-index="1">childNodes - Array подобный объект</li>
+				<li class="fragment" data-fragment-index="2">firstChild и lastChild - ссылки на <span
+						style="color:rgb(255, 255, 255)">childNodes[0] и childNodes[1]</span>
+				</li>
+				<li class="fragment" data-fragment-index="3">nextSibling и previousSibling - ссылки на соседние елементи
+					узла
+				</li>
+				<li class="fragment" data-fragment-index="4">parentNode - каждый узел DOM содержит ссылку на
+					родительский узел
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section data-id="fba9d4136c0c01b6bf6d64d55f908b61">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="ffed5e277311f76b11b4f80aa4f891a2">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 10;" dir="ui">
+			<h2>Обход и поиск элементов</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="22361c59a5d26b7e6c367d518e20c426">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 11; text-align: center;">
+			<p><span style="text-align:justify">Поиск</span></p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 402px; left: 552px; top: 291px;"
+	     data-block-id="affd6fbff14ad60f071c0e4c77624086">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 12; text-align: left; color: rgb(255, 255, 255);">
+			<ul>
+				<li class="fragment" data-fragment-index="1">
+					<p><span style="font-size:24px">getElementsByTagName('a')</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="2">
+					<p><span style="font-size:24px">getElementsByClassName('info')</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="3">
+					<p><span style="font-size:24px">getElementsByName('name')</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="4">
+					<p><span style="font-size:24px">querySelectorAll('h1 + p')</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="5">
+					<p><span style="font-size:24px">getElementById('hi')</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="6">
+					<p><span style="font-size:24px">querySelector('p#hi')</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="code"
+	     style="min-width: 30px; min-height: 30px; width: 528px; height: 406px; left: 24px; top: 234px;"
+	     data-block-id="f02e07179cf45092cf167fe7d0789b8d">
+		<div class="sl-block-content fragment" style="z-index: 13; border-width: 1px;" data-fragment-index="0"><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My home page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My home page&lt;/h1&gt;
+    &lt;p id="hi"&gt;
+        Hi, I'm Denis and 
+        it's my home page
+    &lt;/p&gt;
+    &lt;p class="info"&gt;
+        I also wrote this article!
+        Read it
+        &lt;a href="http://some-where.com"&gt;
+            here.
+        &lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="code"
+	     style="min-width: 30px; min-height: 30px; width: 528px; height: 406px; left: 24px; top: 234px;"
+	     data-block-id="23e36468d00e9bdc8e58fdbf542936f7">
+		<div class="sl-block-content fragment" style="z-index: 15; border-width: 1px;" data-fragment-index="7"><pre
+				class="javascript"><code>var parent = document.body,
+    anchor = parent.getElementsByTagName('a')[0],
+    info = parent.getElementsByClassName('info')[0],
+    hi = document.getElementById('hi'),
+    qAll = parent.querySelectorAll('h1 + p'),
+    q = parent.querySelector('p.info');
+
+console.log(anchor)
+// &lt;a&gt; ... &lt;/a&gt;
+
+console.log(info)
+console.log(q)
+// &lt;p class='info'&gt; ... &lt;/p&gt;
+
+console.log(hi)
+// &lt;p id='hi'&gt; ... &lt;/p&gt;
+
+console.log(qAll)
+// [&lt;p class='info'&gt; ... &lt;/p&gt;]
+</code></pre>
+		</div>
+	</div>
+</section>
+<section data-id="9bbbd846343e1633e9878a023a0e7325">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="ebdf072ed38f908c15516d283393c654">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2>Обход и поиск элементов</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="5a89a2fe56a2e978f2cff6c1861f53ab">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;">
+			<p>nodeList живой</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 439.111111111111px; height: 247px; left: 14px; top: 281px;"
+	     data-block-id="ccf505559c2a1649a362feaa71857a0d">
+		<div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0"><img
+				data-natural-width="640" data-natural-height="360"
+				data-src="img/alive.jpg"></div>
+	</div>
+	<div class="sl-block" data-block-type="code"
+	     style="min-width: 30px; min-height: 30px; width: 475px; height: 280px; left: 469px; top: 265px;"
+	     data-block-id="66526fb1c8778bb124a0ab1cb187a9bb">
+		<div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1"><pre><code>var parent = document.body,
+    childNodes = parent.childNodes,
+    newChild = document.createElement('div');
+
+console.log(childNodes.length); 
+// 3
+
+parent.appendChild(newChild);
+
+console.log(childNodes.length); 
+// 4</code></pre>
+		</div>
+	</div>
+</section>
+<section data-id="1ea265d4435e16f2623993a86a90e558">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="62e544b022561392cda7cbcf6c08bf4d">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2 class=""><span>Изменение DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="236959bc74da999597432dee078b9e72">
+		<div class="sl-block-content fragment" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui" data-fragment-index="0">
+			<p>Мы можем:</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 491px; left: 442px; top: 268px;"
+	     data-block-id="5f331e60603d8a7812acd67825bd9324">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 13; text-align: left; color: rgb(255, 255, 255);">
+			<ul>
+				<li class="fragment" data-fragment-index="1">
+					<p><span style="font-size:32px">создавать</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="2">
+					<p><span style="font-size:32px">добавлять и перемщать</span></p>
+				</li>
+				<li class="fragment" data-fragment-index="3">
+					<p><span style="font-size:32px">удалять</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="image"
+	     style="min-width: 30px; min-height: 30px; width: 400.772946859903px; height: 340px; left: 23px; top: 243px;"
+	     data-block-id="c4ccf8cfe670d93c57b757774e7796a6">
+		<div class="sl-block-content" style="z-index: 14;"><img data-natural-width="244" data-natural-height="207"
+		                                                        data-src="img/re.jpeg">
+		</div>
+	</div>
+</section>
+<section data-id="8127a50a2e0c86635dd7db8a51ad2e6d">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="e7188b268f549ddf504113ba57cdcc82">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2 class=""><span>Изменение DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="ce323a70cf8bce949f2119fc4c7021df">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Создание элемента</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code"
+	     style="min-width: 30px; min-height: 30px; width: 489px; height: 406px; left: 24px; top: 234px;"
+	     data-block-id="3b65cef302b890824411924ba74d2d4b">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>var nodeName = 'div',
+    element = document.createElement(nodeName);
+
+console.log(element);
+
+// &lt;div&gt;&lt;/div&gt;
+
+console.dir(element);
+
+/*
+div
+    accessKey: ""
+    align: ""
+    attributes: NamedNodeMap
+    baseURI: (...)
+    childElementCount: 0
+    classList: DOMTokenList[0]
+    className: ""
+    ...
+*/</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 366px; left: 560px; top: 305px;"
+	     data-block-id="08fd535243b99206dc506d41cc603b90">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<p>Создание элемента происходит через визов метода createElement у document и принимает <span
+					style="color:rgb(255, 255, 255)">nodeName</span> в качестве обязательного параметра</p>
+		</div>
+	</div>
+</section>
+<section data-id="abbe384a2688f8dc2eee3a4f03befcf3">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="b3ea9cb785e6033b8c0f26021785f39f">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2 class=""><span>Изменение DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="934c614c9a88a390eac8ae76613220ed">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Добавление и перемещение</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 406px; left: 24px; top: 235px;"
+	     data-block-id="3f6dd72f112fd82233022da8531c2afb">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+var nodeName = 'div',
+    element = document.createElement(nodeName),
+    parent = document.body;
+
+parent.appendChild(element);
+
+console.log(parent.lastChild);
+// &lt;div&gt;&lt;/div&gt;
+parent.insertBefore(parent.lastChild, 
+                    parent.firstChild);
+
+console.log(parent.firstChild);
+// &lt;div&gt;&lt;/div&gt;
+
+parent.replaceChild(parent.lastChild, 
+                    element);</code></pre></div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 366px; left: 560px; top: 196px;"
+	     data-block-id="bdba7421640d51158be98c5013c31b95">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 14; font-size: 80%;">
+			<p><span style="font-size:20px">Добавлять элементы можно двумя методами:</span></p>
+
+			<ol>
+				<li><span style="font-size:20px">appendChild - добавляет новый элемент в конец;</span></li>
+				<li><span style="font-size:20px">insertBefore - добавляет новый элемент перед элементом который передается вторым параметром. Также этим методом можно перемещать элементы у родителя;</span>
+				</li>
+				<li><span style="font-size:20px; line-height:26px">replaceChild - заменить дочерний элемент.</span></li>
+			</ol>
+		</div>
+	</div>
+</section>
+<section data-id="251d45fcfd793b9314a92882aa9a7b33">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="3b988d75b0ddb2bf78f1bf9f4bf68718">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2 class=""><span>Изменение DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="e08685c47dd9232ea0dee9300191a6b5">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Удаление</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 406px; left: 24px; top: 234px;"
+	     data-block-id="8c88bea0fccce277d57ea2a07a8d32e5">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+var nodeName = 'div',
+    element = document.createElement(nodeName),
+    parent = document.body;
+
+parent.appendChild(element);
+
+/*
+* наш маленький element...
+* делал что то важноэ...
+* но он нам надоел,
+* и мы его люстрируэм.
+*/
+
+parent.removeChild(element)</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 366px; left: 560px; top: 234px;"
+	     data-block-id="25b42576aaa82ffcaef21b01ee84dc23">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<p><span style="font-size:32px">Удаление элементов проходит посредством вызова метода removeChild у parent, который принимает в качестве обязательного параметра сам nodeElemnt который требуется удалить.</span>
+			</p>
+		</div>
+	</div>
+</section>
+<section data-id="f34dd7c4a13538ad378d47491fd28afb">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="28f204deeffa609415e118f200b7dde7">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2><span>Работа с элементами DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="8484a26a38cc1149313ec7ba6aab7393">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Работа с атрибутами</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="ee0e01a1a89fe02ae5a227ff29ba8f02">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+
+var nodeName = 'a',
+    anchor = document.createElement(nodeName),
+    parent = document.body;
+
+anchor.id = 'someId';
+anchor.href = 'http://google.com';
+
+parent.appendChild(element);
+
+anchor.className = "visited";
+
+anchor.className += " red";
+</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 394px; left: 560px; top: 234px;"
+	     data-block-id="2cc7d883b14e6a34be28b66d152dc096">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<p><span style="font-size:32px">Со стандартными атрибутами можно роботать по одноименным атрибутам. Исключение представляет атрибут class в html, так как class является зарезервировнным словом JS.</span>
+			</p>
+		</div>
+	</div>
+</section>
+<section data-id="afb066ff5cbda886f07a5b248007c594">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="e8afde8382ca9a0b6dcb5662f2087fd0">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2><span>Работа с элементами DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="41fb723d4ca18080ddf8fe95b0deae5d">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Работа с атрибутами</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="3bd29cf028ff833058426e4389d80e25">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+
+
+var nodeName = 'a',
+    anchor = document.createElement(nodeName),
+    parent = document.body;
+
+anchor.setAttribute('data-attr',
+                    'some attr value');
+
+console.log(anchor.getAttribute('data-attr'));
+
+// 'some attr value'</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 423px; left: 531px; top: 319px;"
+	     data-block-id="9cfb336e091dc3fd16f2aadfe287e19d">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<ul>
+				<li>setAttribute - устанавливает атрибут</li>
+				<li>getAttribute - получает значение атрибута</li>
+			</ul>
+
+			<p> </p>
+		</div>
+	</div>
+</section>
+<section data-id="2bb8ad7f89203798f989a0efbd8c5b4c">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="bf88a4d40af1881d2a41f8bb8adf33cc">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2><span>Работа с элементами DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="4dbf783310ee841d4686119b9e997702">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Кастомные атрибуты</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="439a70c70f1fd14b9536e691899046f0">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+var nodeName = 'a',
+    anchor = document.createElement(nodeName),
+    parent = document.body;
+
+anchor.setAttribute('data-attr',
+                    'some attr value');
+
+console.log(anchor.dataset.attr);
+// 'some attr value'
+
+anchor.dataset.attr = 'some new value';
+
+console.log(anchor.dataset.attr);
+// 'some new value'
+</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 423px; left: 531px; top: 319px;"
+	     data-block-id="1c3598ef64ba428145303c6c4a20fb71">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<ul>
+				<li class="fragment" data-fragment-index="0">"data-" - префикс против конфликтов</li>
+				<li class="fragment" data-fragment-index="1">dataset - объект для работы с кастомными атрибутами</li>
+				<li class="fragment" data-fragment-index="2">dataset - быстрее </li>
+			</ul>
+
+			<p> </p>
+		</div>
+	</div>
+</section>
+<section data-id="6718fba5d36c32c53f9dbee90779a9aa">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="270ea4348a7ca8d102c3a4596528464b">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 10;" dir="ui">
+			<h2><span>Работа с элементами DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="60e43fac2456a578512d7632de1a241f">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 11; text-align: center;" dir="ui">
+			<p>classList</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="86d9314c320245874ba2734eac76c4a8">
+		<div class="sl-block-content fragment" style="z-index: 12; border-width: 1px;" data-fragment-index="1"><pre
+				class="javascript"><code>
+
+
+var nodeName = 'a',
+    anchor = document.createElement(nodeName),
+    parent = document.body;
+
+anchor.className = "visited";
+
+anchor.className += " red";
+
+anchor.classList.add('specific-class');
+anchor.classList.remove('specific-class');
+anchor.classList.toggle('specific-class');
+anchor.classList.contains('specific-class');
+
+console.log(anchor.classList)
+// ['visited', 'red', 'specific-class']</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 394px; left: 560px; top: 234px;"
+	     data-block-id="f5be6b777804e2c3c9f1da68c61f3d9b">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+			<ul>
+				<li style="font-size: 32px; line-height: 41.5999984741211px;" class="fragment" data-fragment-index="0">
+					className - стар и неудобен
+				</li>
+				<li style="font-size: 32px; line-height: 41.5999984741211px;" class="fragment" data-fragment-index="1">
+					classList - объект для работы с классами
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="95c4af0513e8f26d017a124f82256a24">
+		<div class="sl-block-content fragment" style="z-index: 0; border-width: 1px;" data-fragment-index="0"><pre
+				class="javascript"><code>
+
+
+var nodeName = 'a',
+    anchor = document.createElement(nodeName),
+    parent = document.body;
+
+anchor.className = "visited";
+
+anchor.className += " red";
+</code></pre>
+		</div>
+	</div>
+</section>
+<section data-id="1c471a6f7820e1d8d154b3c2b9b32c96">
+	<div class="sl-block" data-block-type="text" style="width: 954px; left: 0px; top: 70px; height: auto;"
+	     data-block-id="f145cfdba0d5239071fc9045dc464a15">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text"
+		     style="text-align: center; z-index: 11;" dir="ui">
+			<h2><span>Работа с элементами DOM</span></h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 78px; top: 157px; height: auto;"
+	     data-block-id="0dbbc9be3d7a01af16355f574fb1e784">
+		<div class="sl-block-content" data-placeholder-tag="p"
+		     data-placeholder-text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec metus justo. Aliquam erat volutpat."
+		     style="z-index: 12; text-align: center;" dir="ui">
+			<p>Работа с атрибутами</p>
+		</div>
+	</div>
+
+
+	<div class="sl-block" data-block-type="code" style="width: 491px; height: 410px; left: 24px; top: 234px;"
+	     data-block-id="a199d575963f17e397897f0c34c60b64">
+		<div class="sl-block-content" style="z-index: 13; border-width: 1px;"><pre class="javascript"><code>
+
+
+
+var nodeName = 'input',
+    element = document.createElement(nodeName),
+    parent = document.body;
+
+element.style.width = '160px';
+element.value = 'some val';
+
+element.offsetWidth
+element.offsetHeight
+
+// ...
+
+</code></pre>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text" style="height: auto; width: 423px; left: 531px; top: 303px;"
+	     data-block-id="976aa9ff9c26454b882aa910d02d174d">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+			<p>Таким же образом можно работать со всеми свойствами и атрибутами html элементов в DOM, что позволит нам
+				динамически менять наш документ.</p>
+		</div>
+	</div>
+</section>
+<section data-id="3f46ce90c593152a3262393fa14d0a7d">
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;"
+	     data-block-id="c6dab94cea76465a96626eba3ae72cd9">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text">
+			<h2>Пожалуй, на этом все</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="image" style="width: 700px; height: 525px; left: 129px; top: 124px;"
+	     data-block-id="815fbf20175082904940193fcd6da4a5">
+		<div class="sl-block-content"><img data-natural-width="400" data-natural-height="300"
+		                                   data-src="img/d39566077d8af3ebee098c2ad682cba790d1ce3006a119a6fc6b7079b59c49f0.jpg">
+		</div>
+	</div>
+</section>
+<section>
+	<div class="sl-block" data-block-type="text" style="width: 800px; left: 79px; top: 50px; height: auto;"
+	     data-block-id="de6d9894a34b0cf1066a5e77832457d9">
+		<div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+			<h2>Задание</h2>
+		</div>
+	</div>
+	<div class="sl-block" data-block-type="text"
+	     style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 120px; top: 117px;"
+	     data-block-id="e49a4746bb8e556d19a636e669bc508d">
+		<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text"
+		     style="z-index: 12; color: rgb(255, 255, 255);" dir="ui">
+			<p style="text-align:left">Создать функцию которая будет принимать два пареметра:<br>
+				1. nameNode или node<br>
+				2. текст или node<br>
+				по первому параметру будет создавать элемент,<br>
+				по второму будет или добавлять текст или дочерний элемент</p>
+
+			<p style="text-align:left"> </p>
+
+			<p style="text-align:left">myFunc('div', 'some text');</p>
+
+			<p style="text-align:left">myFunc(currentSection, 'some text');</p>
+
+			<p style="text-align:left"><span style="color:rgb(255, 255, 255); text-align:left">myFunc(</span><span
+					style="color:rgb(255, 255, 255); text-align:left">currentSection, newSection</span><span
+					style="color:rgb(255, 255, 255); text-align:left">);</span></p>
+
+			<p style="text-align:left"><span style="color:rgb(255, 255, 255); text-align:left">myFunc(</span><span
+					style="color:rgb(255, 255, 255); text-align:left">'div', newSection</span><span
+					style="color:rgb(255, 255, 255); text-align:left">);</span></p>
+		</div>
+	</div>
+</section>
+</div>
+</div>
+
+<script src="main.js" type="text/javascript"></script>
+<script>
+	Reveal.initialize({
+		controls: true,
+		progress: true,
+		history: true,
+		mouseWheel: false,
+
+		autoSlide: SLConfig.deck.auto_slide_interval || 0,
+		autoSlideStoppable: true,
+
+		rollingLinks: false,
+		center: SLConfig.deck.center || false,
+		loop: SLConfig.deck.should_loop || false,
+		rtl: SLConfig.deck.rtl || false,
+
+		transition: SLConfig.deck.transition,
+		backgroundTransition: SLConfig.deck.background_transition
+	});
+
+	if(window.hljs) hljs.initHighlightingOnLoad();
+
+</script>
+
+
+</body>
+</html>

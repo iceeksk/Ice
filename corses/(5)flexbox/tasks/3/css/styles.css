@@ -1,0 +1,36 @@
+header{
+	height: 100px;
+	background: tomato;
+}
+.container{
+	display: flex;
+	flex-flow: column;
+}
+article{
+	height: 200px;
+}
+nav{
+	background: yellowgreen;
+}
+aside{
+	background: gold;
+}
+footer{
+	height: 100px;
+	background: #dadada;
+}
+
+@media all and (min-width: 640px){
+	.container{
+		flex-flow: row;
+	}
+	nav, aside{
+		width: 100px;
+	}
+	nav{
+		order: -1;
+	}
+	article{
+		flex: 1;
+	}
+}

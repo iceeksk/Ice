@@ -1,0 +1,26 @@
+function stepen(item, step){
+    if (step == 0){
+    	return 1;
+    }
+    else {
+    	return item * stepen(item, step - 1);
+    }
+};
+console.log(stepen(2,4));
+
+
+function stepen1(item, step){
+	return step !== 0 ? item * stepen1(item, step - 1) : 1;
+};
+console.log(stepen1(2,4));
+
+
+function factorial(item){
+	if (item == 0){
+    	return 1;
+    }
+    else {
+    	return item * factorial(item - 1);
+    }
+};
+console.log(factorial(5));

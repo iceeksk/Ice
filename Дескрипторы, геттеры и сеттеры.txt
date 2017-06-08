@@ -1,0 +1,147 @@
+Object.defineProperty(obj, prop, descriptor)
+Аргументы:
+
+obj
+Объект, в котором объявляется свойство.
+prop
+Имя свойства, которое нужно объявить или модифицировать.
+descriptor
+Дескриптор — объект, который описывает поведение свойства.
+В нём могут быть следующие поля:
+
+value — значение свойства, по умолчанию undefined
+writable — значение свойства можно менять, если true. По умолчанию false.
+configurable — если true, то свойство можно удалять, а также менять его в дальнейшем при помощи новых вызовов defineProperty. По умолчанию false.
+enumerable — если true, то свойство просматривается в цикле for..in и методе Object.keys(). По умолчанию false.
+get — функция, которая возвращает значение свойства. По умолчанию undefined.
+set — функция, которая записывает значение свойства. По умолчанию undefined.
+
+
+var user = {};
+
+// 1. простое присваивание
+user.name = "Вася";
+
+// 2. указание значения через дескриптор
+Object.defineProperty(user, "name", { value: "Вася", configurable: true, writable: true, enumerable: true });
+
+/////////////////////////////////////// перезапись обекта (set) ////////////////////////////
+
+var user = {
+  firstName: "Вася",
+  surname: "Петров"
+};
+
+Object.defineProperty(user, "fullName", {
+    
+  get: function() {
+    return this.firstName + ' ' + this.surname;
+  },
+
+  set: function(value) {
+      var split = value.split(' ');
+      this.firstName = split[0];
+      this.surname = split[1];
+    }
+});
+console.log( user.fullName ); //Вася Петров
+user.fullName = "Петя Иванов";
+console.log( user.firstName ); // Петя
+console.log( user.surname ); // Иванов
+console.log( user.fullName ); //Петя Иванов
+
+///////////// предыдущее в литеральной записи//////////////////////////////////
+
+var user = {
+  firstName: "Вася",
+  surname: "Петров",
+
+  get fullName() {
+    return this.firstName + ' ' + this.surname;
+  },
+
+  set fullName(value) {
+    var split = value.split(' ');
+    this.firstName = split[0];
+    this.surname = split[1];
+  }
+};
+
+alert( user.fullName ); // Вася Петров (из геттера)
+
+user.fullName = "Петя Иванов";
+alert( user.firstName ); // Петя  (поставил сеттер)
+alert( user.surname ); // Иванов (поставил сеттер)
+
+/////////////////////////////обеденено несколько методов одним дискриптером//////////////////////////////////
+
+var user = {}
+
+Object.defineProperties(user, {
+  firstName: {
+    value: "Петя"
+  },
+
+  surname: {
+    value: "Иванов"
+  },
+
+  fullName: {
+    get: function() {
+      return this.firstName + ' ' + this.surname;
+    }
+  }
+});
+
+alert( user.fullName ); // Петя Иванов
+
+/////////////////////////////////////////////////////////////////////////////////
+
+function User(fullName) {
+    this.fullName = fullName;
+    
+    Object.defineProperty(this, "firstName", {    
+        get: function() {
+            var arr =  this.fullName.split(" ");
+            return arr[0];
+        },
+        set: function(value) {    		
+       		this.fullName = value + " " + this.lastName;       		
+    	}
+    });   
+    
+    Object.defineProperty(this, "lastName", {    
+        get: function() {
+            var arr =  this.fullName.split(" ");
+            return arr[1];
+        },
+        set: function(value) {    		
+       		this.fullName = this.firstName + " " + value;       		
+    	}
+    }); 
+    
+//   Object.defineProperties(this, {//
+//    firstName: {//
+//      get: function() {
+//        return this.fullName.split(' ')[0];
+//      },
+//      set: function(newFirstName) {
+//        this.fullName = newFirstName + ' ' + this.lastName;
+//      }
+//    },
+//    lastName: {//
+//      get: function() {
+//        return this.fullName.split(' ')[1];
+//      },//
+//      set: function(newLastName) {
+//        this.fullName = this.firstName + ' ' + newLastName;
+//      }
+//   }
+//  });    
+};
+
+var vasya = new User("Василий Попкин");
+console.log(vasya.firstName);
+
+vasya.firstName = "Vova";
+console.log(vasya.fullName);

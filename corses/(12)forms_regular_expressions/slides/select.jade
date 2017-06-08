@@ -1,0 +1,27 @@
+section.slide#select
+	div
+		h2
+			| Элемент&nbsp;
+			code &lt;select&gt;
+		p Раскрывающийся список, список с множественным выбором
+
+		.split
+			div
+				pre
+					code &lt;select name="students" multiple&gt;
+					code	&lt;option value="Tom"&gt;Tom&lt;option/&gt;
+					code	&lt;option value="Michel"&gt;Michel&lt;option/&gt;
+					code	&lt;option value="Helen" selected&gt;Helen&lt;option/&gt;
+					code &lt;select/&gt;
+			.right
+				.example
+					div
+						select()
+							option(value='Tom') Tom
+							option(value='Michel') Michel
+							option(value='Helen', selected) Helen
+					div
+						select(multiple)
+							option(value='Tom') Tom
+							option(value='Michel') Michel
+							option(value='Helen', selected) Helen

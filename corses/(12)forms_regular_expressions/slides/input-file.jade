@@ -1,0 +1,15 @@
+section.slide#inputFile
+	div
+		h2
+			code &lt;input&gt;
+			| &nbsp;file
+		p Поле для отправки файла. Атрибут enctype формы должен иметь значени multipart/form-data
+
+		pre
+			code &lt;form enctype="multipart/form-data"/&gt;
+			code	&lt;input type="file" name="picture"/&gt;
+			code ...
+
+		.example
+			form(action='https://www.google.com.ua/search', target='_blank', enctype='multipart/form-data')
+				input(type='file', name="picture")

@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Shower Presentation Engine</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=792, user-scalable=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+		<link rel="stylesheet" href="highlight/styles/github.css">
+		<script src="highlight/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+	</head>
+	<body class="list">
+		<header class="caption">
+			<h1>Constructors, Prototypes, Inheritance</h1>
+			<p>Anna Shavurska</p>
+			<div>
+				<h2>План</h2>
+			<ol style="-webkit-column-count: 3; color: white;" class="plan"></ol>
+		</div>
+	</header>
+	<section class="slide cover" id="Cover">
+		<header>
+			<h2>Constructors, Prototypes, Inheritance</h2>
+			<p>Anna Shavurska, QAP INT</p>
+		</header>
+		<img src="pictures/oop-key.jpg">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+		-->
+		<style>
+			#Cover{
+				background: url('pictures/blur.gif');
+				background-size: 200% 200%;
+			}
+			#Cover img {
+				position: absolute;
+				bottom: 0;
+				top: auto;
+				width: 130%;
+			}
+			.cover header{
+				background: rgba(255, 255, 255, 0.6);
+				width: 100%;
+				height: 30%;
+				padding-top: 20px;
+				-webkit-box-sizing: border-box;
+			}
+			.cover h2 {
+				color: rgba(0, 0, 0, 1);
+				text-align:center;
+				font-size:70px;
+			}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color: black;
+				font-style:italic;
+				font-size:34px;
+			}
+			#Cover p a {
+				color:#FFF;
+			}
+			.slide.cover video,
+			.slide.cover img,
+			.slide.cover object,
+			.slide.cover canvas,
+			.slide.cover iframe {
+				width: 100%;
+			}
+			.left{
+				float: left;
+			}
+			.right{
+				float: right;
+			}
+			.slide{
+				overflow: hidden;
+			}
+			.slide pre code{
+				font-size: 24px;
+			}
+			.columns{
+				display: flex;
+				justify-content: space-between;
+			}
+			.slide .wrong, .slide .correct{
+				padding: 0 20px;
+				display: inline-block;
+				margin-bottom: 30px;
+			}
+			.wrong{
+				background: rgba(255, 0, 0, 0.6);
+			}
+			.correct{
+				background: rgba(8, 160, 8, 0.6);
+			}
+		</style>
+	</section>
+	<section class="slide shout"><div>
+		<h2 style="font-size: 62px;">Object-oriented to the core, <br/>JavaScript features powerful, flexible <br/>OOP capabilities.</h2>
+		<p></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Object-oriented programming (OOP) is a programming paradigm that uses abstraction to create models based on the real world.</h2>
+		<p></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>OOP concepts:</h2>
+		<ul>
+			<li>encapsulation</li>
+			<li>inheritance</li>
+			<li>polymorphism</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Software is</h2>
+		<p>a collection of <span class="correct">cooperating objects </span></p>
+		<p>rather than </p>
+		<p>a collection of <span class="wrong">functions or simply a list of commands</span></p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Benefits:</h2>
+		<ul>
+			<li>flexibility</li>
+			<li>maintainability</li>
+			<li>large-scalability</li>
+			<li>simpler to develop</li>
+			<li>easier to understand later on</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>Custom JavaScript objects</h2>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>1. The class</h2>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>JavaScript has no classes <br/><small style="font-size: 30px;">statement</small></h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>JavaScript uses functions as classes</h2>
+		<pre class="js"><code>
+			var Person = function () {};
+		</code></pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Object creation</h2>
+		<pre class="js">
+			<code>var person1 = new Person();</code>
+			<code>var person2 = new Person();</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Constructor</h2>
+		<ul>
+			<li>Sets the object's properties</li>
+			<li>Calls methods to prepare the object for use</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Constructor Example</h2>
+		<pre class="js">
+			<code>var Person = function () {</code>
+			<code>	console.log('instance created');</code>
+			<code>};</code>
+			<code>var person1 = new Person();</code>
+			<code>var person2 = new Person();</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Constructor </h2>
+		<ul>
+			<li>There is no object being created explicitly.</li>
+			<li>The properties and method are assigned directly onto the this object.</li>
+			<li>There is no return statement.</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Properties</h2>
+		<pre class="js">
+			<code>var Person = function (firstName) {</code>
+			<code>	this.firstName = firstName; // add properties</code>
+			<code>	console.log('Person instantiated');</code>
+			<code>};</code>
+			<code>var person1 = new Person('Alice');</code>
+			<code>var person2 = new Person('Bob');</code>
+			<code>console.log('person1 is ' + person1.firstName); // logs "person1 is Alice"</code>
+			<code>console.log('person2 is ' + person2.firstName); // logs "person2 is Bob"</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>this</h2>
+		<p>Refers to the current object, lets you work with properties from within the object</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>new</h2>
+		<ol>
+<li>Create a new object.</li>
+<li>Assign the this value of the constructor to the new object (so this points to the new object).</li>
+<li>Execute the code inside the constructor (adds properties to the new object).</li>
+<li>Return the new object.</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Methods</h2>
+		<ul>
+			<li>Functions of object, it's <mark>behavior</mark></li>
+			<li>To define a method, assign a function to a named property</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Methods Example</h2>
+		<pre class="js">
+			<code>var Person = function (firstName) {</code>
+			<code>	this.firstName = firstName;</code>
+			<code>	this.sayName = function(){  // add methods</code>
+			<code>		console.log(this.firstName);</code>
+			<code>	};</code>
+			<code>};</code>
+			<code>var person1 = new Person('Alice');</code>
+			<code>person1.sayName(); // logs "Alice"</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Methods Example Problem</h2>
+		<pre class="js">
+			<code>var person1 = new Person('Alice');</code>
+			<code>var person2 = new Person('Bob');</code>
+			<code>person1.sayName == person2.sayName;  // false</code>
+		</pre>
+		<p class="wrong" style="margin-top: 20px;">Memory consuming</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Prototype</h2>
+		<ul>
+			<li>Each function is created with a <mark>prototype</mark> property</li>
+			<li>Object containing properties and methods</li>
+			<li>Available to instances of a particular reference type</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Prototype Example</h2>
+		<pre class="js">
+			<!-- <code>var Person = function (firstName) {</code>
+			<code>	this.firstName = firstName;</code>
+			<code>};</code> -->
+			<code>Person.prototype.sayName = function(){  // add to prototype</code>
+			<code>		console.log(this.firstName);</code>
+			<code>};</code>
+			<code>Person.prototype.planet = 'Earth';</code>
+			<code>var person1 = new Person('Alice');</code>
+			<code>person1.sayName(); // logs "Alice"</code>
+			<code>console.log(person1.planet); // logs "Earth"</code>
+		</pre>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>2. Inheritance</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance</h2>
+		<p>is a way to create a class as a specialized version of one or more classes</p>
+		<img src="pictures/howworks.jpg" height="360" width="480">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance</h2>
+		<p>In JavaScript you do this by <mark>assigning</mark> an instance <br/>of the parent class to the child class, 	
+		and then <mark>specializing</mark></p>
+		<img src="pictures/topiarist.gif" height="301" width="300">
+	</div></section>
+	<section class="slide"><div>
+		<h2>Object.create()</h2>
+		<p>Creates a new object with the specified prototype object and properties.</p>
+		<pre class="js">
+			<code>Object.create(proto[, propertiesObject])</code>
+			<code>var parent = {</code>
+			<code>	name: "Bob",</code>
+			<code>	age: 45</code>
+			<code>};</code>
+			<code>var child = Object.create(parent);</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance: Constructor Stealing</h2>
+		<pre class="js">
+			<code>function Student(firstName, subject) {</code>
+			<code>	// Call the parent constructor, making sure (using Function#call)</code>
+			<code>	// that "this" is set correctly during the call</code>
+			<code>	Person.call(this, firstName);</code>
+			<code>	// Initialize our Student-specific properties</code>
+			<code>	this.subject = subject;</code>
+			<code>};</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance: Prototypal</h2>
+		<pre class="js">
+			<code>Person.prototype.sayName = function(){  // add to prototype</code>
+			<code>		console.log(this.firstName);</code>
+			<code>};</code>
+			<code>Person.prototype.walk = function(){  // add to prototype</code>
+			<code>		console.log('I'm walking!');</code>
+			<code>};</code>
+			<code>Person.prototype.planet = 'Earth';</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance: Prototypal</h2>
+		<pre class="js">
+			<code>Student.prototype = Object.create(Person.prototype);</code>
+			<code>// Set the "constructor" property to refer to Student</code>
+			<code>Student.prototype.constructor = Student;</code>
+			<code>Student.prototype.sayHello = function(){</code>
+			<code>	console.log("Hello, I'm " + this.firstName + ". I'm studying " + this.subject);</code>
+			<code>};</code>
+			<code>Student.prototype.sayGoodBye = function(){</code>
+			<code>	console.log("Goodbye!");</code>
+			<code>};</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inheritance: Prototypal</h2>
+		<pre class="js">
+			<code>var student1 = new Student("Janet", "Applied Physics");</code>
+			<code>student1.sayHello();   // "Hello, I'm Janet. I'm studying Applied Physics"</code>
+			<code>student1.walk();       // "I am walking!"</code>
+			<code>student1.sayGoodBye(); // "Goodbye!"</code>
+			<code>// Check that instanceof works correctly</code>
+			<code>console.log(student1 instanceof Person);  // true </code>
+			<code>console.log(student1 instanceof Student); // true</code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>OOP</h2>
+		<ul>
+			<li>Encapsulation</li>
+			<li>Abstraction</li>
+			<li>Polymorphism</li>
+		</ul>
+	</div></section>
+	<section class="slide"><div>
+		<h2></h2>
+		<pre class="js">
+			<code></code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Thank you</h2>
+		<pre class="js">
+			<code></code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Завдання</h2>
+		<p>
+			Реалізувати базовий тип Монстр та типи КотоМонстр, ПтахоМонстр.
+			Кожен з монстрів має життя, розмір нанесення удару іншому монстру, вміє говорити своє ім'я та ранити інших монстрів.
+		</p>
+	</div></section>
+	
+	
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+	-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<script src="contents.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

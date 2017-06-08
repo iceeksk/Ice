@@ -1,0 +1,68 @@
+function Person(age, name, wight, sex){
+    this.age = age;
+    this.name = name;
+    this.wight = wight;
+    this.sex = sex;     
+ }
+
+Person.prototype.power = function(){
+    var ifCan = Math.floor(Math.random() * 2 + 1 );   
+	      if (this.sex == "man" && ifCan == 2){             
+     		  return "push-ups from the floor";
+ 		  }else if (this.sex == "man" && ifCan == 1){
+   			  return "Invalid";
+  		  }else{
+          	  return "paint nails";
+          }
+}
+
+var igor = new Person(24, "Igor", 55, "man"),
+	masha = new Person(22, "Masha", 45, "woman"),
+   	sasha = new Person(23, "Sasha", 80, "man"),
+	ola = new Person(26, "Ola", 85, "woman"),
+	pasha = new Person(32, "Pasha", 145, "man");
+
+
+
+console.log(igor.power);
+console.log(masha.power());
+console.log(sasha.power());
+console.log(pasha.power());
+console.log(ola.power());
+
+
+---------- тоже самое но другая запись ------------------------------------------------------
+
+
+function Person(age, name, wight, sex){
+    this.age = age;
+    this.name = name;
+    this.wight = wight;
+    this.sex = sex;    
+    if (typeof this.power != "function"){
+ 		Person.prototype.power = function(){
+     	  var ifCan = Math.floor(Math.random() * 2 + 1 );   
+	      if (this.sex == "man" && ifCan == 2){             
+     		  return "push-ups from the floor";
+ 		  }else if (this.sex == "man" && ifCan == 1){
+   			  return "Invalid";
+  		  }else{
+          	  return "paint nails";
+          }
+		}
+	}
+}
+
+var igor = new Person(24, "Igor", 55, "man"),
+	masha = new Person(22, "Masha", 45, "woman"),
+    sasha = new Person(23, "Sasha", 80, "man"),
+	ola = new Person(26, "Ola", 85, "woman"),
+	pasha = new Person(32, "Pasha", 145, "man");
+
+
+
+console.log(igor.power());
+console.log(masha.power());
+console.log(sasha.power());
+console.log(pasha.power());
+console.log(ola.power());

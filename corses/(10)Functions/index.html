@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<title>Функции в JavaScript</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="styles/pages.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Функції</h1>
+		<p>Анна Шавурська, <a href="http://qapint.com" target="_blank">QAP Int</a></p>
+		<div>
+			<h2>План</h2>
+			<ol style="-webkit-column-count: 3; color: white;" class="plan"></ol>
+		</div>
+	</header>
+
+	<section class="slide shout">
+		<div>
+			<h2>Функції</h2>
+			<p>Анна Шавурська, QAP Int</p>
+		</div>
+	</section>
+
+	<section class="slide shout">
+		<div>
+		<figure>
+			<blockquote>
+				<p style="font-size: 34px;">
+				People think that computer science is the art of geniuses but
+				the actual reality is the opposite, just many people doing things
+				that build on each other, like a wall of mini stones.
+				</p>
+			</blockquote>
+			<figcaption>
+				Donald Knuth
+			</figcaption>
+		</figure>
+		</div>
+	</section>
+    <section class="slide">
+        <div>
+            <figure>
+                <blockquote>
+                    <p style="font-size: 36px;">
+                        One of the more powerful, and often confusing, parts of JavaScript is function expressions.
+                    </p>
+                </blockquote>
+                <figcaption>
+                    Nicholas C. Zakas
+                </figcaption>
+            </figure>
+        </div>
+    </section>
+
+	<section class="slide shout" id="mathfn">
+		<div>
+			<h2><em>f</em> (x)</h2>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<div>
+			<h2>Функція - зв'язок між даними</h2>
+
+			<pre>
+				<code>f(x) = kx + b</code>
+				<code>y = f(x)</code>
+			</pre>
+			<p>
+                Це правило, яке кожному елементу з першої множини (області визначення) ставить у відповідність
+                один і тільки один елемент з другої множини.
+            </p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Лінійна функція</h2>
+			<pre>
+				<code>f(x) = 3x + 1</code>
+				<code>y = f(x)</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Аналогічно і в JavaScript</h2>
+			<pre>
+				<code>function y(x){</code>
+				<code>    return 3 * x + 1;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Оголошення функції</h2>
+			<pre>
+				<code>function <span class="next"><strong>total</strong>(count, price)</span> <span class="next">{</span></code>
+				<code class="next">    // тіло функції</code>
+				<code class="next">    return count * price;</code>
+				<code class="next">}</code>
+			</pre>
+
+			<p class="next">Function Declaration (оголошення)</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Інший варіант</h2>
+			<pre>
+				<code>var total = function(count, price) {</code>
+				<code>    // тіло функції</code>
+				<code>    return count * price;</code>
+				<code>}<mark>;</mark></code>
+			</pre>
+			<p class="next">Function Expression (вираз)</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Конструктор Function</h2>
+			<pre>
+				<code>var fnName = <mark>new Function</mark> ([arg1, arg2, ... argn],</code>
+				<code>					functionBody);</code>
+				<code>var setBGColor = new Function(</code>
+				<code>		"document.bgColor = 'antiquewhite'");</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Викликати функцію</h2>
+			<pre><code>doSomething();</code></pre>
+			<pre class="next"><code>process(4, true, 'hello');</code></pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Аргументи</h2>
+			<ul>
+				<li>Дані будь-якого типу.</li>
+				<li>Використовуються всередині функції як звичайні змінні.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Ключове слово <code>return</code></h2>
+			<p>Перериває виконання функції і повертає результат.</p>
+			<pre>
+				<code>var totalCost = total(3, 15);</code>
+				<code class="next">console.log(totalCost); // 45</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Функція як аргумент</h2>
+			<pre>
+				<code>function funcA(){</code>
+				<code>    console.log('function A was called');</code>
+				<code>}</code>
+			</pre>
+			<pre class="next">
+				<code>function funcB(anotherFunc){</code>
+				<code>    console.log('function B was called');</code>
+				<code>    anotherFunc(); // 'function A was called'</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Функція як аргумент</h2>
+			<pre>
+				<code>funcB(funcA);</code>
+			</pre>
+			<pre>
+				<code class="next">'function B was called'</code>
+				<code class="next">'function A was called'</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Функція як аргумент</h2>
+			<pre>
+				<code>funcB(function(){</code>
+				<code>    console.log('another function was called');</code>
+				<code>});</code>
+			</pre>
+		</div>
+	</section>
+
+    <section class="slide">
+        <div>
+            <h2>Анонімна функція </h2>
+            <p>
+                Особливий вид функцій, які оголошуються в місці використання і не отримують унікального
+                ідентифікатора для доступу до них.
+            </p>
+            <pre>
+				<code>funcB(<mark>function(){</mark></code>
+				<code>    <mark>console.log('another function was called');</mark></code>
+				<code><mark>}</mark>);</code>
+			</pre>
+        </div>
+    </section>
+
+    <section class="slide">
+		<div>
+			<h2>Функція як підпрограма</h2>
+			<ul>
+				<li>Перевикористання алгоритмів.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Функція як підпрограма</h2>
+			<pre>
+				<code>function greet(name){</code>
+				<code>    alert('Hello ' + name);</code>
+				<code>}</code>
+
+				<code class="next">greet('Alex');</code>
+				<code class="next">greet('Vlad');</code>
+				<code class="next">greet('Ksu');</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Змінні всередині функції - локальні</h2>
+			<pre>
+				<code>function justDoSomething(number){</code>
+				<code>    var x = 10;</code>
+
+				<code>    alert(x * number);</code>
+				<code>}</code>
+
+				<code>alert(x); // undefined</code>
+				<code>alert(number); // undefined</code>
+			</pre>
+		</div>
+	</section>
+
+    <!-- область видимости -->
+
+	<section class="slide">
+		<div>
+			<h2>Область видимості визначається функцією</h2>
+			<pre>
+				<code>function funcA(x){</code>
+				<div class="next">
+					<code>    var funcB = function(){</code>
+					<code>            var y = 13;</code>
+					<code>            console.log(y);</code>
+					<code>        };</code>
+					<code> </code>
+				</div>
+				<code class="next">    funcB();</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Область видимості</h2>
+			<pre>
+				<code>function funcA(x){</code>
+				<div class="next">
+					<code>    var funcB = function(){</code>
+					<code>            console.log(x);</code>
+					<code>        };</code>
+					<code> </code>
+				</div>
+				<code class="next">    funcB();</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<!-- Замыкание -->
+
+	<section class="slide">
+		<div>
+			<h2>Замикання - Closure</h2>
+            <p>Функції, що мають доступ дозмінних з інших функцій.</p>
+			<pre>
+				<code>function counter(){</code>
+				<code class="next">    var index = 0;</code>
+				<div class="next">
+					<code>    return function(){</code>
+					<code>        index = index + 1;</code>
+					<code>        return index;</code>
+					<code>    };</code>
+				</div>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+    <section class="slide">
+        <div>
+            <h2>Використання</h2>
+			<pre>
+				<code>var myCounter = counter();</code>
+				<code class="next">myCounter() // 1</code>
+				<code class="next">myCounter() // 2</code>
+				<code class="next">myCounter() // 3</code>
+			</pre>
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/closure.jpg" alt="" width="100%"/>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Функція як об'єкт першого класу -<br/> first-class citizen</h2>
+            <ul>
+                <li>Може бути збережений в <mark>змінні</mark>.</li>
+                <li>Може бути переданий в функцію як <mark>аргумент</mark>.</li>
+                <li>Може бути повернутий з функції як <mark>результат</mark>.</li>
+                <li>Може бути створений під час <mark>виконання</mark> програми.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Функція вищого порядку</h2>
+            <p>
+                Функція, що приймає в якості агрументу іншу функцію
+            </p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>JavaScript отримав цю ідеологію під впливом мови Scheme</h2>
+
+       <!--      <p>
+                Повноцінна підтримка для лексичного контексту функцій першого порядку була введена в Scheme, і пропонує
+                обробку посилань на функції як замикань замість чистих, що в свою чергу, робить необхідним застосування
+                прибирання сміття.
+            </p> -->
+        </div>
+    </section>
+
+	<section class="slide">
+        <div>
+            <h2>Коли створювати функції</h2>
+			<ol>
+				<li>Дублювання</li>
+				<li>Функціональніть, що заслуговує на окрему функцію</li>
+				<li>Single Responsibility</li>
+				<li>YAGNI</li>
+			</ol>
+        </div>
+    </section>
+
+	<section class="slide">
+        <div>
+            <h2>Чисті функції</h2>
+			<p>Функція, що не має жодних побочних ефектів</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Завдання 1</h2>
+
+            <p>
+                Написати функцію, що буде приймати на вхід число та буде повертати
+                середнє арифметичне всіх чисел, що були введені.
+                Приклад:<br/>
+                <pre>
+                    <code>myAvg(2); // 2</code>
+                    <code>myAvg(4); // 3</code>
+                    <code>myAvg(12); // 6</code>
+			    </pre>
+            </p>
+        </div>
+    </section>
+
+	<section class="slide">
+		<div>
+			<h2>Список аргументів</h2>
+			<pre>
+				<code>function printAll(){</code>
+				<code>    var i;</code>
+				<code>    for(i = 0; i &lt; arguments.length; i++){</code>
+				<code>        console.log(arguments[i]);</code>
+				<code>    }</code>
+				<code>}</code>
+				<code class="next">printAll(1, 2, 3);</code>
+				<code class="next">printAll('a', 'b', 'c', 'd');</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Є в нас об'єкт</h2>
+
+			<pre><code>var rectangle = { width: 10, height: 20 };</code></pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Потрібно порахувати площу</h2>
+
+			<pre class="next">
+				<code>function area(width, height){</code>
+				<code>    return width * height;</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Додамо в об'єкт</h2>
+
+			<pre>
+				<code>rectangle.area = function(){</code>
+				<div class="next">
+					<code>    return rectangle.width * rectangle.height;</code>
+					<code>};</code>
+				</div>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Додамо в об'єкт</h2>
+
+			<pre>
+				<code>rectangle.area = function(){</code>
+				<code>    return <mark>this</mark>.width * <mark>this</mark>.height;</code>
+				<code>};</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2><code>this</code> &mdash; контекст виконання</h2>
+
+			<pre>
+				<code>function showContext(){</code>
+				<code>    console.log(this);</code>
+				<code>}</code>
+				<code class="next">showContext(); // window</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2><code>this</code> &mdash; контекст виконання</h2>
+
+			<pre>
+				<code>var obj = {};</code>
+				<code class="next">obj.method = showContext;</code>
+				<code class="next">obj.method(); // obj</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Метод <code>call</code></h2>
+
+		    <pre>
+		    	<div class="next">
+		    		<code>function process(x){</code>
+		    		<code>    return this.number * x;</code>
+		    		<code>}</code>
+		    	</div>
+		    	<div class="next">
+		    		<code>var obj1 = { number: 13 },</code>
+		    		<code>    obj2 = { number: 0 };</code>
+		    	</div>
+		    	<code class="next">process.call(obj1, 2); // 13 * 2 = 26</code>
+		    	<code class="next">process.call(obj2, 2); // 0 * 2 = 0</code>
+		    </pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Метод <code>apply</code></h2>
+
+			<pre>
+				<code>function process(<mark>a, b, c</mark>){</code>
+				<code>    return a + b + c;</code>
+				<code>}</code>
+				<code class="next">var numbers = <mark>[1, 2, 3]</mark>;</code>
+				<code class="next">process.apply(this, numbers); // 1 + 2 + 3 = 6</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Метод <code>bind</code></h2>
+
+			<pre>
+				<code>function getContext(){</code>
+				<code>    return this;</code>
+				<code>}</code>
+				<code class="next">var obj = { name: 'Alex' };</code>
+				<code class="next">var changed = getContext.bind(obj);</code>
+				<code class="next">changed(); <span class="next">// obj</span></code>
+			</pre>
+		</div>
+	</section>
+
+	 <section class="slide">
+		<div>
+			<h2>Рекурсія</h2>
+
+			<p>Можливість функції викликати саму себе</p>
+
+			<pre class="next">
+				<code>function <mark>factorial</mark>(number){</code>
+				<code>    return n == 0 ? 1 : n * <mark>factorial</mark>(n - 1);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>І ще один приклад...</h2>
+
+			<pre>
+				<code>function addSome(<mark>a</mark>){</code>
+				<div class="next">
+					<code>    return function(<mark>b</mark>){</code>
+					<code class="next">        return <mark>a + b</mark>;</code>
+					<code>    };</code>
+				</div>
+				<code>}</code>
+				<code class="next">var func = addSome(<mark>2</mark>);</code>
+				<code class="next">func(<mark>4</mark>); // 4 + 2 = 6</code>
+			</pre>
+		</div>
+	</section>
+
+    <section class="slide">
+        <div>
+            <h2>Карування -  currying</h2>
+
+            <p>Преображення функції від багатьох аргументів в функцію, котра приймає свої аргументи по одному.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Карування -  currying</h2>
+			<pre>
+				<code>add(2, 3);</code>
+				<code>var addTwo = function(b){</code>
+				<code>	return add(2, b);</code>
+				<code>}</code>
+				<code>addTwo(3)</code>
+			</pre>
+        </div>
+    </section>
+
+	<section class="slide">
+		<div>
+			<h2>Immediately-Invoked Function Expression</h2>
+
+			<pre>
+				<code>(function(){</code>
+				<code>    // code</code>
+				<code>})();</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Бувають в житті розчарування</h2>
+
+			<pre>
+				<code>for(var i = 0; i &lt; 10; i++){</code>
+				<div class="next">
+					<code>    setTimeout(function(){</code>
+					<code>        console.log(i);</code>
+					<code>    }, 1000);</code>
+				</div>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Вирішення</h2>
+
+			<pre>
+				<code>for(var i = 0; i &lt; 10; i++){</code>
+				<code class="next">    (function(e){</code>
+				<code>        setTimeout(function(){</code>
+				<code>            console.log(e);</code>
+				<code>        }, 1000);</code>
+				<code class="next">    })(i);</code>
+				<code>}</code>
+			</pre>
+		</div>
+	</section>
+
+    <section class="slide">
+        <div>
+            <h2>Завдання 2</h2>
+
+            <ul>
+                <li>
+                    Створити два об'єкти з методами. Викликати метод першого об'єкта в контексті другого,
+                    передаючи аргументи окремо, а метод другого об'єкта виконати в контексті першого,
+                    передаючи аргументи у вигляді масива.
+                </li>
+                <li>
+                    Створиту функцію дгугого об'єкта таку, щоб вона виконувала функцію першого об'єкта в контексті другого.
+                </li>
+                <li>
+                	Стфорити функцію: <br/>
+                	sum (1, 2, 3, 25) - повертає суму всіх переданих елементів
+                </li>
+            </ul>
+        </div>
+    </section>
+
+	<section class="slide shout">
+		<div>
+			<h2>Питання</h2>
+		</div>
+	</section>
+
+	<p class="badge"><a href="https://github.com/shower/shower" target="_blank">Powered by Shower</a></p>
+	<div class="progress"><div></div></div>
+
+	<script src="shower/shower.js"></script>
+	<script src="examples.js"></script>
+	<script src="contents.js"></script>
+</body>
+</html>

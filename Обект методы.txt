@@ -1,0 +1,107 @@
+///////////////////////////////////////////////////////////////
+
+var calculator = {
+   item1: 0,
+   item2: 0,
+   sum: function(){
+    	return (+this.item1) + (+this.item2);
+   },
+   read: function(){
+    	this.item1 = prompt();   
+      this.item2 = prompt();
+   },
+   mul: function(){
+    	return this.item1 * this.item2;
+   }
+}
+
+calculator.read();
+console.log(calculator.sum());
+console.log(calculator.mul());
+console.log(calculator.item1);
+console.log(calculator.item2);
+
+//////////////////////////---- при помощи конструктора  -------///////////////////////
+
+var Calculator = function(){
+   item1 = 0;
+   item2 = 0;
+   this.sum = function(){
+    	return (+this.item1) + (+this.item2);
+   };
+   this.read = function(){
+    	this.item1 = prompt();   
+      this.item2 = prompt();
+   };
+  this.mul = function(){
+    	return this.item1 * this.item2;
+   };
+}
+
+var calculator = new Calculator();
+calculator.read();
+
+console.log( "Сумма = " + calculator.sum() );
+console.log( "Произведение = " + calculator.mul() );
+
+/////////////////////////////////////////////////////////////////////////
+
+function Accumulator(startingValue) {
+  this.value = startingValue;
+
+  this.read = function() {
+    this.value += +prompt('Сколько добавлять будем?', 0);
+  };
+
+}
+
+var accumulator = new Accumulator(1);
+accumulator.read();
+accumulator.read();
+alert( accumulator.value );
+
+////////////////////////////---   Конструктор калькулятора  -----///////////////////////////////
+
+
+var Calculator = function(){
+    
+    var metods = {
+    	"+": function(a,b){return a + b;},
+        "-": function(a,b){return a - b;}
+    };
+    
+	this.calculate = function(str){
+    	var arr = str.split(" "),
+            a = +arr[0],
+            b = +arr[2],
+            mathematicalOperation = arr[1];
+        	return metods[mathematicalOperation](a,b);
+    };
+    
+    this.addMethod = function(operation, func){
+        metods[operation] = func;    
+    };    
+} 
+
+
+var calc = new Calculator;
+var powerCalc = new Calculator;
+
+
+powerCalc.addMethod("*", function(a, b) {
+  return a * b;
+});
+powerCalc.addMethod("/", function(a, b) {
+  return a / b;
+});
+powerCalc.addMethod("**", function(a, b) {
+  return Math.pow(a, b);
+});
+
+console.log(calc.calculate("2 + 3"));
+console.log(calc.calculate("2 - 3"));
+console.log(powerCalc.calculate("2 * 3"));
+console.log(powerCalc.calculate("2 / 3"));
+console.log(powerCalc.calculate("2 ** 3"));
+
+////////////////////////////////////////////////////////////////////////////////////////////////

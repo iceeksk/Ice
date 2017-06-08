@@ -1,0 +1,33 @@
+sub{
+	vertical-align: sub;
+	font: initial;
+	font-size: initial;
+}
+
+.inverse{
+	background: black;
+}
+.inverse *{
+	color: white;
+}
+.poster{
+	display: block;
+	margin: 0 auto;
+}
+.cover h2{
+	background: black;
+	color: white;
+	float: left;
+	padding: 0.2em 0.3em;
+}
+
+#disclaimer h2{
+	color: red;
+	text-align: center;
+}
+#disclaimer::after{
+	opacity: 0;
+}
+#shit img{
+	height: 100%;
+}

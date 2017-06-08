@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://output.jsbin.com/ruhahu/1/quiet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2015 by paullewis (http://jsbin.com/ruhahu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+  <title>JS Bin</title>
+
+<style id="jsbin-css">
+button {
+  padding: 10px;
+  border-radius: 3px;
+  border: none;
+  background: #222;
+  color: #FFF;
+  margin-bottom: 40px;
+  display: block;
+}
+
+#color-block {
+  width: 300px;
+  height: 300px;
+  background: red;
+  transform: translateZ(0);
+  position: relative;
+  z-index: 0;
+}
+
+#totes-promoted {
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 100px;
+  left: 30px;
+  border: 1px solid black;
+  background: rgba(0,0,0,0.1);
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+  <button>Click me</button>
+  <section id="color-block" style="background: rgb(214, 24, 234);"></section>
+  
+  <section id="totes-promoted" style="background: rgba(0, 0, 0, 0.0980392);">I am the section of interest...</section>
+<script>
+var btn = document.querySelector('button');
+var colorBlock = document.querySelector('#color-block');
+var sectionOfInterest = document.querySelector('#totes-promoted');
+
+btn.addEventListener('click', function() {
+  
+  var r = Math.floor(Math.random() * 255);
+  var g = Math.floor(Math.random() * 255);
+  var b = Math.floor(Math.random() * 255);
+  
+  colorBlock.style.background = 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  
+  sectionOfInterest.style.background = 'rgba(0,0,0,0.1)';
+});
+</script>
+
+</body></html>

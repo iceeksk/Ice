@@ -1,0 +1,196 @@
+var obj = {
+  className: 'open menu'
+}
+
+function addClass(object, value){
+	var keys = Object.keys(object);    
+    var classes = object[keys].split(" ");
+    if(classes.indexOf(value) == -1){
+    	classes.push(value);
+    }       
+    object[keys] = classes.join(" ");
+}
+
+
+function addClass(obj, cls) {
+  var classes = obj.className ? obj.className.split(' ') : [];
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i] == cls) return; 
+  }
+  classes.push(cls);
+  obj.className = classes.join(' '); 
+}
+
+
+addClass(obj, 'new'); // obj.className='open menu new'
+addClass(obj, 'open'); // без изменений (класс уже существует)
+addClass(obj, 'me'); // obj.className='open menu new me'
+
+console.log( obj.className ); // "open menu new me"
+
+//////////////////////////////////////////////////////////////////////////
+
+function camelize(str){
+	var arr = str.split("-");
+    for(var i = 1; i < arr.length; i++){        
+        arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1);        
+    	//var bigLetter = arr[i][0].toUpperCase();
+        //var toArray = arr[i].split("");        
+        //toArray.splice(0, 1, bigLetter);
+        //arr[i] = toArray.join("");        
+    }
+    return arr.join("");
+}
+console.log(camelize("background-color"));
+console.log(camelize("list-style-image") == 'listStyleImage');
+console.log(camelize("-webkit-transition") == 'WebkitTransition');
+
+/////////////////////////////////////////////////////////////////////////
+
+var obj = {
+  className: 'open open menu'
+};
+function removeClass(object, value){
+	var arr = object.className.split(" ");
+    for (var i = 0; i < arr.length; i++){
+    	if(arr[i] == value){
+        	arr.splice(i,1);            
+           	i--;
+        }
+    } 
+    object.className = arr.join(" ");
+}
+
+removeClass(obj, 'open'); 
+removeClass(obj, 'blabla'); 
+console.log(obj);
+
+///////////////////////////////////////////////////////////////////////
+
+arr = [5, 6, 3, 8, 1];
+function filterRangeInPlace(array, min, max){
+	for(var i = 0; i < array.length; i++){
+    	if(array[i] < min || array[i] > max){            
+        	array.splice(i,1);
+            i--;
+        }
+    }
+}
+filterRangeInPlace(arr, 1, 4); // удалены числа вне диапазона 1..4
+console.log(arr); // массив изменился: остались [3, 1]
+
+/////////////////////////////////////////////////////////////////////
+
+var arr = [5, 2, 1, -10, 8];
+
+function ReversSort(a,b){
+	if(a>b){return -1;}
+    if(a<b){return 1;}
+}
+arr.sort(ReversSort);
+
+console.log(arr); // 8, 5, 2, 1, -10
+
+/////////////////////////////////////////////////////////////////////
+
+var arr = ["HTML", "JavaScript", "CSS"],
+	arrSorted = arr.slice().sort();
+
+console.log( arrSorted ); // CSS, HTML, JavaScript
+console.log( arr ); // HTML, JavaScript, CSS (без изменений)
+
+////////////////////////////////////////////////////////////////////
+
+var arr = [1, 2, 3, 4, 5];
+
+function random(a,b){
+    var random = Math.random() - 0.5;
+	if(a>b){return random;}
+    if(a<b){return random;}
+}
+
+arr.sort(random);
+console.log( arr ); // элементы в случайном порядке, например [3,5,1,2,4]
+
+////////////////////////////////////////////////////////////////////////
+
+var vasya = { name: "Вася", age: 23 };
+var masha = { name: "Маша", age: 18 };
+var vovochka = { name: "Вовочка", age: 6 };
+
+var people = [vasya , masha , vovochka];
+
+function sortAge(a,b){    
+	if(a.age > b.age){return 1;}
+    if(a.age < b.age){return -1;}
+}
+people.sort(sortAge);
+// теперь people: [vovochka, masha, vasya]
+console.log(people);
+
+/////////////////////------------------- методы перебора -------------------------/////////////////////////
+
+var arr = [5, 2, 3, 4, 5];
+var result = arr.reduce(function(sum, current) {
+  return sum + current;
+}, 0);
+
+//console.log(result); // 15
+
+//////////////////////////////////////////////////////
+
+var arr = ["Есть", "жизнь", "на", "Марсе"];
+
+//var arrLength = [];
+//for (var i = 0; i < arr.length; i++) {
+//  arrLength[i] = arr[i].length;
+//}
+
+var arrLength = arr.map(function(item){
+	return item.length;
+});
+//console.log(arrLength); // 4,5,2,5
+
+/////////////////////////////////////////////////////
+
+var arr = [ 1, 2, 3, 4, 5 ]
+
+function getSums(arr){
+	var result = []; 	
+    var totalSum = arr.reduce(function(sum, item) {
+    	result.push(sum);
+    	return sum + item;
+  	});
+ 	result.push(totalSum);
+  	return result;
+}
+
+console.log(getSums(arr));
+//getSums(arr) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]
+
+/////////////////////////////////////////////////////////////
+
+function sum() {
+  var result = 0;
+  for (var i = 0; i < arguments.length; i++) {
+    result += arguments[i];
+  }
+  return result;
+}
+
+console.log( sum() ); // 0
+console.log( sum(1) ); // 1
+console.log( sum(1, 2) ); // 3
+console.log( sum(1, 2, 3) ); // 6
+console.log( sum(1, 2, 3, 4) ); // 10
+
+//////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+

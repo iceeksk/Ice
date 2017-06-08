@@ -1,0 +1,70 @@
+var user = {
+  firstName: "Василий",
+  surname: "Петров",
+  patronym: "Иванович"
+};
+
+function showFullName(firstPart, lastPart) {
+  console.log( this[firstPart] + " " + this[lastPart] );
+}
+
+// f.call(контекст, аргумент1, аргумент2, ...)
+showFullName.call(user, 'firstName', 'surname') // "Василий Петров"
+showFullName.call(user, 'firstName', 'patronym') // "Василий Иванович"
+
+////////////////////////////////////////////////////////////////////////
+
+function printArgs() {
+  var join = [].join; // скопируем ссылку на функцию в переменную
+
+  // вызовем join с this=arguments,
+  // этот вызов эквивалентен arguments.join(':') из примера выше
+  var argStr = join.call(arguments, ':');
+
+  console.log( argStr ); // сработает и выведет 1:2:3
+}
+
+printArgs(1, 2, 3);
+
+//////////////////////////////////////////////////////////////////////////
+
+function printArgs() {
+  // вызов arr.slice() скопирует все элементы из this в новый массив
+  var args = [].slice.call(arguments);
+  console.log( args.join(', ') ); // args - полноценный массив из аргументов
+}
+
+printArgs('Привет', 'мой', 'мир'); // Привет, мой, мир
+
+////////////////////////////////////////////////////////////////////////////
+
+var arr = [];
+arr.push(1);
+arr.push(5);
+arr.push(2);
+
+// получить максимум из элементов arr
+console.log( Math.max.apply(null, arr) ); // 5
+
+///////////////////////////////////////////////////////////////////////////
+
+function sumArgs() {
+ 	var args = [].slice.call(arguments), // для аргументов крадем метод масива слайс (создаем новый масив аргументов)
+        sum = args.reduce(function(sum,curent){ // ищем сумму
+        	return sum + curent;
+        })
+    return sum;
+}
+console.log( sumArgs(1, 2, 3, 4) ); // 6, аргументы переданы через запятую, без массива
+
+///////////////////////////////////////////////////////////////////////////
+
+function applyAll(func) {
+    return func.apply(this, [].slice.call(arguments, 1));
+ }
+
+// Применить Math.max к аргументам 2, -2, 3
+console.log( applyAll(Math.max, 2, -2, -3) ); // 3
+
+// Применить Math.min к аргументам 2, -2, 3
+console.log( applyAll(Math.min, 2, -2, -3) ); // -2

@@ -1,0 +1,20 @@
+.container{
+	display: flex;
+}
+.container > div{
+	flex: 1 0 100px;
+	background: gold;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-flow: column;
+}
+.block{
+	height: 100px;
+	width: 60%;
+	background: black;
+	margin: 0 auto;
+}
+button{
+	margin-top: auto;
+}

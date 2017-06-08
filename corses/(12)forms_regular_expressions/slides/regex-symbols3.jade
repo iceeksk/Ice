@@ -1,0 +1,19 @@
+section.slide#regexSymbols3
+	div
+		h2 Спецсимволы
+
+		div
+			strong x|y
+			| &nbsp; Находит x или y
+
+		div
+			code /green|red/
+			| &nbsp; найдет 'green' в "green apple" и 'red' в "red apple."
+
+		div
+			strong {n} {n,} {n,m}
+			| &nbsp; n и m - положительные целые числа. Находит повторяющийся элемент
+
+		div
+			code /a{2}/
+			| &nbsp; не найдет 'a' в "candy," но найдет оба a в "caandy," и первые два 'a' в "caaandy."

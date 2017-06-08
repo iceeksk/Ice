@@ -1,0 +1,68 @@
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+$ git config --list
+	user.name=Scott Chacon
+	user.email=schacon@gmail.com
+	color.status=auto
+	...
+$ git help <команда>
+$ git init
+$ git remote add origin https://github.com/iceeksk/learnGit.git - отправ в удаленный репозиторий
+$ git remote add newOrigin https://github.com/iceeksk/learnGit.git - отправ в удаленный репозиторий НОВЫЙ
+$ git clone git://github.com/schacon/grit.git   mygrit
+$ git status  Определение состояния файлов (показывает что не смержилось и какой конфликт!!!!!!!!)
+$ git add README, $ git add *.txt, $ git add .
+$ git diff 	Чтобы увидеть, что же вы изменили, но пока не проиндексировали, наберите git diff
+$ git diff --cached Если вы хотите посмотреть, что вы проиндексировали и что войдет в следующий коммит, вы можете выполнить		
+$ git commit -m "text"
+$ git commit -a -m 'added new benchmarks' 	(Добавление параметра -a в команду git commit заставляет Git автоматически
+						индексировать каждый уже отслеживаемый на момент коммита файл, позволяя вам обойтись
+						без git add)
+$ git rm readme.txt (Для того чтобы удалить файл из Git, которая также удаляет файл из вашего рабочего каталога)
+$ git rm --cached readme.txt (удалить файл из индекса, оставив его при этом в вашем рабочем каталоге)
+$ git mv file_from file_to переименовать файл в Git
+$ git log 	выводит список коммитов созданных в данном репозитории в обратном хронологическом порядке. 
+		То есть самые последние коммиты показываются первыми. 
+для выхода 2 раза ctrl+z
+$ git log  -p разница комитов
+$ git log -2 	два последних комита
+$ git commit --amend Изменение последнего коммита(довнести в комит)
+$ git commit --amend -m "text" Изменение последнего коммита(довнести в комит и переименовать)
+$ git reset HEAD readme.txt для исключения из индекса. Отмена индексации файла 
+$ git reset --hard <commit> Откатиться к конкретному коммиту
+$ git reset --soft <commit> Аналогично предыдущему, но файлы на диске остаются без изменений:
+$ git checkout -- readme.txt Отмена изменений файла. все сделанные вами изменения в этом файле пропали
+$ git remote -v Чтобы посмотреть, какому URL соответствует сокращённое имя в Git
+$ git remote add pb git://github.com/paulboone/ticgit.git (git remote add [сокращение] [url]:) Добавление удалённых репозиториев
+$ git Fetch и Pull
+$ git push origin master
+$ git remote show origin Инспекция удалённого репозитория
+$ git remote rename pb paul (pb to paul) переименование удалённых репозиториев
+$ git remote rm paul Удаление удалённых репозиториев
+
+$ git branch список ВАШИХ текущих веток, где * ветка на которой вы находитесь в настоящий момент.
+$ git branch --all список ВСЕХ текущих веток, где * ветка на которой вы находитесь в настоящий момент.
+$ git branch testing создается новая ветка testing 
+$ git checkout testing Давайте перейдем на новую ветку testing
+$ git checkout -b testing создается новая ветка testing и сразу переходим на нее
+$ git merge testing Переходим на ветку куда вливаем и пишем ветку которую вливаем
+$ git merge --no-ff testing без накладывания, с отдельным комитом мержа
+$ git branch -d testing удаление ветки(если все комиты слиты!!!!)
+$ git branch -D testing удалит даже если не слили комиты
+$ git branch -v посмотреть последний коммит на каждой из веток
+$ git push origin :serverfix Удаление веток на удалённом сервере
+
+$ git checkout experiment
+$ git rebase master 2 команды для (перемещаем комиты в ветку мастер)
+$ git rebase --onto master server client ( в мастер перемещаю client кототый в server, а server в мастере)
+$ git rebase master server (я в мастере и туда перемещаю)
+$ git cherry-pick eb042098a5 (скопирует сюда комит)
+$ git stash спрятать
+$ git stash save "my_stash" (сорранить с именем "my_stash")
+$ git stash list посмотреть спрятаное
+$ git stash apply применить 
+$ git stash apply stash@{n} (конкретный сташ)
+$ git stash pop stash@{n} (To apply a stash and remove it from the stash stack)
+$ git stash clear очистить
+
+

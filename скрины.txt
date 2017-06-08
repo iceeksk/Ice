@@ -1,0 +1,18 @@
+Обновление скринов:
+
+1) билдим презентацию под эбботт слм  gulp --clm abbott --zip
+
+2) в git Bash например заходим в папку с билдом, выполняем команду, переименовываем архив (file=@vaginorm.zip)
+
+curl -X POST -F file=@vaginorm.zip http://shoter-up.qapint.com
+
+3) на http://shoter-down.qapint.com/presentations/ обнаруживаем свою презентацию
+
+4) а спустя некоторое время на http://shoter-down.qapint.com/       shots    забираем готовые скрины в архиве
+
+
+1) Обновити компоненти і модулі
+2) npm run spa --preview
+3) створити папку presentation, в яку помыстити все з папки build
+4) закинути папку presentation в архів
+5) далі все по-старому

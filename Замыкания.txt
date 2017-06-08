@@ -1,0 +1,181 @@
+function multiplier(factor) {
+	return function(number) {
+		return number * factor;
+	};
+}
+var twice = multiplier(2);
+console.log(twice(2));
+console.log(twice(5));
+
+
+
+
+function counter(){
+	var howMach = 0;    
+    return function(item){        
+    	return howMach += item;        
+    }
+}
+var howMachh = counter();
+console.log(howMachh(5));
+console.log(howMachh(5));
+console.log(howMachh(5));
+
+///////////////////////////////////////////
+
+function sum(a){
+	var summa = a;
+    return function(b){
+    	return summa +=b;
+    }
+}
+
+console.log(sum(1)(2));
+console.log(sum(5)(-1));
+
+///////////////////////////////////////////
+
+function makeCounter() {
+  var currentCount = 1;
+
+  return { // âîçâğàòèì îáúåêò âìåñòî ôóíêöèè
+    getNext: function() {
+      return currentCount++;
+    },
+
+    set: function(value) {
+      currentCount = value;
+    },
+
+    reset: function() {
+      currentCount = 1;
+    }
+  };
+}
+
+var counter = makeCounter();
+
+alert( counter.getNext() ); // 1
+alert( counter.getNext() ); // 2
+
+counter.set(5);
+alert( counter.getNext() ); // 5
+
+/////////////////////////////////////////
+
+function makeBuffer() {
+	var string = "";
+    return function(str){
+    	return string += " " + str;
+    }
+}
+
+var buffer = makeBuffer();
+var buffer1 = makeBuffer();
+
+// äîáàâèòü çíà÷åíèÿ ê áóôåğó
+buffer('Çàìûêàíèÿ');
+buffer('Èñïîëüçîâàòü');
+buffer('Íóæíî');
+buffer1('Íóæíî');
+
+
+// ïîëó÷èòü òåêóùåå çíà÷åíèå
+console.log( buffer("!") ); // Çàìûêàíèÿ Èñïîëüçîâàòü Íóæíî!
+console.log( buffer1("!") );
+
+/////////////////////////////////////////////////////////////////
+
+
+function makeBuffer() {
+	var string = "";
+    function buffer(str){
+        if(arguments.length == 0){
+        	return string; 
+        }
+    	return string += " " + str;
+    };
+    buffer.clear = function(){
+    	string = "";
+    }
+    return buffer;
+}
+
+var buffer = makeBuffer();
+
+// äîáàâèòü çíà÷åíèÿ ê áóôåğó
+buffer('Çàìûêàíèÿ');
+buffer('Èñïîëüçîâàòü');
+buffer('Íóæíî');
+
+
+console.log(buffer("!")); // Çàìûêàíèÿ Èñïîëüçîâàòü Íóæíî!
+buffer.clear();
+console.log(buffer());
+
+//////////////////////////////////////////////////////////////////////
+
+var users = [{
+  name: "Âàñÿ",
+  surname: 'Èâàíîâ',
+  age: 20
+}, {
+  name: "Ïåòÿ",
+  surname: '×àïàåâ',
+  age: 25
+}, {
+  name: "Ìàøà",
+  surname: 'Ìåäâåäåâà',
+  age: 18
+}];
+
+
+function byField(value){
+	return function(a,b){
+    	return a[value] > b[value] ? 1 : -1;        
+    }
+}
+
+users.sort(byField("name"));
+users.forEach(function(user) {
+  alert( user.name );
+}); // Âàñÿ, Ìàøà, Ïåòÿ
+
+
+users.sort(byField("age"));
+users.forEach(function(user) {
+  alert( user.name );
+}); // Ìàøà, Âàñÿ, Ïåòÿ
+
+
+////////////////////////////////////////////////////////////////////////
+
+function filter(arr, func) {
+	return arr.filter(func)
+}
+    
+function inBetween(a, b) {
+	return function(number) {
+        return (number >= a) && (number <= b);
+     }
+}
+    
+function inArray(arr) {
+	return function(number) {
+        return arr.indexOf(number) != -1;
+    }
+}
+
+var arr = [1, 2, 3, 4, 5, 6, 7];
+
+console.log(filter(arr, function(a) {
+  return a % 2 == 0
+})); // 2,4,6
+
+console.log(filter(arr, inBetween(3, 6))); // 3,4,5,6
+
+console.log(filter(arr, inArray([1, 2, 10]))); // 1,2
+
+console.log(arr);
+
+/////////////////////////////////////////////////////////////////////

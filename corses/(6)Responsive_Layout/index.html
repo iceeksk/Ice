@@ -1,0 +1,476 @@
+﻿<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+<header class="caption">
+	<h1>Responsive, Adaptive Layout</h1>
+	<p>Anna Shavurska</p>
+</header>
+<section class="slide cover" id="Cover">
+	<div>
+		<h2>Responsive, Adaptive Layout<br/>
+			<small>Anna Shavurska</small>
+		</h2>
+		<img src="pictures/responsive.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2{
+				color: #FFF;
+				text-align: center;
+				font-size: 70px;
+				top: 0;
+				position: absolute;
+				background: rgba(0, 0, 0, 0.7);
+				width: 100%;
+				left: 0;
+				line-height: 40px;
+				padding-top: 23px;
+			}
+			#Cover small{
+				font-size: 20px;
+			}
+			#Cover p a{
+				color: #FFF;
+			}
+			.cover img{
+				width: 100%;
+			}
+			.slide{
+				overflow: hidden;
+			}
+			.slide img.bottom{
+				bottom: 0;
+				top: auto;
+			}
+		</style>
+	</div>
+</section>
+<!--<section class="slide">
+	<div>
+		<ol>
+			<li>Про мене</li>
+			<li>План заняття</li>
+			<li>Проблематика</li>
+			<li>Визначення адаптивного, responsive дизайну</li>
+			<li>Типи макетів, місце в ньому адаптивного</li>
+			<li>Напрямки адаптивної верстки
+				<ul>
+					<li>Progressive enhancement</li>
+					<li>Graceful degradation</li>
+					<li>Mobile first</li>
+					<li>Grids</li>
+				</ul>
+			</li>
+			<li>Прийоми верстки адаптиних сайтів
+				<ul>
+					<li>Media queries</li>
+					<li>Fonts</li>
+					<li>...</li>
+				</ul>
+			</li>
+			<li>Практика</li>
+		</ol>
+	</div>
+</section>-->
+
+<!-- <section class="slide">
+	<div>
+		<h2>Про мене</h2>
+		<ul>
+			<li>Team Lead команди Cobalt</li>
+			<li>Люблю красивий код, програмувати, свою роботу</li>
+		</ul>
+	</div>
+</section> -->
+
+<!--<section class="slide">
+	<div>
+		<h2>План заняття</h2>
+	</div>
+</section>-->
+
+<section class="slide cover">
+	<div>
+		<img src="pictures/web.png" alt="">
+	</div>
+</section>
+<section class="slide cover">
+	<div>
+		<img src="pictures/theWeb.jpg" alt="">
+	</div>
+</section>
+<section class="slide cover">
+	<div>
+		<img src="pictures/theWeb1.jpg" alt="">
+	</div>
+</section>
+<section class="slide cover">
+	<h2 style="font-size:74px; line-height: 73px; color: white; background: black; text-align: center;">
+		<mark>2,1 млрд</mark> людей користуються інтернетом з мобільних пристроїв.
+	</h2>
+	<img class="bottom" src="pictures/people.jpg" alt="">
+	<p style="font-size:33px; line-height: 40px; color: white; background: black; position: absolute; bottom: 10px; margin: 0; width: 100%;">
+		Згідно Звіту Міжнародного Союзу Електрозв'язку ООН за 2013 рік.
+	</p>
+</section>
+<section class="slide">
+	<div>
+		<h2 style="margin-bottom: 20px;">Частка користувачів інтернету в світі</h2>
+		<img class="bottom" src="pictures/graphic1.jpg" alt="">
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2 style="margin-bottom: 20px;margin-top: -55px;">Частка користувачів інтернету в розвинутих країнах</h2>
+		<img class="bottom" src="pictures/graphic2.jpg" alt="">
+	</div>
+</section>
+<section class="slide shout grow">
+	<div>
+		<h2 style="font-size:76px;">Для чого втрачати таку велику кількість користувачів?</h2>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<ul>
+			<li style="font-size:46px;">Давайте верстати для мобільних пристроїв також!</li>
+			<li style="font-size:46px;" class="next">Що для цього потрібно?</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2 style="margin-bottom: 20px;margin-top: -55px;">Навіть пусте полотно створює <br/>обмеження для роботи художника</h2>
+		<img src="pictures/sheet.jpg" alt="" />
+	</div>
+</section>
+<section class="slide cover">
+	<h2>Мережа - це гнучкість</h2>
+	<img src="pictures/agile.jpg" alt="" />
+</section>
+<section class="slide">
+	<div>
+		<h2>Архітектура, що пристосовується</h2>
+		<img src="pictures/archit.png" alt="" />
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Адаптивний веб-дизайн<br />(Responsive Web Design)</h2>
+		<p>
+			&dash; дизайн веб-сторінок, що забезпечує відмінне відображення сайту на
+			<mark>різноманітних пристроях</mark>, підключених до інтернету, і динамічно
+			<mark>підлаштовується</mark>
+			під задані розміри вікна.
+		</p>
+		<!--		<p>
+					Адаптивный дизайн – это техника, при которой создается один сайт для разных разрешений экрана, а так же адаптация элементов взаимодействия пользователя с продуктом.
+				</p>-->
+	</div>
+</section>
+
+<section class="slide cover">
+	<h2 style="font-size:80px; line-height: 82px; color: white;">Фіксовані макети - px</h2>
+	<img class="bottom" src="pictures/fixed-static-layout.png" alt="">
+</section>
+<section class="slide cover">
+	<h2 style="font-size:80px; line-height: 82px; color: white;">Резинові макети - %</h2>
+	<img class="bottom" src="pictures/liquid-layout.png" alt="">
+</section>
+<section class="slide cover">
+	<h2 style="font-size:72px; line-height: 82px; color: white;">Адаптивні макети - px + media-queries</h2>
+	<img class="bottom" src="pictures/adaptive-layout.png" alt="">
+</section>
+<section class="slide cover">
+	<h2 style="font-size:72px; line-height: 82px; color: white;">Responsive макети - % + media-queries</h2>
+	<img class="bottom" src="pictures/responsive-layout.png" alt="">
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Інгредієнти</h2>
+		<ul>
+			<li>Гнучкий макет на основі сітки.</li>
+			<li>Гнучкі зображення.</li>
+			<li>Медіазапити (media queries).</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Гнучкий макет на основі сітки.</h2>
+		<ul>
+			<li>Гнучкі шрифти.</li>
+			<li>Гнучкий контент.</li>
+			<li>Гнучкі поля і відступи.</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Гнучкі зображення.</h2>
+		<ul>
+			<li>background-size: % %;</li>
+			<li>width: %;</li>
+			<li>max-width: %;</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>W3C</h2>
+		<blockquote>
+			<p>
+				By using media queries, presentations can be tailored to a specific range of output devices without changing the content itself.
+			</p>
+		</blockquote>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Медіазапит складається з </h2>
+		<ul>
+			<li>медіа типу</li>
+			<li>щонайменше з одного виразу, що обмежує область видимості CSS</li>
+		</ul>
+		<pre>
+			<code>@media (max-width: 600px) {</code>
+			<code>  .facet_sidebar {</code>
+			<code>      display: none;</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Медіазапит: приклади</h2>
+		<pre>
+			<code>@media (max-width: 600px) {</code>
+			<code>  .facet_sidebar {</code>
+			<code>      display: none;</code>
+			<code>  }</code>
+			<code>}</code>
+		</pre>
+		<pre>
+			<code>&lt;link rel="stylesheet" href="wide.css" <br/>media="screen and (min-width: 1024px)" /&gt;</code>
+		</pre>
+		<pre>
+			<code><link rel="stylesheet" href="wide.css" media="screen and (min-width: 1024px)" /></code>
+		</pre>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Медіа тип</h2>
+		<pre>
+			<code>@media &lt;media types&gt;{</code>
+			<code>  /* media-specific rules */</code>
+			<code>}</code>
+		</pre>
+		<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">https://developer.mozilla.org/en-US/docs/Web/CSS/@media</a>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>Медіа тип - приклади</h2>
+		<pre>
+			<code>@media print {</code>
+			<code>  body { font-size: 10pt }</code>
+			<code>}</code>
+			<code>@media screen {</code>
+			<code>  body { font-size: 13px }</code>
+			<code>}</code>
+			<code>@media screen, print {</code>
+			<code>  body { line-height: 1.2 }</code>
+			<code>}</code>
+		</pre>
+	</div>
+</section>
+<section class="slide">
+	<div style="padding: 50px 70px 0;bottom: 0;right: 0;width: auto;height: auto;">
+		<h2>Медіазапит: логічні оператори</h2>
+		<ul>
+			<li>
+				and
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media (min-width: 700px) and (orientation: landscape) { ... }</code>
+					<code style="font-size: 90%">@media tv and (min-width: 700px) and (orientation: landscape) { ... }</code>
+				</pre>
+			</li>
+			<li>
+				розділені комою (or)
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media (min-width: 700px), handheld and (orientation: landscape) { ... }</code>
+				</pre>
+			</li>
+			<li>
+				not
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media not screen and (color), print and (color) { ... }</code>
+				</pre>
+			</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div style="padding: 50px 70px 0;bottom: 0;right: 0;width: auto;height: auto;">
+		<h2>Media features</h2>
+		<ul>
+			<li>
+				aspect-ratio, device-aspect-ratio
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media screen and (min-aspect-ratio: 1/1) { ... }</code>
+				</pre>
+			</li>
+			<li>
+				orientation
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media all and (orientation: portrait) { ... }</code>
+				</pre>
+			</li>
+			<li>
+				device-height, device-width, height, width
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media screen and (max-device-width: 799px) { ... }</code>
+				</pre>
+			</li>
+			<li>
+				resolution
+				<pre style="margin: 0 0 20px;">
+					<code style="font-size: 90%">@media print and (min-resolution: 300dpi) { ... }</code>
+				</pre>
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section class="slide">
+	<div>
+		<h2>Можливості, доступні при використанні десктопного інтернету?</h2>
+		<img src="pictures/mac.jpg" alt="" width="44%">
+		<ul style="float: left;">
+			<li>Великий екран</li>
+			<li>Швидкий інтернет</li>
+			<li>Клавіатура</li>
+			<li>Мишка</li>
+			<li>Зручне місце для роботи/відпочинку.</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<h2 style="margin:5px 5px 20px;">Можливості, доступні при використанні <br />мобільного інтернету?</h2>
+	<img src="pictures/mobile.jpg" alt="" width="66%" style="float:left;">
+	<ul style="float: left;margin-left: 44px;line-height: 105px;font-size: 30px;">
+		<li>Маленький екран</li>
+		<li>Повільний інтернет</li>
+		<li>Пальці</li>
+		<li>Сенсори</li>
+		<li>Не зручне місце</li>
+	</ul>
+</section>
+<section class="slide cover">
+	<h2 style="font-size:80px; line-height: 106px; color: white; background: black;">І ще раз про місце використання...</h2>
+	<img class="bottom" src="pictures/metro.jpg" alt="">
+</section>
+
+<section class="slide cover">
+	<h2 style="font-size:80px; line-height: 106px; color: white; background: black;">Фокус</h2>
+	<img style="top: 12%; width: 104%; left: -10px;" src="pictures/man.jpg" alt="">
+
+	<p style="font-size:40px; line-height: 40px; color: white; position:absolute; bottom: 10px; margin: 0; padding: 5px 10px; background: black;">
+		Розмір екрану дозволяє зусередитись на головному і використовувати з розумом дефіцитне місце.
+	</p>
+</section>
+<section class="slide cover" style="background: white;">
+	<h2 style="font-size:80px; line-height: 106px; color: white; background: black;">Швидкодія</h2>
+	<img style="top: 17%; width: 56%; left: 20%;" src="pictures/tortoise.jpg" alt="">
+
+	<p style="font-size:40px; line-height: 40px; color: white; position:absolute; bottom: 10px; margin: 0; padding: 5px 10px; background: black;">
+		Повільна швидкість інтернету заставляє задуматись про швидкість завантаження вашого проекту.
+	</p>
+</section>
+<section class="slide" style="background: white;">
+	<div>
+		<h2>
+			А це означає:
+		</h2>
+		<ul>
+			<li>Використання меншої кількості картинок.</li>
+			<li>Оптимізація файлів, що підключаються.</li>
+			<li>Використання картинок меншої "ваги".</li>
+			<li>Продумування коду для більш швидкого завантаження проекту.</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>
+			Progressive Enhancement
+		</h2>
+		<ul>
+			<li>HTML етап</li>
+			<li>CSS етап</li>
+			<li>CSS3 етап</li>
+			<li>JavaScript етап</li>
+		</ul>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>
+			Progressive Enhancement 1
+		</h2>
+		<img src="pictures/progress1.png" alt="" />
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>
+			Progressive Enhancement 2
+		</h2>
+		<img src="pictures/progress2.png" alt="" />
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>
+			Progressive Enhancement 3
+		</h2>
+		<img src="pictures/progress3.png" alt="" />
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<h2>
+			Graceful Degradation - відмовостійкість
+		</h2>
+		<img src="pictures/degradation.png" alt="" width="600"/>
+	</div>
+</section>
+<section class="slide">
+	<div>
+		<img src="pictures/thanks.jpg" alt="" width="600"/>
+	</div>
+</section>
+<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+<!--
+	To hide progress bar from entire presentation
+	just remove вЂњprogressвЂќ element.
+	-->
+<div class="progress">
+	<div></div>
+</div>
+<script src="shower/shower.min.js"></script>
+<!-- Copyright В© 2014 Yours Truly, Famous Inc. -->	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

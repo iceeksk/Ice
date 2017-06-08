@@ -1,0 +1,3 @@
+продуктовые
+
+билд на компе(pull - rimfaf - npm i - bower i ) команда для билда gulp --clm abbott --zip потом заливка на https://storage-fullsb.qapint.com/Product

@@ -1,0 +1,99 @@
+function Animal(type) {
+  this.type = type;
+};
+
+var animal = new Animal("Король");
+ 
+
+function Rabbit(name) {
+  this.name = name;
+};
+Rabbit.prototype = animal;
+var rabbit = new Rabbit("Сеня");
+
+
+function Kapysta(size) {
+  this.size = size;
+};
+Kapysta.prototype = rabbit;
+var kapysta = new Kapysta("Большая");
+
+
+function Morkva(color) {
+  this.color = color;
+};
+Morkva.prototype = kapysta;
+var morkva = new Morkva("Красная");
+
+animal = new Morkva("Black");
+
+console.log(rabbit.type);
+console.log(kapysta.name);
+console.log(morkva.size);
+console.log(animal.color);
+console.log(animal.type);
+console.log(animal.name);
+console.log(animal.size);
+
+
+_________________________________________________________
+
+// 1.наслед обектов
+var animal = {
+  eats: true
+};
+var rabbit = {
+  jumps: true,
+  __proto__: animal //в чем разница
+};
+//rabbit.prototype = animal; //оба работают. в чем разница???
+//rabbit.__proto__ = animal; //оба работают. в чем разница???
+console.log(rabbit.eats);
+
+for (var key in rabbit) {
+  console.log(key + " = " + rabbit[key]); // выводит и "eats" и "jumps"
+}
+//--------------------------------------------------------------------------------
+
+https://learn.javascript.ru/class-inheritance
+
+
+// 1. Конструктор Animal
+function Animal(name) {
+  this.name = name;
+  this.speed = 0;
+}
+// 1.1. Методы -- в прототип
+Animal.prototype.stop = function() {
+  this.speed = 0;
+  console.log(this.name + ' стоит');
+}
+Animal.prototype.run = function(speed) {
+  this.speed += speed;
+  console.log(this.name + ' бежит, скорость ' + this.speed);
+};
+// 2. Конструктор Rabbit
+function Rabbit(name) {
+  this.name = name;
+  this.speed = 0;
+}
+//2.1 можна и так, так как свойства теже
+//function Rabbit(name) {
+// Animal.apply(this, arguments);
+//}
+
+// 2.1. Наследование
+Rabbit.prototype = Object.create(Animal.prototype); // более новый метод! можна не создавать родителя!!!
+Rabbit.prototype.constructor = Rabbit;
+
+// 2.2. Методы Rabbit
+Rabbit.prototype.jump = function() {
+  this.speed++;
+  console.log(this.name + ' прыгает, скорость ' + this.speed);
+}
+
+var rabbit = new Rabbit('Кроль');
+rabbit.stop();
+rabbit.run(10);
+rabbit.jump();
+rabbit.stop();

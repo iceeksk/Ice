@@ -1,0 +1,12 @@
+1) встановити yoman:    npm install -g yo
+
+2) встановити генератор кобальт. Для цього треба склонувати проект Installer https://git.qapint.com/cobalt/installer і запустити install.sh
+
+3) в результаты буде встановлено генератор кобальт https://git.qapint.com/cobalt/generator-cobalt/tree/master
+
+4) перейти в папку installer/generator-cobalt, package.json і замінити "cobalt": "git+ssh://git@git.qapint.com:cobalt/engine.git" на  "cobalt": "git+ssh://git@git.qapint.com:cobalt/engine.git#feature/abbott-optimization-product"
+
+5) в папці з генератором виконати npm install
+6) перейти в папку з презентацією і виконати yo cobalt:update 
+
+yo cobalt:update оновлює папки engine, env/spa, index.html, gulpfile.js. Після виконання команди в консолі буде запропоновано замінити вже існуючі файли. Замінювати потрібно лише файли які знаходяться в папці env/spa.

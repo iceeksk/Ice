@@ -1,0 +1,19 @@
+section.slide#inputCheckbox
+	div
+		h2
+			code &lt;input&gt;
+			| &nbsp;checkbox
+		p Флажок
+
+		pre
+			code &lt;input type="checkbox" name="ppt" value="ppt"/&gt;
+			code &lt;input type="checkbox" name="pdf" value="pdf"/&gt;
+			code &lt;input type="checkbox" name="txt" value="txt"/&gt;
+
+		.example
+			input#ppt(type='checkbox', name='ppt', value='ppt')
+			label(for='ppt') PPT
+			input#pdf(type='checkbox', name='pdf', value='pdf')
+			label(for='pdf') PDF
+			input#txt(type='checkbox', name='txt', value='txt')
+			label(for='txt') TXT

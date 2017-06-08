@@ -1,0 +1,106 @@
+﻿В JavaScript любые текстовые данные являются строками. Не существует отдельного типа «символ».
+Строки создаются при помощи двойных или одинарных кавычек var text = "моя строка";
+
+Специальные символы
+\n	New line
+
+экранирование
+Если строка в одинарных кавычках, то внутренние одинарные кавычки внутри должны быть экранированы, то есть снабжены обратным слешем \', вот так:
+var str = 'I\'m a JavaScript programmer';
+
+Методы и свойства
+var str = "My Lesson";
+
+Длина length
+alert(str.length) // 9
+
+var r = 10;
+console.log(r.toString()); //"10"  перевести в строку(без аргумента в десятичную или с указанием системы исчесления)
+console.log(r.toString(2)); // "1010"
+
+Доступ к символам
+alert(str.charAt(0)); // "M"
+alert(str.[0]); // "M"
+
+Методы toLowerCase() и toUpperCase() меняют регистр строки на нижний/верхний:
+alert(str.toUpperCase()); // "MY LESSON"
+
+Поиск подстроки
+alert(str.indexOf("s")); // 5
+alert(str.indexOf("s",5)); // 6  Необязательный второй аргумент позволяет искать, начиная с указанной позиции
+alert(str.lastIndexOf("s")); //6  ищет с конца
+
+Найти все таргеты
+var str = "Ослик Иа-Иа посмотрел на виадук"; // ищем в этой строке
+var target = "Иа"; // цель поиска
+var pos = 0;
+while (true) {
+  var foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+  console.log( foundPos ); // нашли на этой позиции
+  pos = foundPos + 1; // продолжить поиск со следующей
+}
+
+Взятие подстроки: substr, substring, slice.
+alert(str.substring(0,1)); // "М", символы с позиции 0 по 1 не включая 1. (нет второго до конца)
+alert(str.substr(3,4)); // "Less", со 2-й позиции 4 символа (нет второго до конца)
+
+slice также как и substring НО ПРИНИМАЕТ Отрицательные значения
+alert( "testme".substring(-2) ); // "testme", -2 становится 0
+alert( "testme".slice(-2) ); // "me", от 2 позиции с конца
+alert( "testme".slice(1, -1) ); // "estm", от 1 позиции до первой с конца.
+
+split()
+var arr = str.split([separator][, limit]); Метод split возвращает новый массив. Строка бьется по separator, при разбивании separator пропадает и второй необязательный аргумент максимальное количиство. Если separator не указан или совпадений нет, то возвращаемый массив состоит из одного элемента - исходной строки.
+var str ="a b с d"
+str.split(' ',2);  // ["a", "b"]
+
+concat()
+Выполняет действие, аналогичное оператору + для строк.
+var a = "строка",
+b = " очень",
+с = " длинная";
+alert(a.concat(b,c)) // строка очень длинная
+
+replace()
+Чтобы заменить вхождение подстроки в строке на другую подстроку, вы можете использовать replace():
+var slugger = "Josh Hamilton";
+var betterSlugger = slugger.replace("h Hamilton", "e Bautista");
+console.log(betterSlugger); // "Jose Bautista"
+Первый аргумент — то, что вы хотите заменить и второй аргумент — новая строка. Функция заменяет только первое вхождение подстроки в строку.
+Чтобы заменить все вхождения, нужно использовать регулярное выражение с глобальным флагом:
+var myString = "She sells automotive shells on the automotive shore";
+var newString = myString.replace(/automotive/g, "sea");
+console.log(newString); // "She sells sea shells on the sea shore"
+
+
+
+ЗАДАЧИ 
+1) Напишите функцию ucFirst(str), которая возвращает строку str с заглавным первым символом, например:
+BigFirstLetter("вася") // "Вася";
+
+
+function ucFirst(str) {
+  // только пустая строка в логическом контексте даст false
+  if (!str) return str;
+  return str[0].toUpperCase() + str.slice(1);
+}
+console.log( ucFirst("вася") );
+
+2) Есть строчка var str = "#######"; Вывести в консоль с ее томощю елочку
+#
+##
+###
+####
+#####
+######
+
+
+
+
+ var str = "#######",
+    i = 6;
+while (i > 0){
+	console.log(str.substring(i));
+    i--;
+}

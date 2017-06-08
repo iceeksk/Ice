@@ -1,0 +1,505 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>html5</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Misha Mykhalyuk</h1>
+		<p>QAP, 2015</p>
+	</header>
+	<section class="slide cover" id="frontPage">
+		<div>
+			<h2>HTML 5</h2>
+			<h2>структура та семантика</h2>
+			<div class="author">
+				<p>Misha Mykhalyuk, QAP courses 2015</p>
+				<span>mim@qapint.com</span>
+			</div>
+		</div>
+		<style>
+			#frontPage{
+				background: #fff;
+			}
+			#frontPage h2,
+			#frontPage h3{
+				text-align: center;
+			}
+			#frontPage .author{
+				position: absolute;
+				bottom: 10px;
+				right: 100px;
+			}
+			#frontPage .author p{
+				margin-bottom: 0;
+				line-height: 10px
+			}
+			#frontPage .author span{
+				font-size: 20px;
+  				color: #333;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>agenda</h2>
+			<ul>
+				<li>Deprecated tags</li>
+				<li>Structure semantic elements</li>
+				<li>Text level semantic elements</li>
+				<li>Embedded media</li>
+				<li>Interactivity </li>
+			</ul>
+		</div>
+	</section>
+
+    <section class="slide">
+		<div>
+			<h2>Deprecated Tags:</h2>
+            <ul>
+                <li>&lt;acronym&gt;</li>
+                <li>&lt;basefont&gt;</li>
+                <li>&lt;big&gt;</li>
+                <li>&lt;center&gt;</li>
+                <li>&lt;strike&gt;</li>
+            </ul>
+		</div>
+	</section>
+
+    <section class="slide semantic">
+        <div>
+            <h2 class="white">Семантика</h2>
+            <img src="pictures/semantics.png" alt="">
+        </div>
+        <style>
+            .semantic img{
+                width: 100%
+            }
+            .semantic h2{
+                margin-bottom: 5px;
+            }
+        </style>
+    </section>
+
+
+	<section class="slide structure">
+		<div>
+			<h2 class="white">Структура HTML 4 сторінки</h2>
+			<img src="pictures/structure-div.gif" alt="">
+		</div>
+		<style>
+			.structure img{
+				width: 100%
+			}
+		</style>
+	</section>
+
+	<section class="slide structure">
+		<div>
+			<h2 class="white">Структура HTML 5 сторінки</h2>
+			<img src="pictures/structure-html5.gif" alt="">
+		</div>
+		<style>
+			.structure img{
+				width: 100%
+			}
+		</style>
+	</section>
+
+	<section class="slide"><div>
+		<h2>Структурні елементи</h2>
+		<ul>
+			<li>&lt;header&gt;</li>
+			<li>&lt;nav&gt;</li>
+			<li>&lt;article&gt;</li>
+			<li>&lt;section&gt;</li>
+			<li>&lt;aside&gt;</li>
+			<li>&lt;footer&gt;</li>
+		</ul>
+	</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>&lt;header&gt;</h2>	
+			<pre>
+				<code><mark>&lt;header&gt;</mark></code>
+				<code>	&lt;p&gt;This is even better semantic HTML5.&lt;/p&gt;</code>
+				<code><mark>&lt;/header&gt;</mark></code>
+			</pre>
+			<p><i>"A header represents a group of introductory or navigational aids."</i></p>
+		</div>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;nav&gt;</h2>	
+			<pre>
+				<code><mark>&lt;nav&gt;</mark></code>
+				<code>	&lt;ul&gt;</code>
+				<code>		&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;</code>
+				<code>		&lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;</code>
+				<code>		&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;</code>
+				<code>	&lt;ul&gt;</code>
+				<code><mark>&lt;/nav&gt;</mark></code>
+			</pre>
+			<p><i>"The nav element represents a section of a page that links to other pages or to parts within the page: a section with navigation links..."</i></p>
+		</div>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;article&gt;</h2>	
+			<pre>
+				<code><mark>&lt;article&gt;</mark></code>
+				<code>	&lt;header&gt;</code>
+				<code>	&lt;/header&gt;</code>
+				<code>	&lt;section&gt;</code>
+				<code>	&lt;/section&gt;</code>
+				<code><mark>&lt;/article&gt;</mark></code>
+			</pre>
+			<p><i>"An article element represents a self-contained composition in a document, page, application, or site and that is, in principle, independently distributable or reusable, e.g. in syndication."</i></p>
+		</div>
+		<style>
+			.code-style pre{
+				margin-bottom: 10px;
+			}
+			.code-style p{
+				line-height: 34px;
+			}
+		</style>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;section&gt;</h2>	
+			<pre>
+				<code><mark>&lt;section&gt;</mark></code>
+				<code>	&lt;h1&gt;Lorem ipsum&lt;/h1&gt;</code>
+				<code>	&lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;</code>
+				<code><mark>&lt;/section&gt;</mark></code>
+			</pre>
+			<p><i>"A section, in this context, is a thematic grouping of content, typically with a heading."</i></p>
+		</div>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;aside&gt;</h2>	
+			<pre>
+				<code>&lt;p&gt;My family and I visited The Epcot center this summer.&lt;/p&gt;</code>
+				<code><mark>&lt;aside&gt;</mark></code>
+				<code>	&lt;h4&gt;Epcot Center&lt;/h4&gt;</code>
+				<code>	&lt;p&gt;The Epcot Center is a theme park in Disney World.&lt;/p&gt;</code>
+				<code><mark>&lt;/aside&gt;</mark></code>
+			</pre>
+			<p><i>"The aside element represents a section of a page that consists of content that is tangentially related to the content around the aside element, and which could be considered separate from that content. Such sections are often represented as sidebars in printed typography"</i></p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>&lt;footer&gt;</h2>	
+			<p><i>"The footer element represents a footer for its nearest ancestor sectioning content or sectioning root element. A footer typically contains information about its section such as who wrote it, links to related documents, copyright data, and the like."</i></p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Text level semantic elements</h2>
+		</div>
+	</section>
+
+    <section class="slide" id="textLevel">
+        <div>
+            <article>
+                <div>
+                    <p>&lt;time datetime="2008-02-14 20:00"&gt;Valentines day&lt;/time&gt;</p>
+                </div>
+                <div>
+                    <p>&lt;progress min="0" max="100" value="60"&gt;&lt;/progress&gt;</p>
+                    <progress min="0" max="100" value="60"></progress>
+                </div>
+                <div>
+                    <p>Lorem &lt;mark&gt;ipsum&lt;/mark&gt; dolor sit amet...</p>
+                    <p>Lorem<mark>ipsum</mark> dolor sit amet...</p>
+                </div>
+                <div>
+                    <form onsubmit="return false" oninput="o.value = parseInt(a.value) + parseInt(b.value)">
+                        <input name="a" type="number" step="any"> +
+                        <input name="b" type="number" step="any"> =
+                        <output name="o"></output>
+                    </form>
+                    <p>&lt;progress min="0" max="100" value="60"&gt;&lt;/progress&gt;</p>
+                    <progress min="0" max="100" value="60"></progress>
+                </div>
+            </article>
+        </div>
+        <style>
+            #textLevel p{
+                margin-bottom: 0;
+            }
+            #textLevel article{
+                display: -webkit-box;
+                -webkit-box-pack: justify;
+                -webkit-box-orient: vertical;
+                height: 350px;
+            }
+        </style>
+    </section>
+
+	<section class="slide">
+		<div>
+			<h2>Embedded media</h2>
+			<ul>
+				<li>&lt;audio&gt;</li>
+				<li>&lt;video&gt;</li>
+				<li>&lt;embed&gt;</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;audio&gt;</h2>	
+			<pre>
+				<code>&lt;<mark>audio</mark> id="audio" src="sound.mp3" <mark>controls</mark>&gt;&lt;/audio&gt;</code>
+				<code>document.getElementById("audio").<mark>muted</mark> = false;</code>
+			</pre>
+			<audio controls>
+				<source src="horse.mp3" type="audio/mpeg">
+			</audio>
+		</div>
+	</section>
+
+	<section class="slide code-style">
+		<div>
+			<h2>&lt;video&gt;</h2>	
+			<pre>
+				<code>&lt;<mark>video</mark> id="video" src="movie.webm" <mark>controls</mark>&gt;&lt;/video&gt;</code>
+				<code>document.getElementById("video").<mark>play()</mark>;</code>
+			</pre>
+			<video width="320" height="240" controls>
+				<source src="movie.mp4" type="video/mp4">
+			</video>
+		</div>
+	</section>
+
+    <section class="slide code-style">
+        <div>
+            <h2>&lt;figure&gt;</h2>
+			<pre>
+				<code><mark>&lt;figure&gt;</mark></code>
+				<code>	&lt;img src="pic_mountain.jpg" alt="The Pulpit Rock"&gt;</code>
+				<code>	<mark>&lt;figcaption&gt;</mark>Fig1.-The Pulpit Rock.<mark>&lt;/figcaption&gt;</mark></code>
+				<code><mark>&lt;/figure&gt;</mark></code>
+			</pre>
+            <p><i>"… optionally with a caption, that is self-contained and is typically referenced as a single unit from the main flow of the document."</i></p>
+        </div>
+    </section>
+
+	<section class="slide code-style word-spacing">
+		<div>
+			<h2>Canvas 2D</h2>	
+			<pre>
+				<code>&lt;canvas id="canvas" width="838" height="220"&lt;/canvas&gt;</code>
+				<code>&lt;script&gt;</code>
+				<code>  var canv = doc.getElementById("canvas").<mark>getContext</mark>("2d");</code>
+				<code>  canv.<mark>fillRect</mark>(250, 25, 150, 100);</code>
+				<code>&lt;/script&gt;</code>
+			</pre>
+		</div>
+		<style>
+			.word-spacing code{
+				/*word-spacing: -9px;*/
+			}
+		</style>
+	</section>
+
+	<section class="slide code-style word-spacing">
+		<div>
+			<h2>Inline SVG</h2>	
+			<pre>
+				<code>&lt;svg&gt;</code>
+				<code>	&lt;circle cx="50" cy="50" r="40" stroke="black"
+				 stroke-width="3" fill="red"/&gt;</code>
+				<code>&lt;/svg&gt;</code>
+			</pre>
+		</div>
+		<style>
+			.word-spacing code{
+				/*word-spacing: -11px;*/
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="newInputs1">
+		<div>
+			<h2>New input type elements</h2>
+			<div>
+				<p>&lt;input type="<mark>search</mark>" name="search"&gt;</p>
+				<p>&lt;input type="<mark>email</mark>" name="email" required&gt;</p>
+				<p>&lt;input type="<mark>url</mark>" name="url" required&gt;</p>
+				<p>&lt;input type="<mark>tel</mark>" name="tel" id="tel" required&gt;</p>
+			</div>
+            <input type="search">
+		</div>
+		<style>
+			#newInputs1 p{
+				margin-bottom: 20px;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="newInputs2">
+		<div>
+			<h2>New input type elements</h2>
+			<article>
+				<div>
+					<p>&lt;input type="<mark>number</mark>" min="5" max="18" step="0.5" value="9"&gt;</p>
+					<input type="number" min="5" max="18" step="0.5" value="9" name="shoe-size">
+				</div>
+				<div>
+					<p>&lt;input type="<mark>range</mark>" min="1" max="100" value="0"&gt;</p>
+					<input id="skill" type="range" min="1" max="100" value="0">
+				</div>	
+				<div>
+					<p>&lt;input type="<mark>date</mark>" min="2012-01-01" max="2013-01-01"&gt;</p>
+					<input min="2012-01-01" max="2013-01-01" type="date">
+				</div>
+				<div>
+					<p>&lt;input type="<mark>color</mark>" id="color" name="color"&gt;</p>
+					<input id="color" name="color" type="color">
+				</div>
+
+			</article>
+		</div>
+		<style>
+			#newInputs2 p{
+				margin-bottom: 0;
+			}
+			#newInputs2 article{
+			  display: -webkit-box;
+			  -webkit-box-pack: justify;
+			  -webkit-box-orient: vertical;
+			  height: 350px;
+			}
+		</style>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Interactivity</h2>
+			<ul>
+				<li>&lt;details&gt;</li>
+				<li>&lt;datalist&gt;</li>
+				<li>&lt;menu&gt;</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide normalize-margin">
+		<div>
+			<h2>&lt;details&gt;</h2>	
+			<pre>
+				<code><mark>&lt;details&gt;</mark></code>
+				<code>	<mark>&lt;summary&gt;</mark>SEO<mark>&lt;/summary&gt;</mark></code>
+				<code>	&lt;h5&gt;Search Engine Optimization&lt;/h5&gt;</code>
+				<code>	&lt;p&gt;SEO is a process by which a website is taken...&lt;/p&gt;</code>
+				<code><mark>&lt;/details&gt;</mark></code>
+			</pre>
+			<details>
+				<summary>SEO</summary>
+				<h5>Search Engine Optimization</h5>
+				<p>SEO is a process by which a website is taken to the top level in the search results. Method adopted for this is optimization of a website with
+				possible keywords that can be used by visitors while searching.</p>
+			</details>
+		</div>
+		<style>
+			.normalize-margin pre{
+				margin-bottom: 5px;
+			}
+			.normalize-margin pre code,
+			.normalize-margin details p{
+				line-height: 36px;
+			}
+		</style>
+	</section>
+
+	<section class="slide normalize-margin">
+		<div>
+			<h2>&lt;datalist&gt;</h2>	
+			<pre>
+				<code><mark>&lt;input list="browsers" /&gt;</mark></code>
+				<code><mark>&lt;datalist id="browsers"&gt;</mark></code>
+				<code>	<mark>&lt;option value="Chrome"&gt;</mark></code>
+				<code>	&lt;option value="Firefox"&gt;</code>
+				<code>	&lt;option value="Internet Explorer"&gt;</code>
+				<code>	&lt;option value="Opera"&gt;</code>
+				<code>	&lt;option value="Safari"&gt;</code>
+				<code>&lt;/datalist&gt;</code>
+			</pre>
+			<div>Choose a browser from this list:</div>
+			<input list="browsers" />
+			<datalist id="browsers">
+				<option value="Chrome">
+				<option value="Firefox">
+				<option value="Internet Explorer">
+				<option value="Opera">
+				<option value="Safari">
+			</datalist>
+			</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<img src="pictures/html5-api.png" alt="">
+		</div>
+	</section>
+
+	<section class="slide" id="resources">
+		<div>
+			<h2>Ресурси:</h2>
+			<ul>
+				<li><a href="http://html5doctor.com/" target="self">http://html5doctor.com/</a></li>
+				<li><a href="http://htmlbook.ru/html5" target="self">http://htmlbook.ru/html5</a></li>
+				<li><a href="http://www.w3schools.com/" target="self">http://www.w3schools.com</a></li>
+				<li><a href="http://diveintohtml5.info/" target="self">http://diveintohtml5.info/</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" target="self">https://developer.mozilla.org</a></li>
+			</ul>
+		</div>
+		<style>
+			#resources ul{
+				margin-left: 70px;
+			}
+			#resources li:before{
+				display: none;
+			}
+		</style>
+	</section>
+
+	<section class="slide" id="questions">
+		<h1>Запитання</h1>
+		<style>
+			#questions h1{
+				margin: 220px 0 0 340px;
+				font-size: 70px;
+			}
+		</style>
+	</section>
+	
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

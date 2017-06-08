@@ -1,0 +1,19 @@
+function fibanachi(n){
+    var item = 1,
+	    prevItem = 0,
+	    nextItem,
+        errorString = "Write bigger number",
+	    numbersFibanachi = [];    
+    if(n < 1){
+    	return errorString;
+    }else {		
+	    for(var i = 0; i < n; i++){
+            numbersFibanachi.push(prevItem);
+	    	nextItem = prevItem + item;
+	        prevItem = item;
+	        item = nextItem;	        
+	    }
+    }
+	return numbersFibanachi;
+}
+console.log(fibanachi(5));

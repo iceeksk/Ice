@@ -1,0 +1,111 @@
+function applyForVisa(documents) {
+	console.log("обработка заявления...");
+	let promise = new Promise(function (resolve, reject) {
+		setTimeout(function () {
+			Math.random() > .5 ? resolve({a: 1}) : reject("Otkazano, нехват документов");
+		}, 2000)
+	});
+	return promise;
+}
+
+function getVisa(visa){
+	console.info("Виза получена");
+	return Promise.resolve(visa)
+}
+
+function hotel(visa) {
+	console.log("bron otel");
+	console.log(visa);
+	return new Promise(function(resolve, reject){
+		setTimeout( () => Math.random() > .5 ? resolve({}) : reject("Otkazano, нет мест"), 2000);
+	});
+}
+
+function tickets(bokking) {
+	console.log("pokyp bilets");
+
+	return new Promise(function(resolve, reject){
+		setTimeout( () => Math.random() > .5 ? resolve({}) : reject("Otkazano, нет билетов"), 2000);
+	});
+}
+
+applyForVisa({})
+	.then(getVisa)
+	.then(hotel)
+	.then(tickets)
+	.catch(function (error) {
+		console.error(error);
+	});
+
+
+---------------- загрузка с сервера -----------------
+
+let movies = document.getElementById('movies');
+
+function addMovieToList(movie) {
+	let img = document.createElement('img');
+	img.src = movie.Poster;
+	movies.appendChild(img);
+}
+
+function getDate(url) {
+	return new Promise(function (resolve, reject) {
+		let xhr = new XMLHttpRequest();
+		xhr.open('GET', url);
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				var json = JSON.parse(xhr.response);
+				console.log(json);
+				resolve(json.Search);
+				console.log(json.Search);
+			} else {
+				reject(xhr.statusText);
+			}
+		};
+
+		xhr.onerror = function (error) {
+			reject(error);
+		};
+
+		xhr.send();
+	});
+}
+
+let spider = getDate('http://www.omdbapi.com/?s=spider man'),
+	batman = getDate('http://www.omdbapi.com/?s=batman'),
+	iron = getDate('http://www.omdbapi.com/?s=iron man');
+
+/*
+Promise.race([spider, batman, iron]) // кто первый того и покажет
+		.then(movies => movies.forEach( movie => addMovieToList(movie)))
+		.catch(error => console.error(error));
+*/
+
+
+
+spider
+		.then(movies => movies.forEach( movie => addMovieToList(movie)))
+		.catch(error => console.error(error));
+
+
+batman
+	.then(function (movies) {
+		movies.forEach(function (movie) {
+			addMovieToList(movie);
+		})
+	})
+	.catch(function (error) {
+		console.error(error)
+	});
+
+iron
+	.then(function (movies) {
+		movies.forEach(function (movie) {
+			addMovieToList(movie);
+		})
+	})
+	.catch(function (error) {
+		console.error(error)
+	});
+
+
